@@ -166,11 +166,11 @@
         "sheet": "Send Push Message",
         "auth": false,
         "once": false,
-        "x": 169,
-        "y": 689,
+        "x": 160,
+        "y": 680,
         "wires": [
             [
-                "bd434862.e5fb48"
+                "4402f24b.29630c"
             ]
         ]
     },
@@ -274,12 +274,11 @@
         ]
     },
     {
-        "id": "bd434862.e5fb48",
+        "id": "4402f24b.29630c",
         "type": "subflow:2b518b86.8b06bc",
         "z": "3d0ee685.c2f11a",
-        "name": "Save to GitHub",
-        "x": 403.5,
-        "y": 689.5,
+        "x": 420,
+        "y": 680,
         "wires": []
     }
 ]
