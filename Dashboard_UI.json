@@ -1,346 +1,225 @@
-[
-    {
-        "type": "tab",
-        "id": "3691c4e9.592464",
-        "label": "Dashboard UI"
-    },
-    {
-        "id": "2b518b86.8b06bc",
-        "type": "subflow",
-        "name": "Save Flow to GitHub",
-        "info": "",
-        "in": [
-            {
-                "x": 137,
-                "y": 154,
-                "wires": [
-                    {
-                        "id": "f57b6889.857298"
-                    }
+{
+    "id": "3691c4e9.592464",
+    "label": "Dashboard UI",
+    "nodes": [
+        {
+            "id": "c92e1193.fdf9b",
+            "type": "ui_button",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "Button",
+            "payload": "payload",
+            "topic": "button topic",
+            "group": "",
+            "order": 1,
+            "x": 317,
+            "y": 181,
+            "wires": [
+                [
+                    "15df034c.556d9d",
+                    "e15f0973.b1f1a8"
                 ]
-            }
-        ],
-        "out": []
-    },
-    {
-        "id": "3006adeb.c03c32",
-        "type": "ui_tab",
-        "z": "3691c4e9.592464",
-        "name": "Home",
-        "icon": "dashboard",
-        "order": "1"
-    },
-    {
-        "id": "7220e09f.c2de08",
-        "type": "github-credentials",
-        "z": "",
-        "name": "ibmarema"
-    },
-    {
-        "id": "c92e1193.fdf9b",
-        "type": "ui_button",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "Button",
-        "payload": "payload",
-        "topic": "button topic",
-        "group": "",
-        "order": 1,
-        "x": 317,
-        "y": 181,
-        "wires": [
-            [
-                "15df034c.556d9d",
-                "e15f0973.b1f1a8"
             ]
-        ]
-    },
-    {
-        "id": "15df034c.556d9d",
-        "type": "debug",
-        "z": "3691c4e9.592464",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "true",
-        "x": 577.5,
-        "y": 262,
-        "wires": []
-    },
-    {
-        "id": "82f6f1ad.cbfd6",
-        "type": "ui_numeric",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "Numeric",
-        "topic": "button topic",
-        "group": "",
-        "order": 1,
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "x": 428,
-        "y": 314,
-        "wires": [
-            [
-                "74cd62ff.484d6c",
-                "9a42fea9.8024a8"
+        },
+        {
+            "id": "15df034c.556d9d",
+            "type": "debug",
+            "z": "3691c4e9.592464",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "true",
+            "x": 577.5,
+            "y": 262,
+            "wires": []
+        },
+        {
+            "id": "82f6f1ad.cbfd6",
+            "type": "ui_numeric",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "Numeric",
+            "topic": "button topic",
+            "group": "",
+            "order": 1,
+            "format": "{{value}}",
+            "min": 0,
+            "max": 10,
+            "x": 428,
+            "y": 314,
+            "wires": [
+                [
+                    "74cd62ff.484d6c",
+                    "9a42fea9.8024a8"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "74cd62ff.484d6c",
-        "type": "ui_chart",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "",
-        "group": "",
-        "order": 1,
-        "interpolate": "linear",
-        "nodata": "No Data",
-        "removeOlder": 1,
-        "removeOlderUnit": "86400",
-        "x": 590,
-        "y": 415,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "e15f0973.b1f1a8",
-        "type": "ui_text",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "Text",
-        "group": "",
-        "order": 1,
-        "format": "{{msg.payload}}",
-        "x": 748,
-        "y": 196,
-        "wires": []
-    },
-    {
-        "id": "18acf117.cfcc5f",
-        "type": "ui_text_input",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "mode": "text",
-        "delay": 300,
-        "name": "",
-        "topic": "",
-        "group": "",
-        "order": 1,
-        "x": 360,
-        "y": 426,
-        "wires": [
-            [
-                "16a9de9.694be21",
-                "d5adc662.899c58"
+        },
+        {
+            "id": "74cd62ff.484d6c",
+            "type": "ui_chart",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "",
+            "group": "",
+            "order": 1,
+            "interpolate": "linear",
+            "nodata": "No Data",
+            "removeOlder": 1,
+            "removeOlderUnit": "86400",
+            "x": 590,
+            "y": 415,
+            "wires": [
+                [],
+                []
             ]
-        ]
-    },
-    {
-        "id": "9a42fea9.8024a8",
-        "type": "ui_gauge",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "Gauge",
-        "group": "",
-        "order": 1,
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "x": 308,
-        "y": 572,
-        "wires": []
-    },
-    {
-        "id": "d5adc662.899c58",
-        "type": "ui_toast",
-        "z": "3691c4e9.592464",
-        "name": "",
-        "x": 517,
-        "y": 612,
-        "wires": []
-    },
-    {
-        "id": "a981a17e.e7081",
-        "type": "ui_link",
-        "z": "3691c4e9.592464",
-        "name": "Google",
-        "link": "http://www.google.com",
-        "icon": "open_in_browser",
-        "order": 1,
-        "x": 317,
-        "y": 692,
-        "wires": []
-    },
-    {
-        "id": "258c47e8.dbab58",
-        "type": "ui_template",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "",
-        "group": "",
-        "order": 1,
-        "format": "<md-button ng-click=\"send({payload: 'Hello World'})\">\n    Click me to send a hello world\n</md-button>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "x": 880,
-        "y": 492,
-        "wires": [
-            [
-                "16a9de9.694be21"
+        },
+        {
+            "id": "e15f0973.b1f1a8",
+            "type": "ui_text",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "Text",
+            "group": "",
+            "order": 1,
+            "format": "{{msg.payload}}",
+            "x": 748,
+            "y": 196,
+            "wires": []
+        },
+        {
+            "id": "18acf117.cfcc5f",
+            "type": "ui_text_input",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "mode": "text",
+            "delay": 300,
+            "name": "",
+            "topic": "",
+            "group": "",
+            "order": 1,
+            "x": 360,
+            "y": 426,
+            "wires": [
+                [
+                    "16a9de9.694be21",
+                    "d5adc662.899c58"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "16a9de9.694be21",
-        "type": "ui_text",
-        "z": "3691c4e9.592464",
-        "tab": "3006adeb.c03c32",
-        "name": "Text",
-        "group": "",
-        "order": 1,
-        "format": "{{msg.payload}}",
-        "x": 555,
-        "y": 492,
-        "wires": []
-    },
-    {
-        "id": "2b266a00.b15ace",
-        "type": "comment",
-        "z": "3691c4e9.592464",
-        "name": "",
-        "info": "http://arema.media.ibmcloud.com:1880/ui/",
-        "x": 1026.5,
-        "y": 656,
-        "wires": []
-    },
-    {
-        "id": "f57b6889.857298",
-        "type": "function",
-        "z": "2b518b86.8b06bc",
-        "name": "filename and formatting",
-        "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\n\nmsg.payload = JSON.stringify(msg.payload, null, 4);\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 327,
-        "y": 154,
-        "wires": [
-            [
-                "6505f783.9187",
-                "31470a48.d686f6"
+        },
+        {
+            "id": "9a42fea9.8024a8",
+            "type": "ui_gauge",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "Gauge",
+            "group": "",
+            "order": 1,
+            "format": "{{value}}",
+            "min": 0,
+            "max": 10,
+            "x": 308,
+            "y": 572,
+            "wires": []
+        },
+        {
+            "id": "d5adc662.899c58",
+            "type": "ui_toast",
+            "z": "3691c4e9.592464",
+            "name": "",
+            "x": 517,
+            "y": 612,
+            "wires": []
+        },
+        {
+            "id": "a981a17e.e7081",
+            "type": "ui_link",
+            "z": "3691c4e9.592464",
+            "name": "Google",
+            "link": "http://www.google.com",
+            "icon": "open_in_browser",
+            "order": 1,
+            "x": 317,
+            "y": 692,
+            "wires": []
+        },
+        {
+            "id": "258c47e8.dbab58",
+            "type": "ui_template",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "",
+            "group": "",
+            "order": 1,
+            "format": "<md-button ng-click=\"send({payload: 'Hello World'})\">\n    Click me to send a hello world\n</md-button>",
+            "storeOutMessages": true,
+            "fwdInMessages": true,
+            "x": 880,
+            "y": 492,
+            "wires": [
+                [
+                    "16a9de9.694be21"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "6505f783.9187",
-        "type": "file",
-        "z": "2b518b86.8b06bc",
-        "name": "Save Flow as File",
-        "filename": "",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "x": 627,
-        "y": 154,
-        "wires": []
-    },
-    {
-        "id": "c13ac220.f7c5a",
-        "type": "exec",
-        "z": "2b518b86.8b06bc",
-        "command": "/home/dmae/.node-red/git_commit",
-        "addpay": true,
-        "append": "",
-        "useSpawn": "",
-        "name": "Push to Git",
-        "x": 1056,
-        "y": 227,
-        "wires": [
-            [],
-            [
-                "506175e.078128c"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "506175e.078128c",
-        "type": "debug",
-        "z": "2b518b86.8b06bc",
-        "name": "Git Result",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 1246,
-        "y": 227,
-        "wires": []
-    },
-    {
-        "id": "33b1f681.2e80da",
-        "type": "function",
-        "z": "2b518b86.8b06bc",
-        "name": "Set commit message",
-        "func": "var commit = \"\\\"my commit message 2\\\"\";\n\nmsg.payload = msg.filename_wo_path + \" \" + commit\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 826,
-        "y": 227,
-        "wires": [
-            [
-                "c13ac220.f7c5a"
+        },
+        {
+            "id": "16a9de9.694be21",
+            "type": "ui_text",
+            "z": "3691c4e9.592464",
+            "tab": "3006adeb.c03c32",
+            "name": "Text",
+            "group": "",
+            "order": 1,
+            "format": "{{msg.payload}}",
+            "x": 555,
+            "y": 492,
+            "wires": []
+        },
+        {
+            "id": "2b266a00.b15ace",
+            "type": "comment",
+            "z": "3691c4e9.592464",
+            "name": "",
+            "info": "http://arema.media.ibmcloud.com:1880/ui/",
+            "x": 1026.5,
+            "y": 656,
+            "wires": []
+        },
+        {
+            "id": "3df73fcb.3c49e8",
+            "type": "flow-reader",
+            "z": "3691c4e9.592464",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "Dashboard UI",
+            "auth": false,
+            "once": false,
+            "x": 202,
+            "y": 1020,
+            "wires": [
+                [
+                    "1513eafb.057285"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "31470a48.d686f6",
-        "type": "delay",
-        "z": "2b518b86.8b06bc",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 606,
-        "y": 227,
-        "wires": [
-            [
-                "33b1f681.2e80da"
-            ]
-        ]
-    },
-    {
-        "id": "3df73fcb.3c49e8",
-        "type": "flow-reader",
-        "z": "3691c4e9.592464",
-        "name": "Save Flow to GitHub",
-        "protocol": "http",
-        "url": "127.0.0.1:1880",
-        "sheet": "Dashboard UI",
-        "auth": false,
-        "once": false,
-        "x": 202,
-        "y": 1020,
-        "wires": [
-            [
-                "a58f0c60.5e98c"
-            ]
-        ]
-    },
-    {
-        "id": "a58f0c60.5e98c",
-        "type": "subflow:2b518b86.8b06bc",
-        "z": "3691c4e9.592464",
-        "x": 480,
-        "y": 1020,
-        "wires": []
-    }
-]
+        },
+        {
+            "id": "1513eafb.057285",
+            "type": "subflow:3034f64e.09f3d2",
+            "z": "3691c4e9.592464",
+            "x": 467,
+            "y": 1010,
+            "wires": [],
+            "subflow": "3034f64e.09f3d2"
+        }
+    ],
+    "configs": [
+        {
+            "id": "3006adeb.c03c32",
+            "type": "ui_tab",
+            "z": "3691c4e9.592464",
+            "name": "Home",
+            "icon": "dashboard",
+            "order": "1"
+        }
+    ]
+}
