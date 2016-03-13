@@ -187,7 +187,8 @@
         "wires": [
             [
                 "6505f783.9187",
-                "31470a48.d686f6"
+                "31470a48.d686f6",
+                "bef8ff7b.6236f8"
             ]
         ]
     },
@@ -280,5 +281,19 @@
         "x": 420,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "bef8ff7b.6236f8",
+        "type": "function",
+        "z": "2b518b86.8b06bc",
+        "name": "Info message to debug panel",
+        "func": "node.warn(\"Writing flow [\" + msg.label + \"] as file [\" + msg.filename + \"] to GitHub. Please wait for the Git commit message.\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 661,
+        "y": 80,
+        "wires": [
+            []
+        ]
     }
 ]
