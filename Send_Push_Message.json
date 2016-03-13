@@ -5,17 +5,18 @@
         {
             "type": "tab",
             "label": "Send Push Message",
-            "id": "c7981d2d.003de8"
+            "id": "c7981d2d.003de8",
+            "z": "c7981d2d.003de8"
         },
         {
-            "id": "2b518b86.8b06bc",
+            "id": "3034f64e.09f3d2",
             "type": "subflow",
-            "name": "Save Flow to GitHub",
+            "name": "Write Flow to GitHub",
             "info": "",
             "in": [
                 {
-                    "x": 137,
-                    "y": 154,
+                    "x": 119,
+                    "y": 216,
                     "wires": [
                         {
                             "id": "f57b6889.857298"
@@ -28,19 +29,19 @@
         {
             "id": "7220e09f.c2de08",
             "type": "github-credentials",
-            "z": "",
+            "z": "c7981d2d.003de8",
             "name": "ibmarema"
         },
         {
             "id": "f57b6889.857298",
             "type": "function",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "filename and formatting",
             "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\nmsg.label = msg.payload[0].label;\n\nvar temp_payload = {};\ntemp_payload.id = msg.flowid;\ntemp_payload.label = msg.label;\ntemp_payload.nodes = msg.payload;\n\nmsg.payload = JSON.stringify(temp_payload, null, 4);\n\nreturn msg;\n",
             "outputs": 1,
             "noerr": 0,
-            "x": 327,
-            "y": 154,
+            "x": 309,
+            "y": 216,
             "wires": [
                 [
                     "6505f783.9187",
@@ -52,27 +53,27 @@
         {
             "id": "6505f783.9187",
             "type": "file",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "Save Flow as File",
             "filename": "",
             "appendNewline": true,
             "createDir": false,
             "overwriteFile": "true",
-            "x": 627,
-            "y": 154,
+            "x": 615,
+            "y": 182,
             "wires": []
         },
         {
             "id": "c13ac220.f7c5a",
             "type": "exec",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "command": "/home/dmae/.node-red/git_commit",
             "addpay": true,
             "append": "",
             "useSpawn": "",
             "name": "Push to Git",
-            "x": 1056,
-            "y": 227,
+            "x": 1027,
+            "y": 257.5,
             "wires": [
                 [],
                 [
@@ -84,25 +85,25 @@
         {
             "id": "506175e.078128c",
             "type": "debug",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "Git Result",
             "active": true,
             "console": "false",
             "complete": "payload",
-            "x": 1246,
-            "y": 227,
+            "x": 1214,
+            "y": 263,
             "wires": []
         },
         {
             "id": "33b1f681.2e80da",
             "type": "function",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "Set commit message",
             "func": "var commit = \"\\\"my commit message 2\\\"\";\n\nmsg.payload = msg.filename_wo_path + \" \" + commit\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 826,
-            "y": 227,
+            "x": 788,
+            "y": 258,
             "wires": [
                 [
                     "c13ac220.f7c5a"
@@ -112,7 +113,7 @@
         {
             "id": "31470a48.d686f6",
             "type": "delay",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "",
             "pauseType": "delay",
             "timeout": "2",
@@ -123,8 +124,8 @@
             "randomLast": "5",
             "randomUnits": "seconds",
             "drop": false,
-            "x": 606,
-            "y": 227,
+            "x": 597,
+            "y": 256,
             "wires": [
                 [
                     "33b1f681.2e80da"
@@ -134,13 +135,13 @@
         {
             "id": "bef8ff7b.6236f8",
             "type": "function",
-            "z": "2b518b86.8b06bc",
+            "z": "3034f64e.09f3d2",
             "name": "Info message to debug panel",
             "func": "node.warn(\"Writing flow [\" + msg.label + \"] as file [\" + msg.filename_wo_path + \"] to GitHub. Please wait for the Git commit message.\");\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 661,
-            "y": 80,
+            "x": 648,
+            "y": 136,
             "wires": [
                 []
             ]
@@ -232,7 +233,7 @@
             "type": "job_end",
             "z": "c7981d2d.003de8",
             "includeparameters": true,
-            "x": 1180,
+            "x": 1303,
             "y": 300,
             "wires": [
                 [
@@ -248,8 +249,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 1373,
-            "y": 323,
+            "x": 1484,
+            "y": 387,
             "wires": []
         },
         {
@@ -265,8 +266,8 @@
             "org_unit": "admira",
             "chmod_file": "",
             "hold_in_cache": "no",
-            "x": 940,
-            "y": 220,
+            "x": 1031,
+            "y": 134,
             "wires": [
                 [
                     "751f2ba3.7f461c"
@@ -283,20 +284,21 @@
             "sheet": "Send Push Message",
             "auth": false,
             "once": false,
-            "x": 160,
-            "y": 680,
+            "x": 206,
+            "y": 634,
             "wires": [
                 [
-                    "8fc5f876.4b69f8"
+                    "ceee4c9d.a8bee8"
                 ]
             ]
         },
         {
-            "id": "8fc5f876.4b69f8",
-            "type": "subflow:2b518b86.8b06bc",
+            "id": "ceee4c9d.a8bee8",
+            "type": "subflow:3034f64e.09f3d2",
             "z": "c7981d2d.003de8",
-            "x": 415,
-            "y": 672,
+            "name": "",
+            "x": 543.5,
+            "y": 640.5,
             "wires": []
         }
     ]
