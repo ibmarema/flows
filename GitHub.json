@@ -1,489 +1,351 @@
-[
-    {
-        "type": "tab",
-        "id": "d9e91624.0ccb38",
-        "label": "GitHub"
-    },
-    {
-        "id": "2b518b86.8b06bc",
-        "type": "subflow",
-        "name": "Save Flow to GitHub",
-        "info": "",
-        "in": [
-            {
-                "x": 137,
-                "y": 154,
-                "wires": [
-                    {
-                        "id": "f57b6889.857298"
-                    }
+{
+    "id": "d9e91624.0ccb38",
+    "label": "GitHub",
+    "nodes": [
+        {
+            "id": "37735cbd.acd17c",
+            "type": "github-repo",
+            "z": "d9e91624.0ccb38",
+            "github": "7220e09f.c2de08",
+            "name": "Read file from GitHub",
+            "username": "ibmarema",
+            "usernameType": "str",
+            "repository": "flows",
+            "repositoryType": "str",
+            "action": "read",
+            "branch": "master",
+            "branchType": "str",
+            "path": "filename",
+            "pathType": "msg",
+            "pathto": "",
+            "pathtoType": "str",
+            "contents": "payload",
+            "contentsType": "msg",
+            "outputs": "1",
+            "x": 640,
+            "y": 120,
+            "wires": [
+                [
+                    "6f716cb6.64688c"
                 ]
-            }
-        ],
-        "out": []
-    },
-    {
-        "id": "7220e09f.c2de08",
-        "type": "github-credentials",
-        "z": "",
-        "name": "ibmarema"
-    },
-    {
-        "id": "37735cbd.acd17c",
-        "type": "github-repo",
-        "z": "d9e91624.0ccb38",
-        "github": "7220e09f.c2de08",
-        "name": "Read file from GitHub",
-        "username": "ibmarema",
-        "usernameType": "str",
-        "repository": "flows",
-        "repositoryType": "str",
-        "action": "read",
-        "branch": "master",
-        "branchType": "str",
-        "path": "filename",
-        "pathType": "msg",
-        "pathto": "",
-        "pathtoType": "str",
-        "contents": "payload",
-        "contentsType": "msg",
-        "outputs": "1",
-        "x": 640,
-        "y": 120,
-        "wires": [
-            [
-                "6f716cb6.64688c"
             ]
-        ]
-    },
-    {
-        "id": "1281fc88.6d64d3",
-        "type": "inject",
-        "z": "d9e91624.0ccb38",
-        "name": "Start Update Flow",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 150,
-        "y": 120,
-        "wires": [
-            [
-                "a0e61fa2.d35f6"
+        },
+        {
+            "id": "1281fc88.6d64d3",
+            "type": "inject",
+            "z": "d9e91624.0ccb38",
+            "name": "Start Update Flow",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 150,
+            "y": 120,
+            "wires": [
+                [
+                    "a0e61fa2.d35f6"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "8fa7e278.ba25e",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Command Response",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 1297.5,
-        "y": 193,
-        "wires": []
-    },
-    {
-        "id": "beddc7c.c043b38",
-        "type": "http request",
-        "z": "d9e91624.0ccb38",
-        "name": "Update Flow",
-        "method": "PUT",
-        "ret": "txt",
-        "url": "",
-        "x": 1070,
-        "y": 120,
-        "wires": [
-            [
-                "8fa7e278.ba25e"
+        },
+        {
+            "id": "8fa7e278.ba25e",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Command Response",
+            "active": true,
+            "console": "false",
+            "complete": "payload",
+            "x": 1297.5,
+            "y": 193,
+            "wires": []
+        },
+        {
+            "id": "beddc7c.c043b38",
+            "type": "http request",
+            "z": "d9e91624.0ccb38",
+            "name": "Update Flow",
+            "method": "PUT",
+            "ret": "txt",
+            "url": "",
+            "x": 1070,
+            "y": 120,
+            "wires": [
+                [
+                    "8fa7e278.ba25e"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "6f716cb6.64688c",
-        "type": "function",
-        "z": "d9e91624.0ccb38",
-        "name": "Set URL",
-        "func": "msg.url = \"http://arema.media.ibmcloud.com:1880/flow/\" + msg.payload.id;\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 860,
-        "y": 120,
-        "wires": [
-            [
-                "b18ef27a.fd9d7",
-                "a4d1288b.9440c8",
-                "9e32b7cc.ec3e98",
-                "beddc7c.c043b38",
-                "f87e77f7.27c3a"
+        },
+        {
+            "id": "6f716cb6.64688c",
+            "type": "function",
+            "z": "d9e91624.0ccb38",
+            "name": "Set URL",
+            "func": "msg.url = \"http://arema.media.ibmcloud.com:1880/flow/\" + msg.payload.id;\n\nreturn msg;\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 860,
+            "y": 120,
+            "wires": [
+                [
+                    "b18ef27a.fd9d7",
+                    "a4d1288b.9440c8",
+                    "9e32b7cc.ec3e98",
+                    "beddc7c.c043b38",
+                    "f87e77f7.27c3a"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "b18ef27a.fd9d7",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Command URL",
-        "active": true,
-        "console": "false",
-        "complete": "url",
-        "x": 1054.5,
-        "y": 245,
-        "wires": []
-    },
-    {
-        "id": "a4d1288b.9440c8",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow Config",
-        "active": false,
-        "console": "false",
-        "complete": "payload",
-        "x": 1042,
-        "y": 323,
-        "wires": []
-    },
-    {
-        "id": "9e32b7cc.ec3e98",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow ID",
-        "active": true,
-        "console": "false",
-        "complete": "payload.id",
-        "x": 1034,
-        "y": 379,
-        "wires": []
-    },
-    {
-        "id": "a0e61fa2.d35f6",
-        "type": "function",
-        "z": "d9e91624.0ccb38",
-        "name": "Set Filename",
-        "func": "msg.filename = \"Flow_Test_1.json\";\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 390,
-        "y": 120,
-        "wires": [
-            [
-                "37735cbd.acd17c"
+        },
+        {
+            "id": "b18ef27a.fd9d7",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Command URL",
+            "active": true,
+            "console": "false",
+            "complete": "url",
+            "x": 1054.5,
+            "y": 245,
+            "wires": []
+        },
+        {
+            "id": "a4d1288b.9440c8",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow Config",
+            "active": false,
+            "console": "false",
+            "complete": "payload",
+            "x": 1042,
+            "y": 323,
+            "wires": []
+        },
+        {
+            "id": "9e32b7cc.ec3e98",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow ID",
+            "active": true,
+            "console": "false",
+            "complete": "payload.id",
+            "x": 1034,
+            "y": 379,
+            "wires": []
+        },
+        {
+            "id": "a0e61fa2.d35f6",
+            "type": "function",
+            "z": "d9e91624.0ccb38",
+            "name": "Set Filename",
+            "func": "msg.filename = \"Send_Push_Message.json\";\n\nreturn msg;\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 390,
+            "y": 120,
+            "wires": [
+                [
+                    "37735cbd.acd17c"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "f87e77f7.27c3a",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow Label",
-        "active": true,
-        "console": "false",
-        "complete": "payload.label",
-        "x": 1048,
-        "y": 445,
-        "wires": []
-    },
-    {
-        "id": "512054b.c224a2c",
-        "type": "github-repo",
-        "z": "d9e91624.0ccb38",
-        "github": "7220e09f.c2de08",
-        "name": "Read file from GitHub",
-        "username": "ibmarema",
-        "usernameType": "str",
-        "repository": "flows",
-        "repositoryType": "str",
-        "action": "read",
-        "branch": "master",
-        "branchType": "str",
-        "path": "filename",
-        "pathType": "msg",
-        "pathto": "",
-        "pathtoType": "str",
-        "contents": "payload",
-        "contentsType": "msg",
-        "outputs": "1",
-        "x": 650,
-        "y": 611,
-        "wires": [
-            [
-                "4ad50f62.25fc4"
+        },
+        {
+            "id": "f87e77f7.27c3a",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow Label",
+            "active": true,
+            "console": "false",
+            "complete": "payload.label",
+            "x": 1048,
+            "y": 445,
+            "wires": []
+        },
+        {
+            "id": "512054b.c224a2c",
+            "type": "github-repo",
+            "z": "d9e91624.0ccb38",
+            "github": "7220e09f.c2de08",
+            "name": "Read file from GitHub",
+            "username": "ibmarema",
+            "usernameType": "str",
+            "repository": "flows",
+            "repositoryType": "str",
+            "action": "read",
+            "branch": "master",
+            "branchType": "str",
+            "path": "filename",
+            "pathType": "msg",
+            "pathto": "",
+            "pathtoType": "str",
+            "contents": "payload",
+            "contentsType": "msg",
+            "outputs": "1",
+            "x": 650,
+            "y": 611,
+            "wires": [
+                [
+                    "4ad50f62.25fc4"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "edff715d.45c8a8",
-        "type": "inject",
-        "z": "d9e91624.0ccb38",
-        "name": "Start Import Flow",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 150,
-        "y": 611,
-        "wires": [
-            [
-                "e7bd637a.bf323"
+        },
+        {
+            "id": "edff715d.45c8a8",
+            "type": "inject",
+            "z": "d9e91624.0ccb38",
+            "name": "Start Import Flow",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 150,
+            "y": 611,
+            "wires": [
+                [
+                    "e7bd637a.bf323"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "f74ea505.1d764",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Command Response",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 1321.5,
-        "y": 672,
-        "wires": []
-    },
-    {
-        "id": "5322c395.565f8c",
-        "type": "http request",
-        "z": "d9e91624.0ccb38",
-        "name": "Import Flow",
-        "method": "POST",
-        "ret": "txt",
-        "url": "",
-        "x": 1080,
-        "y": 611,
-        "wires": [
-            [
-                "f74ea505.1d764"
+        },
+        {
+            "id": "f74ea505.1d764",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Command Response",
+            "active": true,
+            "console": "false",
+            "complete": "payload",
+            "x": 1321.5,
+            "y": 672,
+            "wires": []
+        },
+        {
+            "id": "5322c395.565f8c",
+            "type": "http request",
+            "z": "d9e91624.0ccb38",
+            "name": "Import Flow",
+            "method": "POST",
+            "ret": "txt",
+            "url": "",
+            "x": 1080,
+            "y": 611,
+            "wires": [
+                [
+                    "f74ea505.1d764"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "4ad50f62.25fc4",
-        "type": "function",
-        "z": "d9e91624.0ccb38",
-        "name": "Set URL",
-        "func": "msg.url = \"http://arema.media.ibmcloud.com:1880/flow/\";\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 870,
-        "y": 611,
-        "wires": [
-            [
-                "e0d4598c.b320e",
-                "c386c05b.ce7df",
-                "3a76e617.be361a",
-                "5322c395.565f8c",
-                "cfa08992.97e6f8"
+        },
+        {
+            "id": "4ad50f62.25fc4",
+            "type": "function",
+            "z": "d9e91624.0ccb38",
+            "name": "Set URL",
+            "func": "msg.url = \"http://arema.media.ibmcloud.com:1880/flow/\";\n\nreturn msg;\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 870,
+            "y": 611,
+            "wires": [
+                [
+                    "e0d4598c.b320e",
+                    "c386c05b.ce7df",
+                    "3a76e617.be361a",
+                    "5322c395.565f8c",
+                    "cfa08992.97e6f8"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "e0d4598c.b320e",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Command URL",
-        "active": true,
-        "console": "false",
-        "complete": "url",
-        "x": 1064.5,
-        "y": 736,
-        "wires": []
-    },
-    {
-        "id": "c386c05b.ce7df",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow Config",
-        "active": false,
-        "console": "false",
-        "complete": "payload",
-        "x": 1052,
-        "y": 814,
-        "wires": []
-    },
-    {
-        "id": "3a76e617.be361a",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow ID",
-        "active": true,
-        "console": "false",
-        "complete": "payload.id",
-        "x": 1044,
-        "y": 870,
-        "wires": []
-    },
-    {
-        "id": "e7bd637a.bf323",
-        "type": "function",
-        "z": "d9e91624.0ccb38",
-        "name": "Set Filename",
-        "func": "msg.filename = \"Flow_Test_1.json\";\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 400,
-        "y": 611,
-        "wires": [
-            [
-                "512054b.c224a2c"
+        },
+        {
+            "id": "e0d4598c.b320e",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Command URL",
+            "active": true,
+            "console": "false",
+            "complete": "url",
+            "x": 1064.5,
+            "y": 736,
+            "wires": []
+        },
+        {
+            "id": "c386c05b.ce7df",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow Config",
+            "active": false,
+            "console": "false",
+            "complete": "payload",
+            "x": 1052,
+            "y": 814,
+            "wires": []
+        },
+        {
+            "id": "3a76e617.be361a",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow ID",
+            "active": true,
+            "console": "false",
+            "complete": "payload.id",
+            "x": 1044,
+            "y": 870,
+            "wires": []
+        },
+        {
+            "id": "e7bd637a.bf323",
+            "type": "function",
+            "z": "d9e91624.0ccb38",
+            "name": "Set Filename",
+            "func": "msg.filename = \"Flow_Test_1.json\";\n\nreturn msg;\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 400,
+            "y": 611,
+            "wires": [
+                [
+                    "512054b.c224a2c"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "cfa08992.97e6f8",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "Flow Label",
-        "active": true,
-        "console": "false",
-        "complete": "payload.label",
-        "x": 1058,
-        "y": 936,
-        "wires": []
-    },
-    {
-        "id": "55cbc5c.1e01f3c",
-        "type": "flow-reader",
-        "z": "d9e91624.0ccb38",
-        "name": "Save Flow to GitHub",
-        "protocol": "http",
-        "url": "127.0.0.1:1880",
-        "sheet": "GitHub",
-        "auth": false,
-        "once": false,
-        "x": 200,
-        "y": 1080,
-        "wires": [
-            [
-                "dfb963ff.7d4b78"
+        },
+        {
+            "id": "cfa08992.97e6f8",
+            "type": "debug",
+            "z": "d9e91624.0ccb38",
+            "name": "Flow Label",
+            "active": true,
+            "console": "false",
+            "complete": "payload.label",
+            "x": 1058,
+            "y": 936,
+            "wires": []
+        },
+        {
+            "id": "55cbc5c.1e01f3c",
+            "type": "flow-reader",
+            "z": "d9e91624.0ccb38",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "GitHub",
+            "auth": false,
+            "once": false,
+            "x": 200,
+            "y": 1080,
+            "wires": [
+                [
+                    "d4c6cc0f.a3f83"
+                ]
             ]
-        ]
-    },
-    {
-        "id": "f57b6889.857298",
-        "type": "function",
-        "z": "2b518b86.8b06bc",
-        "name": "filename and formatting",
-        "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\nmsg.label = msg.payload[0].label;\n\nmsg.payload = JSON.stringify(msg.payload, null, 4);\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 327,
-        "y": 154,
-        "wires": [
-            [
-                "6505f783.9187",
-                "31470a48.d686f6",
-                "bef8ff7b.6236f8"
-            ]
-        ]
-    },
-    {
-        "id": "6505f783.9187",
-        "type": "file",
-        "z": "2b518b86.8b06bc",
-        "name": "Save Flow as File",
-        "filename": "",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "x": 627,
-        "y": 154,
-        "wires": []
-    },
-    {
-        "id": "c13ac220.f7c5a",
-        "type": "exec",
-        "z": "2b518b86.8b06bc",
-        "command": "/home/dmae/.node-red/git_commit",
-        "addpay": true,
-        "append": "",
-        "useSpawn": "",
-        "name": "Push to Git",
-        "x": 1056,
-        "y": 227,
-        "wires": [
-            [],
-            [
-                "506175e.078128c"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "506175e.078128c",
-        "type": "debug",
-        "z": "2b518b86.8b06bc",
-        "name": "Git Result",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 1246,
-        "y": 227,
-        "wires": []
-    },
-    {
-        "id": "33b1f681.2e80da",
-        "type": "function",
-        "z": "2b518b86.8b06bc",
-        "name": "Set commit message",
-        "func": "var commit = \"\\\"my commit message 2\\\"\";\n\nmsg.payload = msg.filename_wo_path + \" \" + commit\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 826,
-        "y": 227,
-        "wires": [
-            [
-                "c13ac220.f7c5a"
-            ]
-        ]
-    },
-    {
-        "id": "31470a48.d686f6",
-        "type": "delay",
-        "z": "2b518b86.8b06bc",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 606,
-        "y": 227,
-        "wires": [
-            [
-                "33b1f681.2e80da"
-            ]
-        ]
-    },
-    {
-        "id": "dfb963ff.7d4b78",
-        "type": "subflow:2b518b86.8b06bc",
-        "z": "d9e91624.0ccb38",
-        "x": 460,
-        "y": 1080,
-        "wires": []
-    },
-    {
-        "id": "bef8ff7b.6236f8",
-        "type": "function",
-        "z": "2b518b86.8b06bc",
-        "name": "Info message to debug panel",
-        "func": "node.warn(\"Writing flow [\" + msg.label + \"] as file [\" + msg.filename_wo_path + \"] to GitHub. Please wait for the Git commit message.\");\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 661,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    }
-]
+        },
+        {
+            "id": "d4c6cc0f.a3f83",
+            "type": "subflow:3034f64e.09f3d2",
+            "z": "d9e91624.0ccb38",
+            "x": 450,
+            "y": 1073,
+            "wires": [],
+            "subflow": "3034f64e.09f3d2"
+        }
+    ]
+}
