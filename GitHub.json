@@ -338,8 +338,8 @@
         "sheet": "GitHub",
         "auth": false,
         "once": false,
-        "x": 173,
-        "y": 1088,
+        "x": 180,
+        "y": 1080,
         "wires": [
             [
                 "6cd39fc5.97fcf8"
@@ -350,17 +350,16 @@
         "id": "6cd39fc5.97fcf8",
         "type": "function",
         "z": "d9e91624.0ccb38",
-        "name": "Set Filename",
+        "name": "filename and formatting",
         "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\n\nmsg.payload = JSON.stringify(msg.payload, null, 4);\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 423,
-        "y": 1088,
+        "x": 470,
+        "y": 1080,
         "wires": [
             [
                 "cda0729a.2ea538",
-                "a07f331d.fb1d5",
-                "78f00e32.0bee6"
+                "a07f331d.fb1d5"
             ]
         ]
     },
@@ -373,8 +372,8 @@
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "true",
-        "x": 643,
-        "y": 1088,
+        "x": 770,
+        "y": 1080,
         "wires": []
     },
     {
@@ -386,8 +385,8 @@
         "append": "",
         "useSpawn": "",
         "name": "Push to Git",
-        "x": 1065,
-        "y": 1149,
+        "x": 1199,
+        "y": 1153,
         "wires": [
             [],
             [
@@ -404,8 +403,8 @@
         "active": true,
         "console": "false",
         "complete": "payload",
-        "x": 1255,
-        "y": 1149,
+        "x": 1389,
+        "y": 1153,
         "wires": []
     },
     {
@@ -416,8 +415,8 @@
         "func": "var commit = \"\\\"my commit message 2\\\"\";\n\nmsg.payload = msg.filename_wo_path + \" \" + commit\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 835,
-        "y": 1149,
+        "x": 969,
+        "y": 1153,
         "wires": [
             [
                 "3208fe14.4729b2"
@@ -438,24 +437,12 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 615,
-        "y": 1149,
+        "x": 749,
+        "y": 1153,
         "wires": [
             [
                 "5501f6cd.327c2"
             ]
         ]
-    },
-    {
-        "id": "78f00e32.0bee6",
-        "type": "debug",
-        "z": "d9e91624.0ccb38",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 608,
-        "y": 1196,
-        "wires": []
     }
 ]
