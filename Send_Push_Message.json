@@ -1,4 +1,6 @@
 {
+    "id": "c7981d2d.003de8",
+    "label": "Send Push Message",
     "nodes": [
         {
             "type": "tab",
@@ -34,7 +36,7 @@
             "type": "function",
             "z": "2b518b86.8b06bc",
             "name": "filename and formatting",
-            "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\nmsg.label = msg.payload[0].label;\n\nvar temp_payload = {};\ntemp_payload.nodes = msg.payload;\ntemp_payload.id = msg.flowid;\ntemp_payload.label = msg.label;\n\nmsg.payload = JSON.stringify(temp_payload, null, 4);\n\nreturn msg;\n",
+            "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\nmsg.label = msg.payload[0].label;\n\nvar temp_payload = {};\ntemp_payload.id = msg.flowid;\ntemp_payload.label = msg.label;\ntemp_payload.nodes = msg.payload;\n\nmsg.payload = JSON.stringify(temp_payload, null, 4);\n\nreturn msg;\n",
             "outputs": 1,
             "noerr": 0,
             "x": 327,
@@ -310,7 +312,5 @@
             "y": 365,
             "wires": []
         }
-    ],
-    "id": "c7981d2d.003de8",
-    "label": "Send Push Message"
+    ]
 }
