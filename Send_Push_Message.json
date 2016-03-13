@@ -45,8 +45,7 @@
                 [
                     "6505f783.9187",
                     "31470a48.d686f6",
-                    "bef8ff7b.6236f8",
-                    "f42bf462.96b72"
+                    "bef8ff7b.6236f8"
                 ]
             ]
         },
@@ -298,18 +297,6 @@
             "z": "c7981d2d.003de8",
             "x": 415,
             "y": 672,
-            "wires": []
-        },
-        {
-            "id": "f42bf462.96b72",
-            "type": "debug",
-            "z": "2b518b86.8b06bc",
-            "name": "",
-            "active": true,
-            "console": "false",
-            "complete": "false",
-            "x": 686,
-            "y": 365,
             "wires": []
         }
     ]
