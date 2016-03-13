@@ -1,1 +1,299 @@
-"{\"ids\":\"c7981d2d.003de8\",\"label\":\"Send Push Message\",\"nodes\":[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]]}"
+[
+    {
+        "type": "tab",
+        "label": "Send Push Message",
+        "id": "c7981d2d.003de8"
+    },
+    {
+        "id": "2b518b86.8b06bc",
+        "type": "subflow",
+        "name": "Save Flow to GitHub",
+        "info": "",
+        "in": [
+            {
+                "x": 137,
+                "y": 154,
+                "wires": [
+                    {
+                        "id": "f57b6889.857298"
+                    }
+                ]
+            }
+        ],
+        "out": []
+    },
+    {
+        "id": "7220e09f.c2de08",
+        "type": "github-credentials",
+        "z": "",
+        "name": "ibmarema"
+    },
+    {
+        "id": "f57b6889.857298",
+        "type": "function",
+        "z": "2b518b86.8b06bc",
+        "name": "filename and formatting",
+        "func": "msg.filename = \"/home/dmae/git/\" + msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.filename_wo_path = msg.payload[0].label.split(' ').join('_') + \".json\";\nmsg.flowid = msg.payload[0].id;\nmsg.label = msg.payload[0].label;\n\nmsg.payload.nodes = msg.payload;\nmsg.payload.id = msg.flowid;\nmsg.payload.label = msg.label;\n\nmsg.payload = JSON.stringify(msg.payload, null, 4);\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 327,
+        "y": 154,
+        "wires": [
+            [
+                "6505f783.9187",
+                "31470a48.d686f6",
+                "bef8ff7b.6236f8"
+            ]
+        ]
+    },
+    {
+        "id": "6505f783.9187",
+        "type": "file",
+        "z": "2b518b86.8b06bc",
+        "name": "Save Flow as File",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "x": 627,
+        "y": 154,
+        "wires": []
+    },
+    {
+        "id": "c13ac220.f7c5a",
+        "type": "exec",
+        "z": "2b518b86.8b06bc",
+        "command": "/home/dmae/.node-red/git_commit",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "",
+        "name": "Push to Git",
+        "x": 1056,
+        "y": 227,
+        "wires": [
+            [],
+            [
+                "506175e.078128c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "506175e.078128c",
+        "type": "debug",
+        "z": "2b518b86.8b06bc",
+        "name": "Git Result",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 1246,
+        "y": 227,
+        "wires": []
+    },
+    {
+        "id": "33b1f681.2e80da",
+        "type": "function",
+        "z": "2b518b86.8b06bc",
+        "name": "Set commit message",
+        "func": "var commit = \"\\\"my commit message 2\\\"\";\n\nmsg.payload = msg.filename_wo_path + \" \" + commit\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 826,
+        "y": 227,
+        "wires": [
+            [
+                "c13ac220.f7c5a"
+            ]
+        ]
+    },
+    {
+        "id": "31470a48.d686f6",
+        "type": "delay",
+        "z": "2b518b86.8b06bc",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 606,
+        "y": 227,
+        "wires": [
+            [
+                "33b1f681.2e80da"
+            ]
+        ]
+    },
+    {
+        "id": "bef8ff7b.6236f8",
+        "type": "function",
+        "z": "2b518b86.8b06bc",
+        "name": "Info message to debug panel",
+        "func": "node.warn(\"Writing flow [\" + msg.label + \"] as file [\" + msg.filename_wo_path + \"] to GitHub. Please wait for the Git commit message.\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 661,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "98be619b.6bb138",
+        "type": "inject",
+        "z": "c7981d2d.003de8",
+        "name": "Start Workflow",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "c9d8931b.f59fe"
+            ]
+        ]
+    },
+    {
+        "id": "c9d8931b.f59fe",
+        "type": "template",
+        "z": "c7981d2d.003de8",
+        "name": "Input XML as Template",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"file\">.mxf</param>\n        <param name=\"path\">/import/src1/</param>\n        <param name=\"filename\">video.mp4</param>\n    </properties>\n</admira>",
+        "x": 326,
+        "y": 81,
+        "wires": [
+            [
+                "8d82f6dd.eeb4a"
+            ]
+        ]
+    },
+    {
+        "id": "8d82f6dd.eeb4a",
+        "type": "job_start",
+        "z": "c7981d2d.003de8",
+        "name": "push_demo",
+        "title": "Send a push message",
+        "priority": "500",
+        "searchTag1": "",
+        "searchTag2": "",
+        "searchTag3": "",
+        "searchTagInt1": "123",
+        "searchTagInt2": "123",
+        "searchTagInt3": "123",
+        "searchTagDate1": "2016-03-12T10:10:10",
+        "searchTagDate2": "2016-03-12T10:10:10",
+        "searchTagDate3": "2016-03-12T10:10:10",
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "6fe28e8c.7fdeb8"
+            ]
+        ]
+    },
+    {
+        "id": "6fe28e8c.7fdeb8",
+        "type": "job_vars",
+        "z": "c7981d2d.003de8",
+        "variables": [
+            {
+                "k": "push_msg_title",
+                "v": "This is my push title"
+            },
+            {
+                "k": "Push_msg_detail",
+                "v": "This is my push detail"
+            }
+        ],
+        "x": 700,
+        "y": 180,
+        "wires": [
+            [
+                "89cb2c38.777af8"
+            ]
+        ]
+    },
+    {
+        "id": "751f2ba3.7f461c",
+        "type": "job_end",
+        "z": "c7981d2d.003de8",
+        "includeparameters": true,
+        "x": 1180,
+        "y": 300,
+        "wires": [
+            [
+                "4f04c4a7.bbfc8c"
+            ]
+        ]
+    },
+    {
+        "id": "4f04c4a7.bbfc8c",
+        "type": "debug",
+        "z": "c7981d2d.003de8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1373,
+        "y": 323,
+        "wires": []
+    },
+    {
+        "id": "89cb2c38.777af8",
+        "type": "external_command",
+        "z": "c7981d2d.003de8",
+        "name": "Send_Push_Message",
+        "title": "Send a Push Message to the AREMA Event App",
+        "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+        "source_filenames": "",
+        "target_filenames": "",
+        "additional_parameters": "$push_msg_title",
+        "org_unit": "admira",
+        "chmod_file": "",
+        "hold_in_cache": "no",
+        "x": 940,
+        "y": 220,
+        "wires": [
+            [
+                "751f2ba3.7f461c"
+            ]
+        ]
+    },
+    {
+        "id": "7c1b495.6a20838",
+        "type": "flow-reader",
+        "z": "c7981d2d.003de8",
+        "name": "Save Flow to GitHub",
+        "protocol": "http",
+        "url": "127.0.0.1:1880",
+        "sheet": "Send Push Message",
+        "auth": false,
+        "once": false,
+        "x": 160,
+        "y": 680,
+        "wires": [
+            [
+                "8fc5f876.4b69f8"
+            ]
+        ]
+    },
+    {
+        "id": "8fc5f876.4b69f8",
+        "type": "subflow:2b518b86.8b06bc",
+        "z": "c7981d2d.003de8",
+        "x": 415,
+        "y": 672,
+        "wires": []
+    }
+]
