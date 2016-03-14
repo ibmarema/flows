@@ -190,7 +190,7 @@
             "y": 200,
             "wires": [
                 [
-                    "d9898d1d.a482e8"
+                    "f39d2555.5166d8"
                 ]
             ]
         },
@@ -223,16 +223,16 @@
             ]
         },
         {
-            "id": "d9898d1d.a482e8",
+            "id": "f39d2555.5166d8",
             "type": "determine_metadata",
             "z": "c7981d2d.003de8",
             "nop": false,
-            "name": "myname",
-            "title": "mytitle",
-            "filename": "$filename",
+            "name": "analyze",
+            "title": "Determine metadata of myfile.mxf",
+            "filename": "myfile.mxf",
             "org_unit": "admira",
-            "x": 955,
-            "y": 193,
+            "x": 941,
+            "y": 216,
             "wires": [
                 [
                     "e0ec2965.bc913"
