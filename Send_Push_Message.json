@@ -34,53 +34,7 @@
             "y": 81,
             "wires": [
                 [
-                    "8d82f6dd.eeb4a"
-                ]
-            ]
-        },
-        {
-            "id": "8d82f6dd.eeb4a",
-            "type": "job_start",
-            "z": "c7981d2d.003de8",
-            "name": "push_demo",
-            "title": "Send a push message",
-            "priority": "500",
-            "searchTag1": "",
-            "searchTag2": "",
-            "searchTag3": "",
-            "searchTagInt1": "123",
-            "searchTagInt2": "123",
-            "searchTagInt3": "123",
-            "searchTagDate1": "2016-03-12T10:10:10",
-            "searchTagDate2": "2016-03-12T10:10:10",
-            "searchTagDate3": "2016-03-12T10:10:10",
-            "x": 490,
-            "y": 180,
-            "wires": [
-                [
-                    "6fe28e8c.7fdeb8"
-                ]
-            ]
-        },
-        {
-            "id": "6fe28e8c.7fdeb8",
-            "type": "job_vars",
-            "z": "c7981d2d.003de8",
-            "variables": [
-                {
-                    "k": "push_msg_title",
-                    "v": "This is my push title"
-                },
-                {
-                    "k": "Push_msg_detail",
-                    "v": "This is my push detail"
-                }
-            ],
-            "x": 700,
-            "y": 180,
-            "wires": [
-                [
-                    "89cb2c38.777af8"
+                    "a9c5c529.778518"
                 ]
             ]
         },
@@ -89,11 +43,13 @@
             "type": "job_end",
             "z": "c7981d2d.003de8",
             "includeparameters": true,
-            "x": 1303,
-            "y": 300,
+            "eojtag": "",
+            "x": 1573,
+            "y": 337,
             "wires": [
                 [
-                    "4f04c4a7.bbfc8c"
+                    "4f04c4a7.bbfc8c",
+                    "35275ae0.8c8166"
                 ]
             ]
         },
@@ -105,30 +61,9 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 1517,
-            "y": 352,
+            "x": 1792,
+            "y": 246,
             "wires": []
-        },
-        {
-            "id": "89cb2c38.777af8",
-            "type": "external_command",
-            "z": "c7981d2d.003de8",
-            "name": "Send_Push_Message",
-            "title": "Send a Push Message to the AREMA Event App",
-            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
-            "source_filenames": "",
-            "target_filenames": "",
-            "additional_parameters": "$push_msg_title",
-            "org_unit": "admira",
-            "chmod_file": "",
-            "hold_in_cache": "no",
-            "x": 1031,
-            "y": 134,
-            "wires": [
-                [
-                    "751f2ba3.7f461c"
-                ]
-            ]
         },
         {
             "id": "ceee4c9d.a8bee8",
@@ -171,6 +106,136 @@
             "wires": [
                 [
                     "ceee4c9d.a8bee8"
+                ]
+            ]
+        },
+        {
+            "id": "35275ae0.8c8166",
+            "type": "job_send",
+            "z": "c7981d2d.003de8",
+            "holdjob": true,
+            "url": "http://arema.media.ibmcloud.com:9090",
+            "system": "admira",
+            "user": "dmae",
+            "password": "pw4Ar3.mA",
+            "encrypted": false,
+            "x": 1791,
+            "y": 370,
+            "wires": [
+                [
+                    "ff5a0409.0975a8"
+                ]
+            ]
+        },
+        {
+            "id": "ff5a0409.0975a8",
+            "type": "debug",
+            "z": "c7981d2d.003de8",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 2031,
+            "y": 381,
+            "wires": []
+        },
+        {
+            "id": "e0ec2965.bc913",
+            "type": "external_command",
+            "z": "c7981d2d.003de8",
+            "nop": true,
+            "name": "send_push_message",
+            "title": "Send push message to Bluemix for AREMA Event App",
+            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+            "source_filenames": "",
+            "target_filenames": "",
+            "additional_parameters": "0815[Sep]Title of Push Message[Sep]This is a detailed workflow push message[Sep]workflow",
+            "org_unit": "admira",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "x": 1255.5,
+            "y": 247,
+            "wires": [
+                [
+                    "751f2ba3.7f461c"
+                ]
+            ]
+        },
+        {
+            "id": "caeae2a6.f535f",
+            "type": "comment",
+            "z": "c7981d2d.003de8",
+            "name": "external_command Parameter",
+            "info": "jobid=$1\nmessage_title=$2\nmessage_detail=$3\nmessage_type=$4\n\n1323 \" Job is finished with error\" \"Job 1323 is finished with error.\" error",
+            "x": 1130,
+            "y": 344,
+            "wires": []
+        },
+        {
+            "id": "db50714b.61da1",
+            "type": "job_vars",
+            "z": "c7981d2d.003de8",
+            "variables": [
+                {
+                    "k": "myvar_1",
+                    "v": "test1"
+                },
+                {
+                    "k": "myvar_2",
+                    "v": "test2"
+                }
+            ],
+            "x": 748.5,
+            "y": 200,
+            "wires": [
+                [
+                    "d9898d1d.a482e8"
+                ]
+            ]
+        },
+        {
+            "id": "a9c5c529.778518",
+            "type": "job_start",
+            "z": "c7981d2d.003de8",
+            "name": "push_message",
+            "title": "Send Push Message",
+            "jobtype": "push_message",
+            "priority": "500",
+            "starttime": "",
+            "startbatch": "",
+            "endbatch": "",
+            "searchTag1": "",
+            "searchTag2": "",
+            "searchTag3": "",
+            "searchTagInt1": "",
+            "searchTagInt2": "",
+            "searchTagInt3": "",
+            "searchTagDate1": "",
+            "searchTagDate2": "",
+            "searchTagDate3": "",
+            "x": 542.5,
+            "y": 149,
+            "wires": [
+                [
+                    "db50714b.61da1"
+                ]
+            ]
+        },
+        {
+            "id": "d9898d1d.a482e8",
+            "type": "determine_metadata",
+            "z": "c7981d2d.003de8",
+            "nop": false,
+            "name": "myname",
+            "title": "mytitle",
+            "filename": "$filename",
+            "org_unit": "admira",
+            "x": 955,
+            "y": 193,
+            "wires": [
+                [
+                    "e0ec2965.bc913"
                 ]
             ]
         }
