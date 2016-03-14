@@ -1,1 +1,186 @@
-""
+{
+    "id": "c7981d2d.003de8",
+    "label": "Send Push Message",
+    "nodes": [
+        {
+            "id": "98be619b.6bb138",
+            "type": "inject",
+            "z": "c7981d2d.003de8",
+            "name": "Start Workflow",
+            "topic": "",
+            "payload": "",
+            "payloadType": "str",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 140,
+            "y": 180,
+            "wires": [
+                [
+                    "c9d8931b.f59fe"
+                ]
+            ]
+        },
+        {
+            "id": "c9d8931b.f59fe",
+            "type": "template",
+            "z": "c7981d2d.003de8",
+            "name": "Input XML as Template",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"file\">.mxf</param>\n        <param name=\"path\">/import/src1/</param>\n        <param name=\"filename\">video.mp4</param>\n    </properties>\n</admira>",
+            "x": 326,
+            "y": 81,
+            "wires": [
+                [
+                    "8d82f6dd.eeb4a"
+                ]
+            ]
+        },
+        {
+            "id": "8d82f6dd.eeb4a",
+            "type": "job_start",
+            "z": "c7981d2d.003de8",
+            "name": "push_demo",
+            "title": "Send a push message",
+            "priority": "500",
+            "searchTag1": "",
+            "searchTag2": "",
+            "searchTag3": "",
+            "searchTagInt1": "123",
+            "searchTagInt2": "123",
+            "searchTagInt3": "123",
+            "searchTagDate1": "2016-03-12T10:10:10",
+            "searchTagDate2": "2016-03-12T10:10:10",
+            "searchTagDate3": "2016-03-12T10:10:10",
+            "x": 490,
+            "y": 180,
+            "wires": [
+                [
+                    "6fe28e8c.7fdeb8"
+                ]
+            ]
+        },
+        {
+            "id": "6fe28e8c.7fdeb8",
+            "type": "job_vars",
+            "z": "c7981d2d.003de8",
+            "variables": [
+                {
+                    "k": "push_msg_title",
+                    "v": "This is my push title"
+                },
+                {
+                    "k": "Push_msg_detail",
+                    "v": "This is my push detail"
+                }
+            ],
+            "x": 700,
+            "y": 180,
+            "wires": [
+                [
+                    "89cb2c38.777af8"
+                ]
+            ]
+        },
+        {
+            "id": "751f2ba3.7f461c",
+            "type": "job_end",
+            "z": "c7981d2d.003de8",
+            "includeparameters": true,
+            "x": 1303,
+            "y": 300,
+            "wires": [
+                [
+                    "4f04c4a7.bbfc8c"
+                ]
+            ]
+        },
+        {
+            "id": "4f04c4a7.bbfc8c",
+            "type": "debug",
+            "z": "c7981d2d.003de8",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 1484,
+            "y": 387,
+            "wires": []
+        },
+        {
+            "id": "89cb2c38.777af8",
+            "type": "external_command",
+            "z": "c7981d2d.003de8",
+            "name": "Send_Push_Message",
+            "title": "Send a Push Message to the AREMA Event App",
+            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+            "source_filenames": "",
+            "target_filenames": "",
+            "additional_parameters": "$push_msg_title",
+            "org_unit": "admira",
+            "chmod_file": "",
+            "hold_in_cache": "no",
+            "x": 1031,
+            "y": 134,
+            "wires": [
+                [
+                    "751f2ba3.7f461c"
+                ]
+            ]
+        },
+        {
+            "id": "ceee4c9d.a8bee8",
+            "type": "subflow:3034f64e.09f3d2",
+            "z": "c7981d2d.003de8",
+            "name": "",
+            "x": 825.5,
+            "y": 637.5,
+            "wires": [],
+            "subflow": "3034f64e.09f3d2"
+        },
+        {
+            "id": "7c1b495.6a20838",
+            "type": "flow-reader",
+            "z": "c7981d2d.003de8",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "Send Push Message",
+            "auth": false,
+            "once": false,
+            "x": 206,
+            "y": 634,
+            "wires": [
+                [
+                    "8bc7e1d1.bbfa6"
+                ]
+            ]
+        },
+        {
+            "id": "8bc7e1d1.bbfa6",
+            "type": "function",
+            "z": "c7981d2d.003de8",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 513,
+            "y": 640,
+            "wires": [
+                [
+                    "ceee4c9d.a8bee8"
+                ]
+            ]
+        }
+    ],
+    "configs": [
+        {
+            "id": "7220e09f.c2de08",
+            "type": "github-credentials",
+            "z": "c7981d2d.003de8",
+            "name": "ibmarema"
+        }
+    ]
+}
