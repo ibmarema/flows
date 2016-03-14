@@ -239,13 +239,5 @@
                 ]
             ]
         }
-    ],
-    "configs": [
-        {
-            "id": "7220e09f.c2de08",
-            "type": "github-credentials",
-            "z": "c7981d2d.003de8",
-            "name": "ibmarema"
-        }
     ]
 }
