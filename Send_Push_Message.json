@@ -14,7 +14,7 @@
             "crontab": "",
             "once": false,
             "x": 140,
-            "y": 180,
+            "y": 100,
             "wires": [
                 [
                     "c9d8931b.f59fe"
@@ -30,8 +30,8 @@
             "fieldType": "msg",
             "format": "handlebars",
             "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"file\">.mxf</param>\n        <param name=\"path\">/import/src1/</param>\n        <param name=\"filename\">video.mp4</param>\n    </properties>\n</admira>",
-            "x": 326,
-            "y": 81,
+            "x": 320,
+            "y": 180,
             "wires": [
                 [
                     "a9c5c529.778518"
@@ -44,8 +44,8 @@
             "z": "c7981d2d.003de8",
             "includeparameters": true,
             "eojtag": "",
-            "x": 1573,
-            "y": 337,
+            "x": 1460,
+            "y": 120,
             "wires": [
                 [
                     "4f04c4a7.bbfc8c",
@@ -61,8 +61,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 1792,
-            "y": 246,
+            "x": 1690,
+            "y": 40,
             "wires": []
         },
         {
@@ -119,8 +119,8 @@
             "user": "dmae",
             "password": "pw4Ar3.mA",
             "encrypted": false,
-            "x": 1791,
-            "y": 370,
+            "x": 1680,
+            "y": 120,
             "wires": [
                 [
                     "ff5a0409.0975a8"
@@ -135,8 +135,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2031,
-            "y": 381,
+            "x": 1910,
+            "y": 120,
             "wires": []
         },
         {
@@ -154,8 +154,8 @@
             "chmod_file": "",
             "hold_in_cache": "",
             "parameters": [],
-            "x": 1255.5,
-            "y": 247,
+            "x": 1160,
+            "y": 280,
             "wires": [
                 [
                     "751f2ba3.7f461c"
@@ -168,8 +168,8 @@
             "z": "c7981d2d.003de8",
             "name": "external_command Parameter",
             "info": "jobid=$1\nmessage_title=$2\nmessage_detail=$3\nmessage_type=$4\n\n1323 \" Job is finished with error\" \"Job 1323 is finished with error.\" error",
-            "x": 1130,
-            "y": 344,
+            "x": 1163,
+            "y": 356,
             "wires": []
         },
         {
@@ -186,8 +186,8 @@
                     "v": "test2"
                 }
             ],
-            "x": 748.5,
-            "y": 200,
+            "x": 740,
+            "y": 180,
             "wires": [
                 [
                     "f39d2555.5166d8"
@@ -214,8 +214,8 @@
             "searchTagDate1": "",
             "searchTagDate2": "",
             "searchTagDate3": "",
-            "x": 542.5,
-            "y": 149,
+            "x": 560,
+            "y": 100,
             "wires": [
                 [
                     "db50714b.61da1"
@@ -231,8 +231,8 @@
             "title": "Determine metadata of myfile.mxf",
             "filename": "myfile.mxf",
             "org_unit": "admira",
-            "x": 941,
-            "y": 216,
+            "x": 920,
+            "y": 280,
             "wires": [
                 [
                     "e0ec2965.bc913"
