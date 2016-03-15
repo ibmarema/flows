@@ -77,7 +77,7 @@
                 },
                 {
                     "k": "workflow_message_title",
-                    "v": "The file [$file] has been imported"
+                    "v": "The file [$filename] has been imported"
                 },
                 {
                     "k": "workflow_message_details",
@@ -101,39 +101,15 @@
             "type": "determine_metadata",
             "z": "52f293a2.8a7c24",
             "nop": false,
-            "name": "analyze",
-            "title": "Determine metadata of [$file]",
-            "filename": "$file",
-            "org_unit": "admira",
-            "x": 1369,
-            "y": 290,
-            "wires": [
-                [
-                    "45ba9eee.ade6a8"
-                ]
-            ]
-        },
-        {
-            "id": "45ba9eee.ade6a8",
-            "type": "external_command",
-            "z": "52f293a2.8a7c24",
-            "nop": true,
-            "tag": "",
-            "name": "send_push_message",
-            "title": "Send push message to Bluemix for AREMA Event App",
-            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
-            "source_filenames": "",
-            "target_filenames": "",
-            "additional_parameters": "0815[Sep]$workflow_message_title[Sep]$workflow_message_details[Sep]workflow",
+            "name": "metadata",
+            "title": "Determine metadata of [$cache_filename]",
+            "filename": "$cache_filename",
             "org_unit": "$orgunit",
-            "chmod_file": "",
-            "hold_in_cache": "",
-            "parameters": [],
-            "x": 1598,
-            "y": 290,
+            "x": 354,
+            "y": 366,
             "wires": [
                 [
-                    "e0953e2c.6fb408"
+                    "5e1b2384.295ebc"
                 ]
             ]
         },
@@ -143,8 +119,8 @@
             "z": "52f293a2.8a7c24",
             "name": "external_command Parameter",
             "info": "jobid=$1\nmessage_title=$2\nmessage_detail=$3\nmessage_type=$4\n\n1323 \" Job is finished with error\" \"Job 1323 is finished with error.\" error",
-            "x": 1570,
-            "y": 377,
+            "x": 1276,
+            "y": 502,
             "wires": []
         },
         {
@@ -153,8 +129,8 @@
             "z": "52f293a2.8a7c24",
             "includeparameters": true,
             "eojtag": "",
-            "x": 1843,
-            "y": 204,
+            "x": 1514,
+            "y": 134,
             "wires": [
                 [
                     "844e8bcf.10f248",
@@ -172,8 +148,8 @@
             "user": "dmae",
             "password": "pw4Ar3.mA",
             "encrypted": false,
-            "x": 2059,
-            "y": 250,
+            "x": 1714,
+            "y": 149,
             "wires": [
                 [
                     "9339ebea.08b058"
@@ -185,11 +161,11 @@
             "type": "debug",
             "z": "52f293a2.8a7c24",
             "name": "",
-            "active": false,
+            "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2042,
-            "y": 119,
+            "x": 1771,
+            "y": 24,
             "wires": []
         },
         {
@@ -200,8 +176,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2312,
-            "y": 249,
+            "x": 1977,
+            "y": 160,
             "wires": []
         },
         {
@@ -215,7 +191,7 @@
             "auth": false,
             "once": false,
             "x": 178,
-            "y": 454,
+            "y": 667,
             "wires": [
                 [
                     "c8737f1f.74bbc8"
@@ -231,7 +207,7 @@
             "outputs": 1,
             "noerr": 0,
             "x": 463,
-            "y": 453,
+            "y": 666,
             "wires": [
                 [
                     "fd4b0b54.241b4"
@@ -244,7 +220,7 @@
             "z": "52f293a2.8a7c24",
             "name": "",
             "x": 753,
-            "y": 453,
+            "y": 666,
             "wires": [],
             "subflow": "3034f64e.09f3d2"
         },
@@ -253,7 +229,7 @@
             "type": "function",
             "z": "52f293a2.8a7c24",
             "name": "cache_filename",
-            "func": "//variable declaration\nvar cache_filename =    \n                        \"demo_workflow/\" +\n                        msg.payload.variables.$filename.substr(0 , msg.payload.variables.$filename.length-4) + \n                        \"_\" +\n                        Date.now() + \n                        \".mxf\";\n                        \"/\" + msg.payload.variables.$filename;\n\n\n// output to debug sidebar\nnode.warn(cache_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.$cache_filename = cache_filename;\nreturn msg;\n",
+            "func": "//variable declaration\nvar cache_filename =    \n                        \"demo_workflow/\" +\n                        msg.payload.variables.$filename.substr(0 , msg.payload.variables.$filename.length-4) + \n                        \"_\" +\n                        Date.now() + \n                        \".mxf\";\n                        \"/\" + msg.payload.variables.$filename;\n\n\n// output to debug sidebar\n//node.warn(cache_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.$cache_filename = cache_filename;\nreturn msg;\n",
             "outputs": 1,
             "noerr": 0,
             "x": 1002.5,
@@ -269,21 +245,195 @@
             "type": "copy_to_cache",
             "z": "52f293a2.8a7c24",
             "nop": false,
+            "tag": "",
             "name": "import_file",
             "title": "Copy File [$file] into AREMA as [$cache_filename]",
+            "expected_case": "",
             "source_filename": "$file",
             "contained_file_list": "",
             "target_filename": "$cache_filename",
             "file_list": "",
             "org_unit": "$orgunit",
             "block_size": "",
-            "hold_in_cache": "",
+            "hold_in_cache": "yes",
             "parameters": [],
-            "x": 1178.5,
-            "y": 289,
+            "x": 163.5,
+            "y": 365,
             "wires": [
                 [
                     "a1592004.85bc58"
+                ]
+            ]
+        },
+        {
+            "id": "338694b4.ab5f3c",
+            "type": "external_command",
+            "z": "52f293a2.8a7c24",
+            "nop": false,
+            "tag": "",
+            "name": "send_push_message",
+            "title": "Send push message to Bluemix for AREMA Event App",
+            "expected_case": "",
+            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+            "source_filenames": "",
+            "target_filenames": "",
+            "additional_parameters": "0815[Sep]The file [$file] has been imported successfully[Sep]The file [$path/$file] has been imported successfully from upload by user $user[Sep]workflow",
+            "org_unit": "$orgunit",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "properties": [],
+            "x": 1266.5,
+            "y": 372,
+            "wires": [
+                [
+                    "e0953e2c.6fb408"
+                ]
+            ]
+        },
+        {
+            "id": "5e1b2384.295ebc",
+            "type": "edi_generic_ftp",
+            "z": "52f293a2.8a7c24",
+            "nop": false,
+            "tag": "",
+            "name": "ftp_export",
+            "title": "Transfer to non existing FTP Server",
+            "expected_case": "",
+            "direction": "",
+            "device_name": "Youtube",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$cache_filename",
+            "target_filename": "",
+            "org_unit": "$orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "target_filename",
+                    "v": "dummy.mxf"
+                }
+            ],
+            "x": 524.5,
+            "y": 358,
+            "wires": [
+                [
+                    "f86c5d50.914918"
+                ]
+            ]
+        },
+        {
+            "id": "e712960f.b9ddc8",
+            "type": "notify",
+            "z": "52f293a2.8a7c24",
+            "nop": true,
+            "tag": "",
+            "name": "change_ftp_status",
+            "title": "Change an error state in FTP step to warning state",
+            "expected_case": "step_error",
+            "dest_filename": "/home/dmae/admira/etc/Demo_Notify_Change_Step_State_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "",
+            "parameters": [],
+            "properties": [
+                {
+                    "k": "target_job_id",
+                    "v": ""
+                },
+                {
+                    "k": "target_step_id",
+                    "v": "ftp_export"
+                },
+                {
+                    "k": "target_status",
+                    "v": "20"
+                }
+            ],
+            "x": 1003.5,
+            "y": 368,
+            "wires": [
+                [
+                    "338694b4.ab5f3c"
+                ]
+            ]
+        },
+        {
+            "id": "f86c5d50.914918",
+            "type": "switch",
+            "z": "52f293a2.8a7c24",
+            "nop": false,
+            "tag": "",
+            "name": "check_ftp_status",
+            "title": "Check the state of the ftp transfer",
+            "expected_case": "",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "no",
+            "fail_on_error": "yes",
+            "decision_parameters": "",
+            "org_unit": "$orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Switch_Step_Error_Decision.xsl"
+                },
+                {
+                    "k": "retry_case",
+                    "v": "step_error"
+                }
+            ],
+            "x": 736.5,
+            "y": 374,
+            "wires": [
+                [
+                    "e712960f.b9ddc8"
                 ]
             ]
         }
