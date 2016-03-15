@@ -14,7 +14,7 @@
             "crontab": "",
             "once": false,
             "x": 174,
-            "y": 80,
+            "y": 48,
             "wires": [
                 [
                     "1d9f9a0c.46c37e"
@@ -31,7 +31,7 @@
             "format": "handlebars",
             "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"user\">Ulrich Voigt</param>\n        <param name=\"path\">/home/dmae/import</param>\n        <param name=\"filename\">testfile_avid.mxf</param>\n    </properties>\n</admira>",
             "x": 354,
-            "y": 146,
+            "y": 47,
             "wires": [
                 [
                     "9d7d3857.fa92a"
@@ -77,18 +77,22 @@
                 },
                 {
                     "k": "workflow_message_title",
-                    "v": "The file [$filename] has been imported successfully"
+                    "v": "The file [$file] has been imported"
                 },
                 {
                     "k": "workflow_message_details",
-                    "v": "The file [$file] has been imported successfully from upload by $user"
+                    "v": "The file [$path/file] has been imported as upload by $user"
+                },
+                {
+                    "k": "orgunit",
+                    "v": "admira"
                 }
             ],
             "x": 825,
             "y": 146,
             "wires": [
                 [
-                    "a1592004.85bc58"
+                    "f55c89f1.8a224"
                 ]
             ]
         },
@@ -101,8 +105,8 @@
             "title": "Determine metadata of [$file]",
             "filename": "$file",
             "org_unit": "admira",
-            "x": 1002,
-            "y": 226,
+            "x": 1369,
+            "y": 290,
             "wires": [
                 [
                     "45ba9eee.ade6a8"
@@ -121,12 +125,12 @@
             "source_filenames": "",
             "target_filenames": "",
             "additional_parameters": "0815[Sep]$workflow_message_title[Sep]$workflow_message_details[Sep]workflow",
-            "org_unit": "admira",
+            "org_unit": "$orgunit",
             "chmod_file": "",
             "hold_in_cache": "",
             "parameters": [],
-            "x": 1231,
-            "y": 226,
+            "x": 1598,
+            "y": 290,
             "wires": [
                 [
                     "e0953e2c.6fb408"
@@ -139,8 +143,8 @@
             "z": "52f293a2.8a7c24",
             "name": "external_command Parameter",
             "info": "jobid=$1\nmessage_title=$2\nmessage_detail=$3\nmessage_type=$4\n\n1323 \" Job is finished with error\" \"Job 1323 is finished with error.\" error",
-            "x": 1203,
-            "y": 313,
+            "x": 1570,
+            "y": 377,
             "wires": []
         },
         {
@@ -149,8 +153,8 @@
             "z": "52f293a2.8a7c24",
             "includeparameters": true,
             "eojtag": "",
-            "x": 1476,
-            "y": 140,
+            "x": 1843,
+            "y": 204,
             "wires": [
                 [
                     "844e8bcf.10f248",
@@ -168,8 +172,8 @@
             "user": "dmae",
             "password": "pw4Ar3.mA",
             "encrypted": false,
-            "x": 1692,
-            "y": 186,
+            "x": 2059,
+            "y": 250,
             "wires": [
                 [
                     "9339ebea.08b058"
@@ -181,11 +185,11 @@
             "type": "debug",
             "z": "52f293a2.8a7c24",
             "name": "",
-            "active": true,
+            "active": false,
             "console": "false",
             "complete": "false",
-            "x": 1685,
-            "y": 88,
+            "x": 2042,
+            "y": 119,
             "wires": []
         },
         {
@@ -196,8 +200,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 1945,
-            "y": 185,
+            "x": 2312,
+            "y": 249,
             "wires": []
         },
         {
@@ -243,6 +247,45 @@
             "y": 453,
             "wires": [],
             "subflow": "3034f64e.09f3d2"
+        },
+        {
+            "id": "f55c89f1.8a224",
+            "type": "function",
+            "z": "52f293a2.8a7c24",
+            "name": "cache_filename",
+            "func": "//variable declaration\nvar cache_filename =    \n                        \"demo_workflow/\" +\n                        msg.payload.variables.$filename.substr(0 , msg.payload.variables.$filename.length-4) + \n                        \"_\" +\n                        Date.now() + \n                        \".mxf\";\n                        \"/\" + msg.payload.variables.$filename;\n\n\n// output to debug sidebar\nnode.warn(cache_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.$cache_filename = cache_filename;\nreturn msg;\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1002.5,
+            "y": 154,
+            "wires": [
+                [
+                    "c0b7d225.6b1b9"
+                ]
+            ]
+        },
+        {
+            "id": "c0b7d225.6b1b9",
+            "type": "copy_to_cache",
+            "z": "52f293a2.8a7c24",
+            "nop": false,
+            "name": "import_file",
+            "title": "Copy File [$file] into AREMA as [$cache_filename]",
+            "source_filename": "$file",
+            "contained_file_list": "",
+            "target_filename": "$cache_filename",
+            "file_list": "",
+            "org_unit": "$orgunit",
+            "block_size": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "x": 1178.5,
+            "y": 289,
+            "wires": [
+                [
+                    "a1592004.85bc58"
+                ]
+            ]
         }
     ]
 }
