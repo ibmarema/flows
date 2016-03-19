@@ -71,7 +71,7 @@
             "type": "debug",
             "z": "fff10788.b9d238",
             "name": "",
-            "active": false,
+            "active": true,
             "console": "false",
             "complete": "false",
             "x": 1245.5,
@@ -116,7 +116,8 @@
             "y": 662.5,
             "wires": [
                 [
-                    "61060a5c.0dccc4"
+                    "61060a5c.0dccc4",
+                    "803e8827.470c68"
                 ]
             ]
         },
@@ -144,8 +145,8 @@
             "z": "fff10788.b9d238",
             "nop": true,
             "tag": "",
-            "name": "",
-            "title": "",
+            "name": "nop",
+            "title": "nop",
             "expected_case": "",
             "dest_filename": "",
             "content_filename": "",
@@ -155,18 +156,8 @@
             "stop_deliver_on_failure": "",
             "fail_on_error": "",
             "hold_in_cache": "",
-            "parameters": [
-                {
-                    "k": "",
-                    "v": ""
-                }
-            ],
-            "properties": [
-                {
-                    "k": "",
-                    "v": ""
-                }
-            ],
+            "parameters": [],
+            "properties": [],
             "x": 697.5,
             "y": 569.5,
             "wires": [
@@ -251,10 +242,6 @@
             "sheet": "Ustream",
             "auth": false,
             "once": false,
-            "credentials": {
-                "user": "",
-                "password": ""
-            },
             "x": 175,
             "y": 830,
             "wires": [
