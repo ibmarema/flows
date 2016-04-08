@@ -1,0 +1,187 @@
+{
+    "id": "bed37ee4.157da8",
+    "label": "NAB Demo",
+    "nodes": [
+        {
+            "id": "e5a6db5e.9dc38",
+            "type": "inject",
+            "z": "bed37ee4.157da8",
+            "name": "Start Workflow",
+            "topic": "",
+            "payload": "",
+            "payloadType": "str",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 253,
+            "y": 130,
+            "wires": [
+                [
+                    "a559a8b.457fb58"
+                ]
+            ]
+        },
+        {
+            "id": "a559a8b.457fb58",
+            "type": "template",
+            "z": "bed37ee4.157da8",
+            "name": "Input XML",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"user\">Ulrich Voigt</param>\n        <param name=\"path\">/home/dmae/import</param>\n        <param name=\"filename\">testfile_avid.mxf</param>\n    </properties>\n</admira>",
+            "x": 433,
+            "y": 129,
+            "wires": [
+                [
+                    "654d3a01.574034"
+                ]
+            ]
+        },
+        {
+            "id": "654d3a01.574034",
+            "type": "job_start",
+            "z": "bed37ee4.157da8",
+            "name": "nab_demo",
+            "title": "NAB Demo",
+            "jobtype": "demo_upload",
+            "priority": "500",
+            "starttime": "",
+            "startbatch": "",
+            "endbatch": "",
+            "searchTag1": "",
+            "searchTag2": "",
+            "searchTag3": "",
+            "searchTagInt1": "",
+            "searchTagInt2": "",
+            "searchTagInt3": "",
+            "searchTagDate1": "",
+            "searchTagDate2": "",
+            "searchTagDate3": "",
+            "x": 383.5,
+            "y": 305,
+            "wires": [
+                [
+                    "f193ee77.13a4b"
+                ]
+            ]
+        },
+        {
+            "id": "cfcfbe52.3d9988",
+            "type": "job_end",
+            "z": "bed37ee4.157da8",
+            "includeparameters": true,
+            "eojtag": "",
+            "x": 1572.5,
+            "y": 340,
+            "wires": [
+                [
+                    "dc01c754.e67ac8"
+                ]
+            ]
+        },
+        {
+            "id": "dc01c754.e67ac8",
+            "type": "job_send",
+            "z": "bed37ee4.157da8",
+            "holdjob": false,
+            "url": "http://arema.media.ibmcloud.com:9090",
+            "system": "admira",
+            "user": "dmae",
+            "password": "pw4Ar3.mA",
+            "encrypted": false,
+            "x": 1859.5,
+            "y": 380,
+            "wires": [
+                [
+                    "5293c17f.32c0f"
+                ]
+            ]
+        },
+        {
+            "id": "5293c17f.32c0f",
+            "type": "debug",
+            "z": "bed37ee4.157da8",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 2074.5,
+            "y": 383,
+            "wires": []
+        },
+        {
+            "id": "f193ee77.13a4b",
+            "type": "nop",
+            "z": "bed37ee4.157da8",
+            "nop": false,
+            "tag": "",
+            "name": "nop",
+            "title": "Nop",
+            "expected_case": "",
+            "org_unit": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 890.5,
+            "y": 311,
+            "wires": [
+                [
+                    "cfcfbe52.3d9988"
+                ]
+            ]
+        },
+        {
+            "id": "47cc83df.70f7ec",
+            "type": "flow-reader",
+            "z": "bed37ee4.157da8",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "NAB Demo",
+            "auth": false,
+            "once": false,
+            "credentials": {
+                "user": "",
+                "password": ""
+            },
+            "x": 252,
+            "y": 722,
+            "wires": [
+                [
+                    "7fc2e7fa.3c091"
+                ]
+            ]
+        },
+        {
+            "id": "7fc2e7fa.3c091",
+            "type": "function",
+            "z": "bed37ee4.157da8",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 537,
+            "y": 721,
+            "wires": [
+                [
+                    "cf693253.78fcd"
+                ]
+            ]
+        },
+        {
+            "id": "cf693253.78fcd",
+            "type": "subflow:3034f64e.09f3d2",
+            "z": "bed37ee4.157da8",
+            "name": "",
+            "x": 822,
+            "y": 720,
+            "wires": [],
+            "subflow": "3034f64e.09f3d2"
+        }
+    ]
+}
