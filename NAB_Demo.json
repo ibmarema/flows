@@ -13,8 +13,8 @@
             "repeat": "",
             "crontab": "",
             "once": false,
-            "x": 158,
-            "y": 64,
+            "x": 129.42861938476562,
+            "y": 195.42858505249023,
             "wires": [
                 [
                     "b5139c35.b2546"
@@ -41,8 +41,8 @@
             "searchTagDate1": "",
             "searchTagDate2": "",
             "searchTagDate3": "",
-            "x": 435.5,
-            "y": 74,
+            "x": 485.5000114440918,
+            "y": 196.857159614563,
             "wires": [
                 [
                     "8e68e037.d90048",
@@ -56,8 +56,8 @@
             "z": "b1f71e8d.e62778",
             "includeparameters": false,
             "eojtag": "",
-            "x": 2276.5,
-            "y": 275,
+            "x": 2290.785743713379,
+            "y": 397.8571500778198,
             "wires": [
                 [
                     "b8e0edcb.ac8268",
@@ -75,8 +75,8 @@
             "user": "dmae",
             "password": "b027ef6677441cd784e7b6c9f8ebae788d22",
             "encrypted": true,
-            "x": 2563.5,
-            "y": 315,
+            "x": 2577.785743713379,
+            "y": 437.8571500778198,
             "wires": [
                 [
                     "6612542b.162184"
@@ -91,8 +91,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2778.5,
-            "y": 318,
+            "x": 2792.785743713379,
+            "y": 440.8571500778198,
             "wires": []
         },
         {
@@ -105,8 +105,8 @@
             "sheet": "NAB Demo",
             "auth": false,
             "once": false,
-            "x": 187,
-            "y": 1536,
+            "x": 194.14293670654297,
+            "y": 71.71417140960693,
             "wires": [
                 [
                     "b356797f.a79ef8"
@@ -121,8 +121,8 @@
             "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 472,
-            "y": 1535,
+            "x": 479.14293670654297,
+            "y": 70.71417140960693,
             "wires": [
                 [
                     "1fcbf4a5.fa4feb"
@@ -134,8 +134,8 @@
             "type": "subflow:d11a6d02.bbfb68",
             "z": "b1f71e8d.e62778",
             "name": "",
-            "x": 757,
-            "y": 1534,
+            "x": 764.142936706543,
+            "y": 69.71417140960693,
             "wires": [],
             "subflow": "d11a6d02.bbfb68"
         },
@@ -147,8 +147,8 @@
             "active": false,
             "console": "false",
             "complete": "true",
-            "x": 652.5,
-            "y": 36,
+            "x": 666.7857437133789,
+            "y": 158.85715007781982,
             "wires": []
         },
         {
@@ -167,8 +167,8 @@
                     "v": "/home/dmae"
                 }
             ],
-            "x": 616.5,
-            "y": 142,
+            "x": 677.9286499023438,
+            "y": 256.2856922149658,
             "wires": [
                 [
                     "bb3e2588.6a351"
@@ -183,8 +183,8 @@
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2484.5,
-            "y": 226,
+            "x": 2498.785743713379,
+            "y": 348.8571500778198,
             "wires": []
         },
         {
@@ -196,8 +196,8 @@
             "fieldType": "msg",
             "format": "handlebars",
             "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"sequence_name\">Name_of_Sequence</param>\n\t\t<param name=\"material_type\">Clips</param>\n\t\t<param name=\"remark\">Remarks</param>\n\t\t<param name=\"redaktion_lang\"/>\n\t\t<param name=\"sendetitel\"/>\n\t\t<param name=\"beitragsname\"/>\n\t\t<param name=\"redakteur\"/>\n\t\t<param name=\"autor\"/>\n\t\t<param name=\"sendedatum\"/>\n\t\t<param name=\"projektname_lang\"/>\n\t\t<param name=\"lookup_performed\">false</param>\n\t\t<param name=\"priority_import\">false</param>\n\t\t<param name=\"avid_transfer\">false</param>\n\t\t<param name=\"type_of_source\">File</param>\n\t\t<param name=\"portal_user_id\">dmae</param>\n\t\t<param name=\"portal_user_first_name\"/>\n\t\t<param name=\"portal_user_last_name\"/>\n\t\t<param name=\"portal_user_roles\">filter_types_edit filter_date_edit filter_text_edit filter_job_description_search filter_other_edit filter_id_edit filter_state_edit job_start job_cancel job_delete job_restart job_delete and job_restart job_prio job_comment job_error_clear job_action_bar job_step_view job_parameter job_diagram_view job_gantt_view job_gannt_view essence_info fm_state_edit fm_dates_edit fm_jobid_edit fm_filename_edit fm_delete_file fm_change_expiration fm_disable_expirtation upload_portlet upload_arema_monitor upload_file upload_p2 upload_xdcam upload_priority dashboard_import system_values_edit user_management edi_registry agent_management agent_pause agent_resume agent_stop agent_delete agent_action_bar agent_step_list agent_parameter avidsendto_portlet avidsendto_arema_monitor avidsendto_priority rules_builder statistics_restore_tape statistics_step_waiting_time statistics_number_and_duration system_values_view job_link task_list task_view hsb_recordtodolist dynamicform_portlet job_logviewer</param>\n\t\t<param name=\"ftp_upload_host\">159.122.4.146:21</param>\n\t\t<param name=\"ftp_upload_user\">dmae</param>\n\t\t<param name=\"ftp_upload_password\">pw4Ar3.mA</param>\n\t\t<param name=\"ftp_upload_base_directory\">/admira/cache/</param>\n\t\t<param name=\"ftp_upload_session_directory\">2016-04-08_20-50-25_608</param>\n\t\t<param name=\"url_hostname\">159.122.4.146:8089</param>\n\t\t<param name=\"portal_site\">portal_site</param>\n\t</properties>\n\t<container>\n\t\t<clips>\n\t\t\t<clip sequence=\"1\">\n\t\t\t\t<videoUri source=\"C:\\DemoFilme\\EDahlias.mp4\" size= \"18862865\" >ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/2016-04-08_20-50-25_608/EDahlias.mp4</videoUri>\n\t\t\t</clip>\n\t\t</clips>\n\t</container>\n</admira>",
-            "x": 245.5,
-            "y": 142,
+            "x": 309.7857971191406,
+            "y": 196.28570079803467,
             "wires": [
                 [
                     "e459939f.878cd"
@@ -242,8 +242,8 @@
                     "v": "$variable.mp4_source_filename"
                 }
             ],
-            "x": 994.5,
-            "y": 57,
+            "x": 1008.7857437133789,
+            "y": 179.85715007781982,
             "wires": [
                 [
                     "d4e7021a.ef3b3"
@@ -258,8 +258,8 @@
             "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 671.5,
-            "y": 278,
+            "x": 661.5000915527344,
+            "y": 466.5714340209961,
             "wires": [
                 [
                     "64cbb34d.bb9614"
@@ -274,8 +274,8 @@
             "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 745.5,
-            "y": 327,
+            "x": 664.0715179443359,
+            "y": 548.4286108016968,
             "wires": [
                 [
                     "ed8c825f.6431a"
@@ -305,8 +305,8 @@
                     "v": ""
                 }
             ],
-            "x": 1065.5,
-            "y": 155,
+            "x": 1079.785743713379,
+            "y": 277.8571500778198,
             "wires": [
                 [
                     "5e45b4e.36c3fcc"
@@ -369,8 +369,8 @@
                     "v": "$variable.mp4_target_filename"
                 }
             ],
-            "x": 1193.5,
-            "y": 277,
+            "x": 1207.785743713379,
+            "y": 399.8571500778198,
             "wires": [
                 [
                     "410dabb1.291c14"
@@ -418,8 +418,8 @@
                     "v": "taskView"
                 }
             ],
-            "x": 1288.5,
-            "y": 375,
+            "x": 1302.785743713379,
+            "y": 497.8571500778198,
             "wires": [
                 [
                     "dde66b00.188ee"
@@ -456,8 +456,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1397.5,
-            "y": 465,
+            "x": 1411.785743713379,
+            "y": 587.8571500778198,
             "wires": [
                 [
                     "7b59c692.25f9e",
@@ -475,8 +475,8 @@
             "z": "b1f71e8d.e62778",
             "name": "Job Titel dynamisch machen",
             "info": "",
-            "x": 403.5,
-            "y": 195,
+            "x": 446.35717010498047,
+            "y": 282.1428737640381,
             "wires": []
         },
         {
@@ -485,8 +485,8 @@
             "z": "b1f71e8d.e62778",
             "name": "Filename umparsten in name/value Syntax",
             "info": "",
-            "x": 190.5,
-            "y": 250,
+            "x": 186.21434020996094,
+            "y": 344.28571128845215,
             "wires": []
         },
         {
@@ -495,8 +495,8 @@
             "z": "b1f71e8d.e62778",
             "name": "Push Message einbauen",
             "info": "",
-            "x": 1069.5,
-            "y": 485,
+            "x": 1329.5000534057617,
+            "y": 270.71434211730957,
             "wires": []
         },
         {
@@ -505,8 +505,8 @@
             "z": "b1f71e8d.e62778",
             "name": "Speichern des Jobs, des XMLs und des Flows",
             "info": "",
-            "x": 2866.5,
-            "y": 396,
+            "x": 2893.642578125,
+            "y": 498.857141494751,
             "wires": []
         },
         {
@@ -543,8 +543,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1682.5,
-            "y": 606,
+            "x": 1696.785743713379,
+            "y": 728.8571500778198,
             "wires": [
                 [
                     "2d4dfe67.7d452a"
@@ -568,8 +568,8 @@
                     "v": ""
                 }
             ],
-            "x": 1949.5,
-            "y": 606,
+            "x": 1963.785743713379,
+            "y": 728.8571500778198,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -610,8 +610,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1669,
-            "y": 693,
+            "x": 1683.285743713379,
+            "y": 815.8571500778198,
             "wires": [
                 [
                     "c86cf133.f5a99"
@@ -635,8 +635,8 @@
                     "v": ""
                 }
             ],
-            "x": 1932,
-            "y": 696,
+            "x": 1946.285743713379,
+            "y": 818.8571500778198,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -677,8 +677,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1666,
-            "y": 760,
+            "x": 1680.285743713379,
+            "y": 882.8571500778198,
             "wires": [
                 [
                     "8e6768a2.8c258"
@@ -719,8 +719,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 320.5,
-            "y": 1242.0001220703125,
+            "x": 334.7857437133789,
+            "y": 1364.8572721481323,
             "wires": [
                 [
                     "e32e00ea.7535b8"
@@ -761,8 +761,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1711,
-            "y": 828,
+            "x": 1725.285743713379,
+            "y": 950.8571500778198,
             "wires": [
                 [
                     "d588f2a1.e2f118"
@@ -786,8 +786,8 @@
                     "v": ""
                 }
             ],
-            "x": 1925,
-            "y": 766,
+            "x": 1939.285743713379,
+            "y": 888.8571500778198,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -811,8 +811,8 @@
                     "v": ""
                 }
             ],
-            "x": 1978,
-            "y": 826,
+            "x": 1992.285743713379,
+            "y": 948.8571500778198,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -854,8 +854,8 @@
                     "v": ""
                 }
             ],
-            "x": 3700.5000762939453,
-            "y": 1244.499921798706,
+            "x": 3714.785820007324,
+            "y": 1367.3570718765259,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -923,8 +923,8 @@
                     "v": ""
                 }
             ],
-            "x": 3373.5000762939453,
-            "y": 1245.499921798706,
+            "x": 3387.785820007324,
+            "y": 1368.3570718765259,
             "wires": [
                 [
                     "98c06d71.935898"
@@ -939,8 +939,8 @@
             "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 2992.0000762939453,
-            "y": 1245.499921798706,
+            "x": 3006.285820007324,
+            "y": 1368.3570718765259,
             "wires": [
                 [
                     "3c35dabf.e37956"
@@ -1006,8 +1006,8 @@
                     "v": ""
                 }
             ],
-            "x": 2719.5000762939453,
-            "y": 1152.499921798706,
+            "x": 2733.785820007324,
+            "y": 1275.3570718765259,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1021,7 +1021,7 @@
             "nop": true,
             "tag": "",
             "name": "transfer_kfi",
-            "title": "Transfer MP4 file [variable.$kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "title": "Transfer MP4 file [$variable.kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
             "expected_case": "checkVisualRecognition",
             "direction": "",
             "device_name": "arema.media.ibmcloud.com",
@@ -1073,8 +1073,8 @@
                     "v": ""
                 }
             ],
-            "x": 2720.0000762939453,
-            "y": 1231.499921798706,
+            "x": 2734.285820007324,
+            "y": 1354.3570718765259,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1140,8 +1140,8 @@
                     "v": ""
                 }
             ],
-            "x": 2718.0000762939453,
-            "y": 1294.499921798706,
+            "x": 2732.285820007324,
+            "y": 1417.3570718765259,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1207,8 +1207,8 @@
                     "v": ""
                 }
             ],
-            "x": 2715.0000762939453,
-            "y": 1365.499921798706,
+            "x": 2729.285820007324,
+            "y": 1488.3570718765259,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1243,8 +1243,8 @@
                     "v": ""
                 }
             ],
-            "x": 903.7856979370117,
-            "y": 1225.8571615219116,
+            "x": 918.0714416503906,
+            "y": 1348.7143115997314,
             "wires": [
                 [
                     "2d8b7620.816bca"
@@ -1266,15 +1266,15 @@
             "file_list": "",
             "org_unit": "$variable.orgunit",
             "block_size": "",
-            "hold_in_cache": "",
+            "hold_in_cache": "yes",
             "parameters": [
                 {
                     "k": "",
                     "v": ""
                 }
             ],
-            "x": 1456.25,
-            "y": 1167.75,
+            "x": 1470.535743713379,
+            "y": 1290.6071500778198,
             "wires": [
                 [
                     "484fe2d1.b3b26c"
@@ -1296,15 +1296,15 @@
             "file_list": "",
             "org_unit": "$variable.orgunit",
             "block_size": "",
-            "hold_in_cache": "",
+            "hold_in_cache": "yes",
             "parameters": [
                 {
                     "k": "",
                     "v": ""
                 }
             ],
-            "x": 1458.5,
-            "y": 1242.5,
+            "x": 1472.785743713379,
+            "y": 1365.3571500778198,
             "wires": [
                 [
                     "484fe2d1.b3b26c"
@@ -1326,15 +1326,15 @@
             "file_list": "",
             "org_unit": "$variable.orgunit",
             "block_size": "",
-            "hold_in_cache": "",
+            "hold_in_cache": "yes",
             "parameters": [
                 {
                     "k": "",
                     "v": ""
                 }
             ],
-            "x": 1459.25,
-            "y": 1309.0001220703125,
+            "x": 1473.535743713379,
+            "y": 1431.8572721481323,
             "wires": [
                 [
                     "484fe2d1.b3b26c"
@@ -1354,7 +1354,7 @@
             "source_filename": "$variable.kfzip_target_filename",
             "target_filename": "$variable.vr_target_filename",
             "org_unit": "$variable.orgunit",
-            "hold_in_cache": "",
+            "hold_in_cache": "yes",
             "parameters": [
                 {
                     "k": "",
@@ -1375,8 +1375,8 @@
                     "v": "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
                 }
             ],
-            "x": 1946.5,
-            "y": 1242.5,
+            "x": 1960.785743713379,
+            "y": 1365.3571500778198,
             "wires": [
                 [
                     "dfce588d.91ff6"
@@ -1440,8 +1440,8 @@
                     "v": "$input.remark"
                 }
             ],
-            "x": 2447.9284744262695,
-            "y": 1243.071403503418,
+            "x": 2462.2142181396484,
+            "y": 1365.9285535812378,
             "wires": [
                 [
                     "f60aaf86.eeef08",
@@ -1459,8 +1459,8 @@
             "func": "//variable declaration\nvar mp4_label =\n    \"EDahlias\";\n\n\n// output to debug sidebar\n//node.warn(mp4_label);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_label = mp4_label;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 659,
-            "y": 181,
+            "x": 670.4286270141602,
+            "y": 335.28573417663574,
             "wires": [
                 [
                     "c63d97b2.3ed218"
@@ -1475,8 +1475,8 @@
             "func": "//variable declaration\nvar timestamp =\n    Date.now();\n\n\n// output to debug sidebar\n//node.warn(timestamp);\n\n// add to msg to be passed on\nmsg.payload.variables.timestamp = timestamp;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 656,
-            "y": 232,
+            "x": 666.0001258850098,
+            "y": 397.7142791748047,
             "wires": [
                 [
                     "833a4250.748008"
@@ -1513,8 +1513,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1753.125,
-            "y": 468.75,
+            "x": 1767.410743713379,
+            "y": 591.6071500778198,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -1529,8 +1529,8 @@
             "func": "//variable declaration\nvar kfd_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_temp_filename = kfd_temp_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 634.6428833007812,
-            "y": 1160.7143659591675,
+            "x": 648.9286270141602,
+            "y": 1283.5715160369873,
             "wires": [
                 [
                     "a9ca9880.879ff"
@@ -1545,8 +1545,8 @@
             "func": "//variable declaration\nvar solr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_report_for_solr.xml\";\n\n\n// output to debug sidebar\n//node.warn(solr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.solr_target_filename = solr_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 2176.071403503418,
-            "y": 1244.4641132354736,
+            "x": 2190.357147216797,
+            "y": 1367.3212633132935,
             "wires": [
                 [
                     "544b8532.8bbd8c"
@@ -1561,8 +1561,8 @@
             "func": "//variable declaration\nvar kfi_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_temp_filename = kfi_temp_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 637.1428833007812,
-            "y": 1230.7143659591675,
+            "x": 651.4286270141602,
+            "y": 1353.5715160369873,
             "wires": [
                 [
                     "e0c98d8e.badf58"
@@ -1577,8 +1577,8 @@
             "func": "//variable declaration\nvar kfzip_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_temp_filename = kfzip_temp_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 635.8928833007812,
-            "y": 1303.2143659591675,
+            "x": 650.1786270141602,
+            "y": 1426.0715160369873,
             "wires": [
                 [
                     "6554f737.c90fe8"
@@ -1593,8 +1593,8 @@
             "func": "//variable declaration\nvar vr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_VR_report.xml\";\n\n\n// output to debug sidebar\n//node.warn(vr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.vr_target_filename = vr_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 1725,
-            "y": 1238.75,
+            "x": 1739.285743713379,
+            "y": 1361.6071500778198,
             "wires": [
                 [
                     "d15df4b3.59bf3"
@@ -1609,8 +1609,8 @@
             "func": "//variable declaration\nvar kfd_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_target_filename = kfd_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 1183.392837524414,
-            "y": 1084.464322090149,
+            "x": 1197.678581237793,
+            "y": 1207.3214721679688,
             "wires": [
                 [
                     "9561ec50.7ec868"
@@ -1625,8 +1625,8 @@
             "func": "//variable declaration\nvar kfi_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_target_filename = kfi_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 1167.142837524414,
-            "y": 1170.714322090149,
+            "x": 1181.428581237793,
+            "y": 1293.5714721679688,
             "wires": [
                 [
                     "81c8eb57.a1f3e8"
@@ -1641,8 +1641,8 @@
             "func": "//variable declaration\nvar kfzip_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_target_filename = kfzip_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 1170.892837524414,
-            "y": 1239.464322090149,
+            "x": 1185.178581237793,
+            "y": 1362.3214721679688,
             "wires": [
                 [
                     "7b170c9c.07d2cc",
