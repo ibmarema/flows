@@ -1,11 +1,11 @@
 {
-    "id": "bed37ee4.157da8",
+    "id": "b1f71e8d.e62778",
     "label": "NAB Demo",
     "nodes": [
         {
-            "id": "e5a6db5e.9dc38",
+            "id": "4df7da63.ccd21c",
             "type": "inject",
-            "z": "bed37ee4.157da8",
+            "z": "b1f71e8d.e62778",
             "name": "Start Workflow",
             "topic": "",
             "payload": "",
@@ -13,35 +13,18 @@
             "repeat": "",
             "crontab": "",
             "once": false,
-            "x": 253,
-            "y": 130,
+            "x": 158,
+            "y": 64,
             "wires": [
                 [
-                    "a559a8b.457fb58"
+                    "b5139c35.b2546"
                 ]
             ]
         },
         {
-            "id": "a559a8b.457fb58",
-            "type": "template",
-            "z": "bed37ee4.157da8",
-            "name": "Input XML",
-            "field": "payload",
-            "fieldType": "msg",
-            "format": "handlebars",
-            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"user\">Ulrich Voigt</param>\n        <param name=\"path\">/home/dmae/import</param>\n        <param name=\"filename\">testfile_avid.mxf</param>\n    </properties>\n</admira>",
-            "x": 433,
-            "y": 129,
-            "wires": [
-                [
-                    "654d3a01.574034"
-                ]
-            ]
-        },
-        {
-            "id": "654d3a01.574034",
+            "id": "e459939f.878cd",
             "type": "job_start",
-            "z": "bed37ee4.157da8",
+            "z": "b1f71e8d.e62778",
             "name": "nab_demo",
             "title": "NAB Demo",
             "jobtype": "demo_upload",
@@ -58,68 +41,403 @@
             "searchTagDate1": "",
             "searchTagDate2": "",
             "searchTagDate3": "",
-            "x": 383.5,
-            "y": 305,
+            "x": 435.5,
+            "y": 74,
             "wires": [
                 [
-                    "f193ee77.13a4b"
+                    "8e68e037.d90048",
+                    "61ff1bc1.64662c"
                 ]
             ]
         },
         {
-            "id": "cfcfbe52.3d9988",
+            "id": "2b4a3d4d.9c16d2",
             "type": "job_end",
-            "z": "bed37ee4.157da8",
-            "includeparameters": true,
+            "z": "b1f71e8d.e62778",
+            "includeparameters": false,
             "eojtag": "",
-            "x": 1572.5,
-            "y": 340,
+            "x": 2276.5,
+            "y": 275,
             "wires": [
                 [
-                    "dc01c754.e67ac8"
+                    "b8e0edcb.ac8268"
                 ]
             ]
         },
         {
-            "id": "dc01c754.e67ac8",
+            "id": "b9c1c601.759da8",
             "type": "job_send",
-            "z": "bed37ee4.157da8",
+            "z": "b1f71e8d.e62778",
             "holdjob": false,
             "url": "http://arema.media.ibmcloud.com:9090",
             "system": "admira",
             "user": "dmae",
             "password": "pw4Ar3.mA",
             "encrypted": false,
-            "x": 1859.5,
-            "y": 380,
+            "x": 2563.5,
+            "y": 315,
             "wires": [
                 [
-                    "5293c17f.32c0f"
+                    "6612542b.162184"
                 ]
             ]
         },
         {
-            "id": "5293c17f.32c0f",
+            "id": "6612542b.162184",
             "type": "debug",
-            "z": "bed37ee4.157da8",
+            "z": "b1f71e8d.e62778",
             "name": "",
             "active": true,
             "console": "false",
             "complete": "false",
-            "x": 2074.5,
-            "y": 383,
+            "x": 2778.5,
+            "y": 318,
             "wires": []
         },
         {
-            "id": "f193ee77.13a4b",
-            "type": "nop",
-            "z": "bed37ee4.157da8",
+            "id": "470146c6.7618f",
+            "type": "flow-reader",
+            "z": "b1f71e8d.e62778",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "NAB Demo",
+            "auth": false,
+            "once": false,
+            "x": 228,
+            "y": 734,
+            "wires": [
+                [
+                    "b356797f.a79ef8"
+                ]
+            ]
+        },
+        {
+            "id": "b356797f.a79ef8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 513,
+            "y": 733,
+            "wires": [
+                [
+                    "1fcbf4a5.fa4feb"
+                ]
+            ]
+        },
+        {
+            "id": "1fcbf4a5.fa4feb",
+            "type": "subflow:d11a6d02.bbfb68",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "x": 798,
+            "y": 732,
+            "wires": [],
+            "subflow": "d11a6d02.bbfb68"
+        },
+        {
+            "id": "8e68e037.d90048",
+            "type": "debug",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "active": false,
+            "console": "false",
+            "complete": "true",
+            "x": 652.5,
+            "y": 36,
+            "wires": []
+        },
+        {
+            "id": "61ff1bc1.64662c",
+            "type": "job_vars",
+            "z": "b1f71e8d.e62778",
+            "name": "Constants",
+            "vartype": "variable",
+            "variables": [
+                {
+                    "k": "orgunit",
+                    "v": "admira"
+                },
+                {
+                    "k": "upload_base_dir",
+                    "v": "/home/dmae"
+                }
+            ],
+            "x": 616.5,
+            "y": 142,
+            "wires": [
+                [
+                    "833a4250.748008"
+                ]
+            ]
+        },
+        {
+            "id": "b8e0edcb.ac8268",
+            "type": "debug",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 2484.5,
+            "y": 226,
+            "wires": []
+        },
+        {
+            "id": "b5139c35.b2546",
+            "type": "template",
+            "z": "b1f71e8d.e62778",
+            "name": "XML",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"sequence_name\">Name_of_Sequence</param>\n\t\t<param name=\"material_type\">Clips</param>\n\t\t<param name=\"remark\">Remarks</param>\n\t\t<param name=\"redaktion_lang\"/>\n\t\t<param name=\"sendetitel\"/>\n\t\t<param name=\"beitragsname\"/>\n\t\t<param name=\"redakteur\"/>\n\t\t<param name=\"autor\"/>\n\t\t<param name=\"sendedatum\"/>\n\t\t<param name=\"projektname_lang\"/>\n\t\t<param name=\"lookup_performed\">false</param>\n\t\t<param name=\"priority_import\">false</param>\n\t\t<param name=\"avid_transfer\">false</param>\n\t\t<param name=\"type_of_source\">File</param>\n\t\t<param name=\"portal_user_id\">dmae</param>\n\t\t<param name=\"portal_user_first_name\"/>\n\t\t<param name=\"portal_user_last_name\"/>\n\t\t<param name=\"portal_user_roles\">filter_types_edit filter_date_edit filter_text_edit filter_job_description_search filter_other_edit filter_id_edit filter_state_edit job_start job_cancel job_delete job_restart job_delete and job_restart job_prio job_comment job_error_clear job_action_bar job_step_view job_parameter job_diagram_view job_gantt_view job_gannt_view essence_info fm_state_edit fm_dates_edit fm_jobid_edit fm_filename_edit fm_delete_file fm_change_expiration fm_disable_expirtation upload_portlet upload_arema_monitor upload_file upload_p2 upload_xdcam upload_priority dashboard_import system_values_edit user_management edi_registry agent_management agent_pause agent_resume agent_stop agent_delete agent_action_bar agent_step_list agent_parameter avidsendto_portlet avidsendto_arema_monitor avidsendto_priority rules_builder statistics_restore_tape statistics_step_waiting_time statistics_number_and_duration system_values_view job_link task_list task_view hsb_recordtodolist dynamicform_portlet job_logviewer</param>\n\t\t<param name=\"ftp_upload_host\">159.122.4.146:21</param>\n\t\t<param name=\"ftp_upload_user\">dmae</param>\n\t\t<param name=\"ftp_upload_password\">pw4Ar3.mA</param>\n\t\t<param name=\"ftp_upload_base_directory\">/admira/cache/</param>\n\t\t<param name=\"ftp_upload_session_directory\">2016-04-08_20-50-25_608</param>\n\t\t<param name=\"url_hostname\">159.122.4.146:8089</param>\n\t\t<param name=\"portal_site\">portal_site</param>\n\t</properties>\n\t<container>\n\t\t<clips>\n\t\t\t<clip sequence=\"1\">\n\t\t\t\t<videoUri source=\"C:\\DemoFilme\\EDahlias.mp4\" size= \"18862865\" >ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/2016-04-08_20-50-25_608/EDahlias.mp4</videoUri>\n\t\t\t</clip>\n\t\t</clips>\n\t</container>\n</admira>",
+            "x": 245.5,
+            "y": 142,
+            "wires": [
+                [
+                    "e459939f.878cd"
+                ]
+            ]
+        },
+        {
+            "id": "ed8c825f.6431a",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
             "nop": false,
             "tag": "",
-            "name": "nop",
-            "title": "Nop",
+            "name": "copy_mp4_to_cache",
+            "title": "Copy (in tail mode) [$variable.mp4_source_filename] to cache as [$variable.mp4_target_filename]",
             "expected_case": "",
-            "org_unit": "",
+            "source_filename": "$variable.mp4_source_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.mp4_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "4096",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "tail_header_size_list",
+                    "v": "8000"
+                },
+                {
+                    "k": "transfer_inactivity_timeout",
+                    "v": "5"
+                },
+                {
+                    "k": "header_total_waiting_timeout",
+                    "v": "5"
+                },
+                {
+                    "k": "tail_full_filename_list",
+                    "v": "$variable.mp4_source_filename"
+                },
+                {
+                    "k": "tail_initial_wait_filename_list",
+                    "v": "$variable.mp4_source_filename"
+                }
+            ],
+            "x": 994.5,
+            "y": 57,
+            "wires": [
+                [
+                    "d4e7021a.ef3b3"
+                ]
+            ]
+        },
+        {
+            "id": "833a4250.748008",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_source_filename",
+            "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n//    Date.now() + \n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 690.5,
+            "y": 228,
+            "wires": [
+                [
+                    "64cbb34d.bb9614"
+                ]
+            ]
+        },
+        {
+            "id": "64cbb34d.bb9614",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_target_filename",
+            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias.mp4\" + \n    \"_1_\" + \n    Date.now() + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 745.5,
+            "y": 327,
+            "wires": [
+                [
+                    "ed8c825f.6431a"
+                ]
+            ]
+        },
+        {
+            "id": "d4e7021a.ef3b3",
+            "type": "access",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "access_mp4",
+            "title": "Access of [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "filename": "$variable.mp4_target_filename",
+            "filenames": "",
+            "user": "",
+            "subfunction": "",
+            "virtual_cache": "",
+            "cache_timeout": "",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1065.5,
+            "y": 155,
+            "wires": [
+                [
+                    "5e45b4e.36c3fcc"
+                ]
+            ]
+        },
+        {
+            "id": "5e45b4e.36c3fcc",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_approval_task_metadata",
+            "title": "Creation of task metadata for human approval for imported clip [$input.sequence_name] file [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Task_Metadata_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [],
+            "properties": [
+                {
+                    "k": "priority",
+                    "v": "medium"
+                },
+                {
+                    "k": "title",
+                    "v": "Watson demo: Approval of uploaded clip [$input.sequence_name]"
+                },
+                {
+                    "k": "access",
+                    "v": "o=admira"
+                },
+                {
+                    "k": "form_template",
+                    "v": "taskView"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                },
+                {
+                    "k": "clip_name",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "material_type",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "upload_remarks",
+                    "v": "$input.remark"
+                },
+                {
+                    "k": "video_filename",
+                    "v": "$variable.mp4_target_filename"
+                }
+            ],
+            "x": 1193.5,
+            "y": 277,
+            "wires": [
+                [
+                    "410dabb1.291c14"
+                ]
+            ]
+        },
+        {
+            "id": "410dabb1.291c14",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_approval_task_list_entry",
+            "title": "Creation of task list entry for human approval for imported clip  [$input.sequence_name] file [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Task_List_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "priority",
+                    "v": "medium"
+                },
+                {
+                    "k": "title",
+                    "v": "Watson demo: Approval of uploaded clip [$input.sequence_name]"
+                },
+                {
+                    "k": "access",
+                    "v": "o=admira"
+                },
+                {
+                    "k": "form_template",
+                    "v": "taskView"
+                }
+            ],
+            "x": 1288.5,
+            "y": 375,
+            "wires": [
+                [
+                    "dde66b00.188ee"
+                ]
+            ]
+        },
+        {
+            "id": "dde66b00.188ee",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "wait_for_human_task_result",
+            "title": "Wait for the result of the human task action and evaluate the result (setting the runtime case accordingly)",
+            "expected_case": "",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
             "hold_in_cache": "",
             "parameters": [
                 {
@@ -127,61 +445,63 @@
                     "v": ""
                 }
             ],
-            "x": 890.5,
-            "y": 311,
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_VideoRecognition_Switch_Human_Task_Wait_Decision.xsl"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1397.5,
+            "y": 465,
             "wires": [
                 [
-                    "cfcfbe52.3d9988"
+                    "2b4a3d4d.9c16d2"
                 ]
             ]
         },
         {
-            "id": "47cc83df.70f7ec",
-            "type": "flow-reader",
-            "z": "bed37ee4.157da8",
-            "name": "Save Flow to GitHub",
-            "protocol": "http",
-            "url": "127.0.0.1:1880",
-            "sheet": "NAB Demo",
-            "auth": false,
-            "once": false,
-            "credentials": {
-                "user": "",
-                "password": ""
-            },
-            "x": 252,
-            "y": 722,
-            "wires": [
-                [
-                    "7fc2e7fa.3c091"
-                ]
-            ]
+            "id": "86dc8279.519fa8",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Job Titel dynamisch machen",
+            "info": "",
+            "x": 403.5,
+            "y": 195,
+            "wires": []
         },
         {
-            "id": "7fc2e7fa.3c091",
-            "type": "function",
-            "z": "bed37ee4.157da8",
-            "name": "Set commit message",
-            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
-            "outputs": 1,
-            "noerr": 0,
-            "x": 537,
-            "y": 721,
-            "wires": [
-                [
-                    "cf693253.78fcd"
-                ]
-            ]
+            "id": "5b6783e8.29c274",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Filename umparsten in name/value Syntax",
+            "info": "",
+            "x": 190.5,
+            "y": 250,
+            "wires": []
         },
         {
-            "id": "cf693253.78fcd",
-            "type": "subflow:3034f64e.09f3d2",
-            "z": "bed37ee4.157da8",
-            "name": "",
-            "x": 822,
-            "y": 720,
-            "wires": [],
-            "subflow": "3034f64e.09f3d2"
+            "id": "6e2b4102.57a4e",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Push Message einbauen",
+            "info": "",
+            "x": 1069.5,
+            "y": 485,
+            "wires": []
+        },
+        {
+            "id": "f48df398.644ac",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Speichern des Jobs, des XMLs und des Flows",
+            "info": "",
+            "x": 2866.5,
+            "y": 396,
+            "wires": []
         }
     ]
 }
