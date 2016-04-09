@@ -105,8 +105,8 @@
             "sheet": "NAB Demo",
             "auth": false,
             "once": false,
-            "x": 193,
-            "y": 1081,
+            "x": 187,
+            "y": 1536,
             "wires": [
                 [
                     "b356797f.a79ef8"
@@ -121,8 +121,8 @@
             "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 478,
-            "y": 1080,
+            "x": 472,
+            "y": 1535,
             "wires": [
                 [
                     "1fcbf4a5.fa4feb"
@@ -134,8 +134,8 @@
             "type": "subflow:d11a6d02.bbfb68",
             "z": "b1f71e8d.e62778",
             "name": "",
-            "x": 763,
-            "y": 1079,
+            "x": 757,
+            "y": 1534,
             "wires": [],
             "subflow": "d11a6d02.bbfb68"
         },
@@ -171,7 +171,7 @@
             "y": 142,
             "wires": [
                 [
-                    "833a4250.748008"
+                    "bb3e2588.6a351"
                 ]
             ]
         },
@@ -258,8 +258,8 @@
             "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 690.5,
-            "y": 228,
+            "x": 671.5,
+            "y": 278,
             "wires": [
                 [
                     "64cbb34d.bb9614"
@@ -271,7 +271,7 @@
             "type": "function",
             "z": "b1f71e8d.e62778",
             "name": "mp4_target_filename",
-            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias\" + \n    \"_1_\" + \n    Date.now() + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
+            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias\" + \n    \"_1_\" + \n    msg.payload.variables.timestamp + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 745.5,
@@ -748,7 +748,7 @@
             "y": 900,
             "wires": [
                 [
-                    "3cb153ba.08fb84"
+                    "6554f737.c90fe8"
                 ]
             ]
         },
@@ -989,10 +989,10 @@
             "type": "function",
             "z": "b1f71e8d.e62778",
             "name": "visualrecog_subjob_params_filename",
-            "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    Date.now() + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
+            "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 2560,
+            "x": 2557,
             "y": 1238,
             "wires": [
                 [
@@ -1071,7 +1071,7 @@
             "id": "f932d504.1273f",
             "type": "edi_generic_ftp",
             "z": "b1f71e8d.e62778",
-            "nop": false,
+            "nop": true,
             "tag": "",
             "name": "transfer_kfi",
             "title": "Transfer MP4 file [variable.$kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
@@ -1265,6 +1265,273 @@
             "wires": [
                 [
                     "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "6554f737.c90fe8",
+            "type": "external_command",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "generate_keyframes",
+            "title": "Generate keyframes of [$variable.mp4_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "exec_name": "/home/dmae/admira/bin/create_keyframe.pl",
+            "source_filenames": "$variable.mp4_target_filename",
+            "target_filenames": "$variable.kfd_temp_filename",
+            "additional_parameters": "",
+            "org_unit": "$variable.orgunit",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 208.5,
+            "y": 1088,
+            "wires": [
+                [
+                    "da4746c2.f6fe8",
+                    "d5128db1.69f33",
+                    "7b170c9c.07d2cc"
+                ]
+            ]
+        },
+        {
+            "id": "da4746c2.f6fe8",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_data_to_cache",
+            "title": "Copy [$variable.kfd_temp_filename] to cache as [$variable.kfd_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfd_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfd_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 534.5,
+            "y": 1092,
+            "wires": [
+                [
+                    "d15df4b3.59bf3"
+                ]
+            ]
+        },
+        {
+            "id": "d5128db1.69f33",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_index_to_cache",
+            "title": "Copy [$variable.kfi_temp_filename] to cache as [$variable.kfi_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfi_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfi_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 517,
+            "y": 1167,
+            "wires": [
+                [
+                    "d15df4b3.59bf3"
+                ]
+            ]
+        },
+        {
+            "id": "7b170c9c.07d2cc",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_zip_to_cache",
+            "title": "Copy [$variable.kfzip_temp_filename] to cache as [$variable.kfzip_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfzip_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfzip_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 525,
+            "y": 1233,
+            "wires": [
+                [
+                    "d15df4b3.59bf3"
+                ]
+            ]
+        },
+        {
+            "id": "d15df4b3.59bf3",
+            "type": "plugin_alias",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "visual_recognition",
+            "title": "Visual recognition of [$variable.kfzip_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "plugin_alias": "bluemix_demo",
+            "source_filename": "$variable.kfzip_target_filename",
+            "target_filename": "$variable.vr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "bluemix_user",
+                    "v": "f39e34a3-1a22-49ac-b744-e945bd4de49d"
+                },
+                {
+                    "k": "bluemix_password",
+                    "v": "uBZtU4hKigZj"
+                },
+                {
+                    "k": "bluemix_image_analysis_url",
+                    "v": "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
+                }
+            ],
+            "x": 825.5,
+            "y": 1090,
+            "wires": [
+                [
+                    "544b8532.8bbd8c"
+                ]
+            ]
+        },
+        {
+            "id": "544b8532.8bbd8c",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "transform_vr_result_for_solr",
+            "title": "Generation of [$variable.solr_target_filename] for Solr from Visual Recognition result [$variable.vr_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Solr_Destination.xml",
+            "content_filename": "$variable.vr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "$variable.mp4_target_filename",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "target_filename",
+                    "v": "$variable.solr_target_filename"
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xml_filename",
+                    "v": "$variable.solr_target_filename"
+                },
+                {
+                    "k": "mainsrcFilename",
+                    "v": "$variable.mp4_target_filename"
+                },
+                {
+                    "k": "mainkfifile",
+                    "v": "$variable.kfi_target_filename"
+                },
+                {
+                    "k": "filenamewithoutext",
+                    "v": "$variable.mp4_label"
+                },
+                {
+                    "k": "completetimestamp",
+                    "v": "$variable.timestamp"
+                },
+                {
+                    "k": "essence_description",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "materialtypfromuploadportal",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "remarksfromuploadportal",
+                    "v": "$input.remark"
+                }
+            ],
+            "x": 1110.5,
+            "y": 1089,
+            "wires": [
+                [
+                    "3cb153ba.08fb84"
+                ]
+            ]
+        },
+        {
+            "id": "bb3e2588.6a351",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_label",
+            "func": "//variable declaration\nvar mp4_label =\n    \"EDahlias\";\n\n\n// output to debug sidebar\n//node.warn(mp4_label);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_label = mp4_label;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 659,
+            "y": 181,
+            "wires": [
+                [
+                    "c63d97b2.3ed218"
+                ]
+            ]
+        },
+        {
+            "id": "c63d97b2.3ed218",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "timestamp",
+            "func": "//variable declaration\nvar timestamp =\n    Date.now();\n\n\n// output to debug sidebar\n//node.warn(timestamp);\n\n// add to msg to be passed on\nmsg.payload.variables.timestamp = timestamp;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 656,
+            "y": 232,
+            "wires": [
+                [
+                    "833a4250.748008"
                 ]
             ]
         }
