@@ -195,7 +195,7 @@
             "field": "payload",
             "fieldType": "msg",
             "format": "handlebars",
-            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"sequence_name\">Name_of_Sequence</param>\n\t\t<param name=\"material_type\">Clips</param>\n\t\t<param name=\"remark\">Remarks</param>\n\t\t<param name=\"redaktion_lang\"/>\n\t\t<param name=\"sendetitel\"/>\n\t\t<param name=\"beitragsname\"/>\n\t\t<param name=\"redakteur\"/>\n\t\t<param name=\"autor\"/>\n\t\t<param name=\"sendedatum\"/>\n\t\t<param name=\"projektname_lang\"/>\n\t\t<param name=\"lookup_performed\">false</param>\n\t\t<param name=\"priority_import\">false</param>\n\t\t<param name=\"avid_transfer\">false</param>\n\t\t<param name=\"type_of_source\">File</param>\n\t\t<param name=\"portal_user_id\">dmae</param>\n\t\t<param name=\"portal_user_first_name\"/>\n\t\t<param name=\"portal_user_last_name\"/>\n\t\t<param name=\"portal_user_roles\">filter_types_edit filter_date_edit filter_text_edit filter_job_description_search filter_other_edit filter_id_edit filter_state_edit job_start job_cancel job_delete job_restart job_delete and job_restart job_prio job_comment job_error_clear job_action_bar job_step_view job_parameter job_diagram_view job_gantt_view job_gannt_view essence_info fm_state_edit fm_dates_edit fm_jobid_edit fm_filename_edit fm_delete_file fm_change_expiration fm_disable_expirtation upload_portlet upload_arema_monitor upload_file upload_p2 upload_xdcam upload_priority dashboard_import system_values_edit user_management edi_registry agent_management agent_pause agent_resume agent_stop agent_delete agent_action_bar agent_step_list agent_parameter avidsendto_portlet avidsendto_arema_monitor avidsendto_priority rules_builder statistics_restore_tape statistics_step_waiting_time statistics_number_and_duration system_values_view job_link task_list task_view hsb_recordtodolist dynamicform_portlet job_logviewer</param>\n\t\t<param name=\"ftp_upload_host\">159.122.4.146:21</param>\n\t\t<param name=\"ftp_upload_user\">dmae</param>\n\t\t<param name=\"ftp_upload_password\">pw4Ar3.mA</param>\n\t\t<param name=\"ftp_upload_base_directory\">/admira/cache/</param>\n\t\t<param name=\"ftp_upload_session_directory\">2016-04-08_20-50-25_608</param>\n\t\t<param name=\"url_hostname\">159.122.4.146:8089</param>\n\t\t<param name=\"portal_site\">portal_site</param>\n\t</properties>\n\t<container>\n\t\t<clips>\n\t\t\t<clip sequence=\"1\">\n\t\t\t\t<videoUri source=\"C:\\DemoFilme\\EDahlias.mp4\" size= \"18862865\" >ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/2016-04-08_20-50-25_608/EDahlias.mp4</videoUri>\n\t\t\t</clip>\n\t\t</clips>\n\t</container>\n</admira>",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"sequence_name\">Name_of_Sequence</param>\n\t\t<param name=\"material_type\">Clips</param>\n\t\t<param name=\"remark\">Remarks</param>\n\t\t<param name=\"redaktion_lang\"/>\n\t\t<param name=\"sendetitel\"/>\n\t\t<param name=\"beitragsname\"/>\n\t\t<param name=\"redakteur\"/>\n\t\t<param name=\"autor\"/>\n\t\t<param name=\"sendedatum\"/>\n\t\t<param name=\"projektname_lang\"/>\n\t\t<param name=\"lookup_performed\">false</param>\n\t\t<param name=\"priority_import\">false</param>\n\t\t<param name=\"avid_transfer\">false</param>\n\t\t<param name=\"type_of_source\">File</param>\n\t\t<param name=\"portal_user_id\">dmae</param>\n\t\t<param name=\"portal_user_first_name\">Max</param>\n\t\t<param name=\"portal_user_last_name\">Mustermann</param>\n\t\t<param name=\"portal_user_roles\">filter_types_edit filter_date_edit filter_text_edit filter_job_description_search filter_other_edit filter_id_edit filter_state_edit job_start job_cancel job_delete job_restart job_delete and job_restart job_prio job_comment job_error_clear job_action_bar job_step_view job_parameter job_diagram_view job_gantt_view job_gannt_view essence_info fm_state_edit fm_dates_edit fm_jobid_edit fm_filename_edit fm_delete_file fm_change_expiration fm_disable_expirtation upload_portlet upload_arema_monitor upload_file upload_p2 upload_xdcam upload_priority dashboard_import system_values_edit user_management edi_registry agent_management agent_pause agent_resume agent_stop agent_delete agent_action_bar agent_step_list agent_parameter avidsendto_portlet avidsendto_arema_monitor avidsendto_priority rules_builder statistics_restore_tape statistics_step_waiting_time statistics_number_and_duration system_values_view job_link task_list task_view hsb_recordtodolist dynamicform_portlet job_logviewer</param>\n\t\t<param name=\"ftp_upload_host\">159.122.4.146:21</param>\n\t\t<param name=\"ftp_upload_user\">dmae</param>\n\t\t<param name=\"ftp_upload_password\">pw4Ar3.mA</param>\n\t\t<param name=\"ftp_upload_base_directory\">/admira/cache/</param>\n\t\t<param name=\"ftp_upload_session_directory\">2016-04-08_20-50-25_608</param>\n\t\t<param name=\"url_hostname\">159.122.4.146:8089</param>\n\t\t<param name=\"portal_site\">portal_site</param>\n\t</properties>\n\t<container>\n\t\t<clips>\n\t\t\t<clip sequence=\"1\">\n\t\t\t\t<videoUri source=\"C:\\DemoFilme\\EDahlias.mp4\" size= \"18862865\" >ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/2016-04-08_20-50-25_608/EDahlias.mp4</videoUri>\n\t\t\t</clip>\n\t\t</clips>\n\t</container>\n</admira>",
             "x": 309.7857971191406,
             "y": 196.28570079803467,
             "wires": [
@@ -305,8 +305,8 @@
                     "v": ""
                 }
             ],
-            "x": 1079.785743713379,
-            "y": 277.8571500778198,
+            "x": 1229.785789489746,
+            "y": 183.57144355773926,
             "wires": [
                 [
                     "5e45b4e.36c3fcc"
@@ -369,8 +369,8 @@
                     "v": "$variable.mp4_target_filename"
                 }
             ],
-            "x": 1207.785743713379,
-            "y": 399.8571500778198,
+            "x": 1088.0714263916016,
+            "y": 291.42858695983887,
             "wires": [
                 [
                     "410dabb1.291c14"
@@ -418,10 +418,11 @@
                     "v": "taskView"
                 }
             ],
-            "x": 1302.785743713379,
-            "y": 497.8571500778198,
+            "x": 1402.7857513427734,
+            "y": 301.85716438293457,
             "wires": [
                 [
+                    "6a98ceb9.131168",
                     "dde66b00.188ee"
                 ]
             ]
@@ -456,8 +457,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1411.785743713379,
-            "y": 587.8571500778198,
+            "x": 1318.9284439086914,
+            "y": 597.8571100234985,
             "wires": [
                 [
                     "7b59c692.25f9e",
@@ -487,16 +488,6 @@
             "info": "",
             "x": 186.21434020996094,
             "y": 344.28571128845215,
-            "wires": []
-        },
-        {
-            "id": "6e2b4102.57a4e",
-            "type": "comment",
-            "z": "b1f71e8d.e62778",
-            "name": "Push Message einbauen",
-            "info": "",
-            "x": 1329.5000534057617,
-            "y": 270.71434211730957,
             "wires": []
         },
         {
@@ -1649,6 +1640,30 @@
                     "d5128db1.69f33",
                     "da4746c2.f6fe8"
                 ]
+            ]
+        },
+        {
+            "id": "6a98ceb9.131168",
+            "type": "external_command",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "send_push_message",
+            "title": "Send push message to Bluemix for AREMA Event App",
+            "expected_case": "",
+            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+            "source_filenames": "",
+            "target_filenames": "",
+            "additional_parameters": "0815[Sep]Please approve [$input.sequence_name] [Sep]The file [$input.sequence_name] has been uploaded by user $input.portal_user_first_name $input.portal_user_last_name and requires your approval.[Sep]workflow",
+            "org_unit": "$variable.orgunit",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "properties": [],
+            "x": 1110.7141189575195,
+            "y": 433.71428203582764,
+            "wires": [
+                []
             ]
         }
     ]
