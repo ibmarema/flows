@@ -461,11 +461,11 @@
             "wires": [
                 [
                     "7b59c692.25f9e",
-                    "a6848ad.0825a78",
                     "9a0905b.bbbd278",
                     "b35358d8.c2d3c8",
                     "45d123f4.9f3094",
-                    "cd0793ae.6d1b48"
+                    "cd0793ae.6d1b48",
+                    "4fb8ec8d.e8f0c4"
                 ]
             ]
         },
@@ -570,31 +570,6 @@
             ],
             "x": 1949.5,
             "y": 606,
-            "wires": [
-                [
-                    "2b4a3d4d.9c16d2"
-                ]
-            ]
-        },
-        {
-            "id": "a6848ad.0825a78",
-            "type": "nop",
-            "z": "b1f71e8d.e62778",
-            "nop": false,
-            "tag": "",
-            "name": "nop_rejected",
-            "title": "NOP Rejected",
-            "expected_case": "rejected",
-            "org_unit": "$variable.orgunit",
-            "hold_in_cache": "",
-            "parameters": [
-                {
-                    "k": "",
-                    "v": ""
-                }
-            ],
-            "x": 1648.5,
-            "y": 528,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -744,8 +719,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1715,
-            "y": 900,
+            "x": 793,
+            "y": 1237,
             "wires": [
                 [
                     "6554f737.c90fe8"
@@ -820,34 +795,6 @@
             ]
         },
         {
-            "id": "3cb153ba.08fb84",
-            "type": "nop",
-            "z": "b1f71e8d.e62778",
-            "nop": false,
-            "tag": "",
-            "name": "nop_visualrecognition",
-            "title": "NOP Watson Visual Recognition",
-            "expected_case": "checkVisualRecognition",
-            "org_unit": "$variable.orgunit",
-            "hold_in_cache": "",
-            "parameters": [
-                {
-                    "k": "",
-                    "v": ""
-                }
-            ],
-            "x": 2331,
-            "y": 900,
-            "wires": [
-                [
-                    "f60aaf86.eeef08",
-                    "f932d504.1273f",
-                    "18a867d1.328d18",
-                    "c1835156.0de8a"
-                ]
-            ]
-        },
-        {
             "id": "d588f2a1.e2f118",
             "type": "nop",
             "z": "b1f71e8d.e62778",
@@ -907,8 +854,8 @@
                     "v": ""
                 }
             ],
-            "x": 3349.5,
-            "y": 1242,
+            "x": 3265.5,
+            "y": 1237,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -976,8 +923,8 @@
                     "v": ""
                 }
             ],
-            "x": 2933.5,
-            "y": 1244,
+            "x": 2938.5,
+            "y": 1238,
             "wires": [
                 [
                     "98c06d71.935898"
@@ -1296,8 +1243,8 @@
                     "v": ""
                 }
             ],
-            "x": 208.5,
-            "y": 1088,
+            "x": 1099.5,
+            "y": 1233,
             "wires": [
                 [
                     "da4746c2.f6fe8",
@@ -1328,8 +1275,8 @@
                     "v": ""
                 }
             ],
-            "x": 534.5,
-            "y": 1092,
+            "x": 1422.5,
+            "y": 1164,
             "wires": [
                 [
                     "d15df4b3.59bf3"
@@ -1358,8 +1305,8 @@
                     "v": ""
                 }
             ],
-            "x": 517,
-            "y": 1167,
+            "x": 1421,
+            "y": 1240,
             "wires": [
                 [
                     "d15df4b3.59bf3"
@@ -1388,8 +1335,8 @@
                     "v": ""
                 }
             ],
-            "x": 525,
-            "y": 1233,
+            "x": 1418,
+            "y": 1304,
             "wires": [
                 [
                     "d15df4b3.59bf3"
@@ -1430,8 +1377,8 @@
                     "v": "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
                 }
             ],
-            "x": 825.5,
-            "y": 1090,
+            "x": 1716.5,
+            "y": 1235,
             "wires": [
                 [
                     "544b8532.8bbd8c"
@@ -1495,11 +1442,14 @@
                     "v": "$input.remark"
                 }
             ],
-            "x": 1110.5,
-            "y": 1089,
+            "x": 1971.5,
+            "y": 1237,
             "wires": [
                 [
-                    "3cb153ba.08fb84"
+                    "f60aaf86.eeef08",
+                    "f932d504.1273f",
+                    "18a867d1.328d18",
+                    "c1835156.0de8a"
                 ]
             ]
         },
@@ -1532,6 +1482,44 @@
             "wires": [
                 [
                     "833a4250.748008"
+                ]
+            ]
+        },
+        {
+            "id": "4fb8ec8d.e8f0c4",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "change_stepstate_rejected",
+            "title": "Set the step state to warning as the import has not been approved",
+            "expected_case": "rejected",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_VideoRecognition_Switch_Job_State_Rejected.xsl"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1753.125,
+            "y": 468.75,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
                 ]
             ]
         }
