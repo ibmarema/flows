@@ -271,7 +271,7 @@
             "type": "function",
             "z": "b1f71e8d.e62778",
             "name": "mp4_target_filename",
-            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias\" + \n    \"_1_\" + \n    msg.payload.variables.timestamp + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
+            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 745.5,
@@ -719,11 +719,11 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 793,
-            "y": 1237,
+            "x": 320.5,
+            "y": 1242.0001220703125,
             "wires": [
                 [
-                    "6554f737.c90fe8"
+                    "e32e00ea.7535b8"
                 ]
             ]
         },
@@ -854,8 +854,8 @@
                     "v": ""
                 }
             ],
-            "x": 3265.5,
-            "y": 1237,
+            "x": 3700.5000762939453,
+            "y": 1244.499921798706,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
@@ -923,8 +923,8 @@
                     "v": ""
                 }
             ],
-            "x": 2938.5,
-            "y": 1238,
+            "x": 3373.5000762939453,
+            "y": 1245.499921798706,
             "wires": [
                 [
                     "98c06d71.935898"
@@ -939,8 +939,8 @@
             "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 2557,
-            "y": 1238,
+            "x": 2992.0000762939453,
+            "y": 1245.499921798706,
             "wires": [
                 [
                     "3c35dabf.e37956"
@@ -1006,8 +1006,8 @@
                     "v": ""
                 }
             ],
-            "x": 2284.5,
-            "y": 1145,
+            "x": 2719.5000762939453,
+            "y": 1152.499921798706,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1073,8 +1073,8 @@
                     "v": ""
                 }
             ],
-            "x": 2285,
-            "y": 1224,
+            "x": 2720.0000762939453,
+            "y": 1231.499921798706,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1140,8 +1140,8 @@
                     "v": ""
                 }
             ],
-            "x": 2283,
-            "y": 1287,
+            "x": 2718.0000762939453,
+            "y": 1294.499921798706,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1207,8 +1207,8 @@
                     "v": ""
                 }
             ],
-            "x": 2280,
-            "y": 1358,
+            "x": 2715.0000762939453,
+            "y": 1365.499921798706,
             "wires": [
                 [
                     "13fa600a.6c8e5"
@@ -1243,13 +1243,11 @@
                     "v": ""
                 }
             ],
-            "x": 1099.5,
-            "y": 1233,
+            "x": 903.7856979370117,
+            "y": 1225.8571615219116,
             "wires": [
                 [
-                    "da4746c2.f6fe8",
-                    "d5128db1.69f33",
-                    "7b170c9c.07d2cc"
+                    "2d8b7620.816bca"
                 ]
             ]
         },
@@ -1275,11 +1273,11 @@
                     "v": ""
                 }
             ],
-            "x": 1422.5,
-            "y": 1164,
+            "x": 1456.25,
+            "y": 1167.75,
             "wires": [
                 [
-                    "d15df4b3.59bf3"
+                    "484fe2d1.b3b26c"
                 ]
             ]
         },
@@ -1305,11 +1303,11 @@
                     "v": ""
                 }
             ],
-            "x": 1421,
-            "y": 1240,
+            "x": 1458.5,
+            "y": 1242.5,
             "wires": [
                 [
-                    "d15df4b3.59bf3"
+                    "484fe2d1.b3b26c"
                 ]
             ]
         },
@@ -1335,11 +1333,11 @@
                     "v": ""
                 }
             ],
-            "x": 1418,
-            "y": 1304,
+            "x": 1459.25,
+            "y": 1309.0001220703125,
             "wires": [
                 [
-                    "d15df4b3.59bf3"
+                    "484fe2d1.b3b26c"
                 ]
             ]
         },
@@ -1377,11 +1375,11 @@
                     "v": "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
                 }
             ],
-            "x": 1716.5,
-            "y": 1235,
+            "x": 1946.5,
+            "y": 1242.5,
             "wires": [
                 [
-                    "544b8532.8bbd8c"
+                    "dfce588d.91ff6"
                 ]
             ]
         },
@@ -1442,8 +1440,8 @@
                     "v": "$input.remark"
                 }
             ],
-            "x": 1971.5,
-            "y": 1237,
+            "x": 2447.9284744262695,
+            "y": 1243.071403503418,
             "wires": [
                 [
                     "f60aaf86.eeef08",
@@ -1520,6 +1518,136 @@
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "e32e00ea.7535b8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfd_temp_filename",
+            "func": "//variable declaration\nvar kfd_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_temp_filename = kfd_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 634.6428833007812,
+            "y": 1160.7143659591675,
+            "wires": [
+                [
+                    "a9ca9880.879ff"
+                ]
+            ]
+        },
+        {
+            "id": "dfce588d.91ff6",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "solr_target_filename",
+            "func": "//variable declaration\nvar solr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_report_for_solr.xml\";\n\n\n// output to debug sidebar\n//node.warn(solr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.solr_target_filename = solr_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 2176.071403503418,
+            "y": 1244.4641132354736,
+            "wires": [
+                [
+                    "544b8532.8bbd8c"
+                ]
+            ]
+        },
+        {
+            "id": "a9ca9880.879ff",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfi_temp_filename",
+            "func": "//variable declaration\nvar kfi_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_temp_filename = kfi_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 637.1428833007812,
+            "y": 1230.7143659591675,
+            "wires": [
+                [
+                    "e0c98d8e.badf58"
+                ]
+            ]
+        },
+        {
+            "id": "e0c98d8e.badf58",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfzip_temp_filename",
+            "func": "//variable declaration\nvar kfzip_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_temp_filename = kfzip_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 635.8928833007812,
+            "y": 1303.2143659591675,
+            "wires": [
+                [
+                    "6554f737.c90fe8"
+                ]
+            ]
+        },
+        {
+            "id": "484fe2d1.b3b26c",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "vr_target_filename",
+            "func": "//variable declaration\nvar vr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_VR_report.xml\";\n\n\n// output to debug sidebar\n//node.warn(vr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.vr_target_filename = vr_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1725,
+            "y": 1238.75,
+            "wires": [
+                [
+                    "d15df4b3.59bf3"
+                ]
+            ]
+        },
+        {
+            "id": "2d8b7620.816bca",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfd_target_filename",
+            "func": "//variable declaration\nvar kfd_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_target_filename = kfd_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1183.392837524414,
+            "y": 1084.464322090149,
+            "wires": [
+                [
+                    "9561ec50.7ec868"
+                ]
+            ]
+        },
+        {
+            "id": "9561ec50.7ec868",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfi_target_filename",
+            "func": "//variable declaration\nvar kfi_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_target_filename = kfi_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1167.142837524414,
+            "y": 1170.714322090149,
+            "wires": [
+                [
+                    "81c8eb57.a1f3e8"
+                ]
+            ]
+        },
+        {
+            "id": "81c8eb57.a1f3e8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfzip_target_filename",
+            "func": "//variable declaration\nvar kfzip_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_target_filename = kfzip_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1170.892837524414,
+            "y": 1239.464322090149,
+            "wires": [
+                [
+                    "7b170c9c.07d2cc",
+                    "d5128db1.69f33",
+                    "da4746c2.f6fe8"
                 ]
             ]
         }
