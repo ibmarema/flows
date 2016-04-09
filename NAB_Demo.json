@@ -73,8 +73,8 @@
             "url": "http://arema.media.ibmcloud.com:9090",
             "system": "admira",
             "user": "dmae",
-            "password": "pw4Ar3.mA",
-            "encrypted": false,
+            "password": "b027ef6677441cd784e7b6c9f8ebae788d22",
+            "encrypted": true,
             "x": 2563.5,
             "y": 315,
             "wires": [
@@ -255,7 +255,7 @@
             "type": "function",
             "z": "b1f71e8d.e62778",
             "name": "mp4_source_filename",
-            "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n//    Date.now() + \n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
+            "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 690.5,
@@ -271,7 +271,7 @@
             "type": "function",
             "z": "b1f71e8d.e62778",
             "name": "mp4_target_filename",
-            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias.mp4\" + \n    \"_1_\" + \n    Date.now() + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
+            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    \"EDahlias\" + \n    \"_1_\" + \n    Date.now() + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 745.5,
@@ -744,8 +744,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1717,
-            "y": 837,
+            "x": 1715,
+            "y": 900,
             "wires": [
                 [
                     "3cb153ba.08fb84"
@@ -786,8 +786,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 1714,
-            "y": 912,
+            "x": 1711,
+            "y": 828,
             "wires": [
                 [
                     "d588f2a1.e2f118"
@@ -825,7 +825,7 @@
             "z": "b1f71e8d.e62778",
             "nop": false,
             "tag": "",
-            "name": "nop_visualrecogbnition",
+            "name": "nop_visualrecognition",
             "title": "NOP Watson Visual Recognition",
             "expected_case": "checkVisualRecognition",
             "org_unit": "$variable.orgunit",
@@ -836,11 +836,14 @@
                     "v": ""
                 }
             ],
-            "x": 2023,
-            "y": 837,
+            "x": 2331,
+            "y": 900,
             "wires": [
                 [
-                    "2b4a3d4d.9c16d2"
+                    "f60aaf86.eeef08",
+                    "f932d504.1273f",
+                    "18a867d1.328d18",
+                    "c1835156.0de8a"
                 ]
             ]
         },
@@ -861,11 +864,407 @@
                     "v": ""
                 }
             ],
-            "x": 2002,
-            "y": 912,
+            "x": 1978,
+            "y": 826,
             "wires": [
                 [
                     "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "98c06d71.935898",
+            "type": "ecsi_client",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "send_visualrecog_subjob",
+            "title": "Send subjob to Import into Media AREMA Portal on [arema.media.ibmcloud.com] with parameters from [$variable.visualrecog_subjob_params_filename]",
+            "expected_case": "checkVisualRecognition",
+            "subfunction": "startTemplateJob",
+            "primary_ecsi_url": "http://arema.media.ibmcloud.com:9090/ecsi/services/admirafunctions",
+            "secondary_ecsi_url": "http://arema.media.ibmcloud.com:9090/ecsi/services/admirafunctions",
+            "remote_userid": "dmae",
+            "remote_password": "b027ef6677441cd784e7b6c9f8ebae788d22",
+            "remote_database": "admira",
+            "template_filename": "/home/dmae/admira/templates-ev/Demo_Flow_VisualRecognition_Import_MediaPortal.xsl",
+            "template_variables_filename": "$variable.visualrecog_subjob_params_filename",
+            "filename": "",
+            "mode_synchronous": "yes",
+            "fail_on_error": "yes",
+            "timeout": "",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 3349.5,
+            "y": 1242,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "3c35dabf.e37956",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_parameters_for_visualregoc_subjob",
+            "title": "Create parameters for Visual Recognition subjob into file [$variable.visualrecog_subjob_params_filename]",
+            "expected_case": "checkVisualRecognition",
+            "dest_filename": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Notify_VisualRecog_Subjob_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "target_filename",
+                    "v": "$variable.visualrecog_subjob_params_filename"
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xml_filename",
+                    "v": "$variable.visualrecog_subjob_params_filename"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                },
+                {
+                    "k": "clip_name",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "material_type",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "upload_remarks",
+                    "v": "$input.remark"
+                },
+                {
+                    "k": "video_filename",
+                    "v": "$variable.mp4_target_filename"
+                },
+                {
+                    "k": "kfi_filename",
+                    "v": ""
+                },
+                {
+                    "k": "kfd_filename",
+                    "v": ""
+                },
+                {
+                    "k": "solr_filename",
+                    "v": ""
+                }
+            ],
+            "x": 2933.5,
+            "y": 1244,
+            "wires": [
+                [
+                    "98c06d71.935898"
+                ]
+            ]
+        },
+        {
+            "id": "13fa600a.6c8e5",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "visualrecog_subjob_params_filename",
+            "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    Date.now() + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 2560,
+            "y": 1238,
+            "wires": [
+                [
+                    "3c35dabf.e37956"
+                ]
+            ]
+        },
+        {
+            "id": "f60aaf86.eeef08",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_mp4",
+            "title": "Transfer MP4 file [$variable.mp4_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "media_portal",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.mp4_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.mp4_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "passive",
+            "enable_noncritical_errors": "",
+            "chmod_file": "no",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "0",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2284.5,
+            "y": 1145,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "f932d504.1273f",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "transfer_kfi",
+            "title": "Transfer MP4 file [variable.$kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.kfi_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.kfi_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2285,
+            "y": 1224,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "18a867d1.328d18",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_kfd",
+            "title": "Transfer MP4 file [$variable.kfd_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.kfd_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.kfd_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2283,
+            "y": 1287,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "c1835156.0de8a",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_solr",
+            "title": "Transfer MP4 file [$variable.solr_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.solr_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.solr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2280,
+            "y": 1358,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
                 ]
             ]
         }
