@@ -834,8 +834,8 @@
             "remote_userid": "dmae",
             "remote_password": "b027ef6677441cd784e7b6c9f8ebae788d22",
             "remote_database": "admira",
-            "template_filename": "/home/dmae/admira/templates-ev/Demo_Flow_VisualRecognition_Import_MediaPortal.xsl",
-            "template_variables_filename": "$variable.visualrecog_subjob_params_filename",
+            "template_filename": "/home/dmae/admira/etc/templates-ev/Demo_Flow_VisualRecognition_Import_MediaPortal.xsl",
+            "template_variables_filename": "/home/dmae/admira/cache/$variable.visualrecog_subjob_params_filename",
             "filename": "",
             "mode_synchronous": "yes",
             "fail_on_error": "yes",
@@ -912,15 +912,15 @@
                 },
                 {
                     "k": "kfi_filename",
-                    "v": ""
+                    "v": "$variable.kfi_target_filename"
                 },
                 {
                     "k": "kfd_filename",
-                    "v": ""
+                    "v": "$variable.kfd_target_filename"
                 },
                 {
                     "k": "solr_filename",
-                    "v": ""
+                    "v": "$variable.solr_target_filename"
                 }
             ],
             "x": 3387.785820007324,
