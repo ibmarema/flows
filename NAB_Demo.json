@@ -60,7 +60,8 @@
             "y": 275,
             "wires": [
                 [
-                    "b8e0edcb.ac8268"
+                    "b8e0edcb.ac8268",
+                    "b9c1c601.759da8"
                 ]
             ]
         },
@@ -104,8 +105,8 @@
             "sheet": "NAB Demo",
             "auth": false,
             "once": false,
-            "x": 228,
-            "y": 734,
+            "x": 193,
+            "y": 1081,
             "wires": [
                 [
                     "b356797f.a79ef8"
@@ -120,8 +121,8 @@
             "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 513,
-            "y": 733,
+            "x": 478,
+            "y": 1080,
             "wires": [
                 [
                     "1fcbf4a5.fa4feb"
@@ -133,8 +134,8 @@
             "type": "subflow:d11a6d02.bbfb68",
             "z": "b1f71e8d.e62778",
             "name": "",
-            "x": 798,
-            "y": 732,
+            "x": 763,
+            "y": 1079,
             "wires": [],
             "subflow": "d11a6d02.bbfb68"
         },
@@ -448,7 +449,7 @@
             "properties": [
                 {
                     "k": "xslt_file",
-                    "v": "/home/dmae/admira/etc/Demo_VideoRecognition_Switch_Human_Task_Wait_Decision.xsl"
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Human_Task_Wait_Decision.xsl"
                 },
                 {
                     "k": "step_name_task_list_entry",
@@ -459,7 +460,12 @@
             "y": 465,
             "wires": [
                 [
-                    "2b4a3d4d.9c16d2"
+                    "7b59c692.25f9e",
+                    "a6848ad.0825a78",
+                    "9a0905b.bbbd278",
+                    "b35358d8.c2d3c8",
+                    "45d123f4.9f3094",
+                    "cd0793ae.6d1b48"
                 ]
             ]
         },
@@ -502,6 +508,366 @@
             "x": 2866.5,
             "y": 396,
             "wires": []
+        },
+        {
+            "id": "7b59c692.25f9e",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_cleversafe",
+            "title": "Decide if to switch to the workflow branch into store in Cleversafe object storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeCleversafe"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1682.5,
+            "y": 606,
+            "wires": [
+                [
+                    "2d4dfe67.7d452a"
+                ]
+            ]
+        },
+        {
+            "id": "2d4dfe67.7d452a",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_cleversafe",
+            "title": "NOP Cleversafe",
+            "expected_case": "storeCleversafe",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1949.5,
+            "y": 606,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "a6848ad.0825a78",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_rejected",
+            "title": "NOP Rejected",
+            "expected_case": "rejected",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1648.5,
+            "y": 528,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "9a0905b.bbbd278",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_Amazon",
+            "title": "Decide if to switch to the workflow branch to store into Amazon S3 object storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeAmazon"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1669,
+            "y": 693,
+            "wires": [
+                [
+                    "c86cf133.f5a99"
+                ]
+            ]
+        },
+        {
+            "id": "c86cf133.f5a99",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_amazon",
+            "title": "NOP Amazon",
+            "expected_case": "storeAmazon",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1932,
+            "y": 696,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "b35358d8.c2d3c8",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_box",
+            "title": "Decide if to switch to the workflow branch to store into Box.com storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeBox"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1666,
+            "y": 760,
+            "wires": [
+                [
+                    "8e6768a2.8c258"
+                ]
+            ]
+        },
+        {
+            "id": "45d123f4.9f3094",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_perform_visualrecognition",
+            "title": "Decide if to switch to the workflow branch to perform Watson Visual Recogition",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "checkVisualRecognition"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1717,
+            "y": 837,
+            "wires": [
+                [
+                    "3cb153ba.08fb84"
+                ]
+            ]
+        },
+        {
+            "id": "cd0793ae.6d1b48",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_perform_fraunhofer_de",
+            "title": "Decide if to switch to the workflow branch to perm Speech2Test using Fraunhofer Audio Mining (German)",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "checkFraunhoferDE"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1714,
+            "y": 912,
+            "wires": [
+                [
+                    "d588f2a1.e2f118"
+                ]
+            ]
+        },
+        {
+            "id": "8e6768a2.8c258",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_box",
+            "title": "NOP Box.com",
+            "expected_case": "storeBox",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1925,
+            "y": 766,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "3cb153ba.08fb84",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_visualrecogbnition",
+            "title": "NOP Watson Visual Recognition",
+            "expected_case": "checkVisualRecognition",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2023,
+            "y": 837,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "d588f2a1.e2f118",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_fraunhofer_de",
+            "title": "NOP Fraunhofer Speech2Test German",
+            "expected_case": "checkFraunhoferDE",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2002,
+            "y": 912,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
         }
     ]
 }
