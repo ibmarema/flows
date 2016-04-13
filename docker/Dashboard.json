@@ -1,0 +1,275 @@
+{
+    "id": "9b6b1c7f.7ce8c8",
+    "label": "Dashboard",
+    "nodes": [
+        {
+            "id": "4a9712f8.a11294",
+            "type": "file in",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "ECSI 9090",
+            "filename": "/home/run/ecsi_ecsi_9090.run",
+            "format": "utf8",
+            "x": 559.375,
+            "y": 202.5,
+            "wires": [
+                [
+                    "e98bb6f7.72524"
+                ]
+            ]
+        },
+        {
+            "id": "28275a8f.bc6a36",
+            "type": "inject",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "trigger everey 5 sec",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "5",
+            "crontab": "",
+            "once": false,
+            "x": 300,
+            "y": 187.5,
+            "wires": [
+                [
+                    "4a9712f8.a11294"
+                ]
+            ]
+        },
+        {
+            "id": "e98bb6f7.72524",
+            "type": "ui_text",
+            "z": "9b6b1c7f.7ce8c8",
+            "tab": "d458e3e6.b5a8d8",
+            "name": "SOAP",
+            "group": "AREMA API (ECSI)",
+            "order": 1,
+            "format": "{{msg.payload}}",
+            "x": 836.875,
+            "y": 206.25,
+            "wires": []
+        },
+        {
+            "id": "ec65e3fc.98417",
+            "type": "file in",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "ECSI Portal 9091",
+            "filename": "/home/run/ecsi_portal_9091.run",
+            "format": "utf8",
+            "x": 591.25,
+            "y": 348.75,
+            "wires": [
+                [
+                    "5a31a3cf.1a6d3c"
+                ]
+            ]
+        },
+        {
+            "id": "cdb4cd8f.1bee08",
+            "type": "inject",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "trigger everey 5 sec",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "5",
+            "crontab": "",
+            "once": false,
+            "x": 311.875,
+            "y": 333.75,
+            "wires": [
+                [
+                    "ec65e3fc.98417"
+                ]
+            ]
+        },
+        {
+            "id": "5a31a3cf.1a6d3c",
+            "type": "ui_text",
+            "z": "9b6b1c7f.7ce8c8",
+            "tab": "d458e3e6.b5a8d8",
+            "name": "REST",
+            "group": "AREMA API (ECSI)",
+            "order": 1,
+            "format": "{{msg.payload}}",
+            "x": 848.75,
+            "y": 352.5,
+            "wires": []
+        },
+        {
+            "id": "9b4298a7.2e6198",
+            "type": "tail",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "",
+            "filetype": "text",
+            "split": true,
+            "filename": "/home/log/JD",
+            "x": 340,
+            "y": 567,
+            "wires": [
+                []
+            ]
+        },
+        {
+            "id": "4dc7a8df.3f0398",
+            "type": "comment",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "tail filter command",
+            "info": "tail -F /home/log/dispatcher_keyframe_default_4_65.log | grep --line-buffered \"dispatch metric\" > /home/log/JD",
+            "x": 395,
+            "y": 641,
+            "wires": []
+        },
+        {
+            "id": "e887f27a.758bc",
+            "type": "function",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "parse roundtip time",
+            "func": "var regex = /^(.*)dispatch metric exit after \\[([0-9\\.]+)\\] ms$/\n\nvar result = msg.payload.match(regex);\nvar roundtriptime = result[2];\n\nmsg.payload = roundtriptime;\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 612.5,
+            "y": 572,
+            "wires": [
+                [
+                    "66e8f0f0.1dc578",
+                    "f38a21fa.8c2888"
+                ]
+            ]
+        },
+        {
+            "id": "fefcca33.49d99",
+            "type": "ui_gauge",
+            "z": "9b6b1c7f.7ce8c8",
+            "tab": "d458e3e6.b5a8d8",
+            "name": "Roundtrip Time [ms]",
+            "group": "Job Dispatcher",
+            "order": 1,
+            "format": "{{value}}",
+            "min": 0,
+            "max": "1000",
+            "x": 1174,
+            "y": 602,
+            "wires": []
+        },
+        {
+            "id": "6a4a0b65.76ac8c",
+            "type": "ui_chart",
+            "z": "9b6b1c7f.7ce8c8",
+            "tab": "d458e3e6.b5a8d8",
+            "name": "Roundtrip Time [ms]",
+            "group": "Job Dispatcher",
+            "order": 1,
+            "interpolate": "linear",
+            "nodata": "No Data",
+            "removeOlder": 1,
+            "removeOlderUnit": "3600",
+            "x": 1156,
+            "y": 762,
+            "wires": [
+                [],
+                []
+            ]
+        },
+        {
+            "id": "66e8f0f0.1dc578",
+            "type": "rbe",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "Block changes <50%",
+            "func": "deadband",
+            "gap": "50%",
+            "start": "",
+            "x": 831,
+            "y": 690,
+            "wires": [
+                [
+                    "6a4a0b65.76ac8c"
+                ]
+            ]
+        },
+        {
+            "id": "f38a21fa.8c2888",
+            "type": "rbe",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "Block changes <50%",
+            "func": "deadband",
+            "gap": "50%",
+            "start": "",
+            "x": 912,
+            "y": 578,
+            "wires": [
+                [
+                    "fefcca33.49d99"
+                ]
+            ]
+        },
+        {
+            "id": "beb3bd55.81145",
+            "type": "comment",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "/home/log/JD",
+            "info": "",
+            "x": 396,
+            "y": 682,
+            "wires": []
+        },
+        {
+            "id": "47f0746b.09b4c4",
+            "type": "flow-reader",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "Dashboard",
+            "auth": false,
+            "once": false,
+            "credentials": {
+                "user": "",
+                "password": ""
+            },
+            "x": 276,
+            "y": 984,
+            "wires": [
+                [
+                    "408a7b7b.f38aec"
+                ]
+            ]
+        },
+        {
+            "id": "408a7b7b.f38aec",
+            "type": "function",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 561,
+            "y": 983,
+            "wires": [
+                [
+                    "9dafe4b6.50c988"
+                ]
+            ]
+        },
+        {
+            "id": "9dafe4b6.50c988",
+            "type": "subflow:5c3f375b.be682",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "",
+            "x": 846,
+            "y": 982,
+            "wires": [],
+            "subflow": "5c3f375b.be682"
+        }
+    ],
+    "configs": [
+        {
+            "id": "d458e3e6.b5a8d8",
+            "type": "ui_tab",
+            "z": "9b6b1c7f.7ce8c8",
+            "name": "AREMA",
+            "icon": "dashboard",
+            "order": "1"
+        }
+    ]
+}
