@@ -1,0 +1,280 @@
+{
+    "id": "fff10788.b9d238",
+    "label": "Ustream",
+    "nodes": [
+        {
+            "id": "ccddc6c1.cb619",
+            "type": "http request",
+            "z": "fff10788.b9d238",
+            "name": "getChannelDetails",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 683.5,
+            "y": 190,
+            "wires": [
+                [
+                    "93ea65ba.4b442",
+                    "eb0cb55c.0edd"
+                ]
+            ]
+        },
+        {
+            "id": "f1fdf3fc.32e358",
+            "type": "inject",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 131,
+            "y": 157,
+            "wires": [
+                [
+                    "a3d869cd.83113"
+                ]
+            ]
+        },
+        {
+            "id": "a3d869cd.83113",
+            "type": "function",
+            "z": "fff10788.b9d238",
+            "name": "Set REST parameters",
+            "func": "\nmsg.url = \"https://api.ustream.tv/channels/22195154.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 397.5,
+            "y": 192,
+            "wires": [
+                [
+                    "ccddc6c1.cb619"
+                ]
+            ]
+        },
+        {
+            "id": "93ea65ba.4b442",
+            "type": "debug",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 982.5,
+            "y": 121.5,
+            "wires": []
+        },
+        {
+            "id": "62d294a7.42f714",
+            "type": "debug",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 1245.5,
+            "y": 664.5,
+            "wires": []
+        },
+        {
+            "id": "1aff4208.06cdc6",
+            "type": "job_start",
+            "z": "fff10788.b9d238",
+            "name": "ustream_live",
+            "title": "Ustream Live Receiver from channel []",
+            "jobtype": "ustream",
+            "priority": "500",
+            "starttime": "",
+            "startbatch": "",
+            "endbatch": "",
+            "searchTag1": "",
+            "searchTag2": "",
+            "searchTag3": "",
+            "searchTagInt1": "",
+            "searchTagInt2": "",
+            "searchTagInt3": "",
+            "searchTagDate1": "",
+            "searchTagDate2": "",
+            "searchTagDate3": "",
+            "x": 528.5,
+            "y": 544.5,
+            "wires": [
+                [
+                    "a98f8cab.38fb"
+                ]
+            ]
+        },
+        {
+            "id": "6d22642d.cfcc34",
+            "type": "job_end",
+            "z": "fff10788.b9d238",
+            "includeparameters": true,
+            "eojtag": "",
+            "x": 850.5,
+            "y": 662.5,
+            "wires": [
+                [
+                    "61060a5c.0dccc4",
+                    "803e8827.470c68"
+                ]
+            ]
+        },
+        {
+            "id": "803e8827.470c68",
+            "type": "job_send",
+            "z": "fff10788.b9d238",
+            "holdjob": false,
+            "url": "http://arema.media.ibmcloud.com:9090",
+            "system": "admir",
+            "user": "dmae",
+            "password": "pw4Ar3.mA",
+            "encrypted": false,
+            "x": 1054.5,
+            "y": 664.5,
+            "wires": [
+                [
+                    "62d294a7.42f714"
+                ]
+            ]
+        },
+        {
+            "id": "a98f8cab.38fb",
+            "type": "notify",
+            "z": "fff10788.b9d238",
+            "nop": true,
+            "tag": "",
+            "name": "nop",
+            "title": "nop",
+            "expected_case": "",
+            "dest_filename": "",
+            "content_filename": "",
+            "org_unit": "",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "",
+            "stop_deliver_on_failure": "",
+            "fail_on_error": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "properties": [],
+            "x": 697.5,
+            "y": 569.5,
+            "wires": [
+                [
+                    "6d22642d.cfcc34"
+                ]
+            ]
+        },
+        {
+            "id": "61060a5c.0dccc4",
+            "type": "debug",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "active": false,
+            "console": "false",
+            "complete": "false",
+            "x": 1002.5,
+            "y": 577.5,
+            "wires": []
+        },
+        {
+            "id": "1a11deee.654421",
+            "type": "template",
+            "z": "fff10788.b9d238",
+            "name": "Input XML",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"channel_status\">{{payload.channel.status}}</param>\n        <param name=\"channel_id\">{{payload.channel.id}}</param>\n        <param name=\"channel_title\">{{payload.channel.title}}</param>\n        <!--\n        <param name=\"channel_description\">{{payload.channel.description}}</param>\n        -->\n        <param name=\"channel_url\">{{payload.channel.url}}</param>\n        <param name=\"channel_tinyurl\">{{payload.channel.tinyurl}}</param>\n        <!--\n        <param name=\"channel_stream_hls\">{{payload.channel.stream.hls}}</param>\n        -->\n        <param name=\"channel_owner_username\">{{payload.channel.owner.username}}</param>\n    </properties>\n</admira>",
+            "x": 216,
+            "y": 475,
+            "wires": [
+                [
+                    "bacd3521.8fbcf8",
+                    "1aff4208.06cdc6"
+                ]
+            ]
+        },
+        {
+            "id": "bacd3521.8fbcf8",
+            "type": "debug",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "active": false,
+            "console": "false",
+            "complete": "true",
+            "x": 442.5,
+            "y": 452.5,
+            "wires": []
+        },
+        {
+            "id": "eb0cb55c.0edd",
+            "type": "nr-switch",
+            "z": "fff10788.b9d238",
+            "name": "detect onair status",
+            "property": "payload.channel.status",
+            "propertyType": "msg",
+            "rules": [
+                {
+                    "t": "eq",
+                    "v": "live",
+                    "vt": "str"
+                }
+            ],
+            "checkall": "true",
+            "outputs": 1,
+            "x": 965,
+            "y": 220,
+            "wires": [
+                [
+                    "1a11deee.654421"
+                ]
+            ]
+        },
+        {
+            "id": "2fa1f3eb.8c2e64",
+            "type": "flow-reader",
+            "z": "fff10788.b9d238",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "Ustream",
+            "auth": false,
+            "once": false,
+            "x": 175,
+            "y": 830,
+            "wires": [
+                [
+                    "615d9bd0.4b337c"
+                ]
+            ]
+        },
+        {
+            "id": "615d9bd0.4b337c",
+            "type": "function",
+            "z": "fff10788.b9d238",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 460,
+            "y": 829,
+            "wires": [
+                [
+                    "8fa1390c.49a2b8"
+                ]
+            ]
+        },
+        {
+            "id": "8fa1390c.49a2b8",
+            "type": "subflow:3034f64e.09f3d2",
+            "z": "fff10788.b9d238",
+            "name": "",
+            "x": 745,
+            "y": 828,
+            "wires": [],
+            "subflow": "3034f64e.09f3d2"
+        }
+    ]
+}

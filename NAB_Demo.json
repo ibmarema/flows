@@ -1,0 +1,1670 @@
+{
+    "id": "b1f71e8d.e62778",
+    "label": "NAB Demo",
+    "nodes": [
+        {
+            "id": "4df7da63.ccd21c",
+            "type": "inject",
+            "z": "b1f71e8d.e62778",
+            "name": "Start Workflow",
+            "topic": "",
+            "payload": "",
+            "payloadType": "str",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 129.42861938476562,
+            "y": 195.42858505249023,
+            "wires": [
+                [
+                    "b5139c35.b2546"
+                ]
+            ]
+        },
+        {
+            "id": "e459939f.878cd",
+            "type": "job_start",
+            "z": "b1f71e8d.e62778",
+            "name": "nab_demo",
+            "title": "NAB Demo",
+            "jobtype": "demo_upload",
+            "priority": "500",
+            "starttime": "",
+            "startbatch": "",
+            "endbatch": "",
+            "searchTag1": "",
+            "searchTag2": "",
+            "searchTag3": "",
+            "searchTagInt1": "",
+            "searchTagInt2": "",
+            "searchTagInt3": "",
+            "searchTagDate1": "",
+            "searchTagDate2": "",
+            "searchTagDate3": "",
+            "x": 485.5000114440918,
+            "y": 196.857159614563,
+            "wires": [
+                [
+                    "8e68e037.d90048",
+                    "61ff1bc1.64662c"
+                ]
+            ]
+        },
+        {
+            "id": "2b4a3d4d.9c16d2",
+            "type": "job_end",
+            "z": "b1f71e8d.e62778",
+            "includeparameters": false,
+            "eojtag": "",
+            "x": 2290.785743713379,
+            "y": 397.8571500778198,
+            "wires": [
+                [
+                    "b8e0edcb.ac8268",
+                    "b9c1c601.759da8"
+                ]
+            ]
+        },
+        {
+            "id": "b9c1c601.759da8",
+            "type": "job_send",
+            "z": "b1f71e8d.e62778",
+            "holdjob": false,
+            "url": "http://arema.media.ibmcloud.com:9090",
+            "system": "admira",
+            "user": "dmae",
+            "password": "b027ef6677441cd784e7b6c9f8ebae788d22",
+            "encrypted": true,
+            "x": 2577.785743713379,
+            "y": 437.8571500778198,
+            "wires": [
+                [
+                    "6612542b.162184"
+                ]
+            ]
+        },
+        {
+            "id": "6612542b.162184",
+            "type": "debug",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 2792.785743713379,
+            "y": 440.8571500778198,
+            "wires": []
+        },
+        {
+            "id": "470146c6.7618f",
+            "type": "flow-reader",
+            "z": "b1f71e8d.e62778",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "NAB Demo",
+            "auth": false,
+            "once": false,
+            "x": 194.14293670654297,
+            "y": 71.71417140960693,
+            "wires": [
+                [
+                    "b356797f.a79ef8"
+                ]
+            ]
+        },
+        {
+            "id": "b356797f.a79ef8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 479.14293670654297,
+            "y": 70.71417140960693,
+            "wires": [
+                [
+                    "1fcbf4a5.fa4feb"
+                ]
+            ]
+        },
+        {
+            "id": "1fcbf4a5.fa4feb",
+            "type": "subflow:d11a6d02.bbfb68",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "x": 764.142936706543,
+            "y": 69.71417140960693,
+            "wires": [],
+            "subflow": "d11a6d02.bbfb68"
+        },
+        {
+            "id": "8e68e037.d90048",
+            "type": "debug",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "active": false,
+            "console": "false",
+            "complete": "true",
+            "x": 666.7857437133789,
+            "y": 158.85715007781982,
+            "wires": []
+        },
+        {
+            "id": "61ff1bc1.64662c",
+            "type": "job_vars",
+            "z": "b1f71e8d.e62778",
+            "name": "Constants",
+            "vartype": "variable",
+            "variables": [
+                {
+                    "k": "orgunit",
+                    "v": "admira"
+                },
+                {
+                    "k": "upload_base_dir",
+                    "v": "/home/dmae"
+                }
+            ],
+            "x": 677.9286499023438,
+            "y": 256.2856922149658,
+            "wires": [
+                [
+                    "bb3e2588.6a351"
+                ]
+            ]
+        },
+        {
+            "id": "b8e0edcb.ac8268",
+            "type": "debug",
+            "z": "b1f71e8d.e62778",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 2498.785743713379,
+            "y": 348.8571500778198,
+            "wires": []
+        },
+        {
+            "id": "b5139c35.b2546",
+            "type": "template",
+            "z": "b1f71e8d.e62778",
+            "name": "XML",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"sequence_name\">Name_of_Sequence</param>\n\t\t<param name=\"material_type\">Clips</param>\n\t\t<param name=\"remark\">Remarks</param>\n\t\t<param name=\"redaktion_lang\"/>\n\t\t<param name=\"sendetitel\"/>\n\t\t<param name=\"beitragsname\"/>\n\t\t<param name=\"redakteur\"/>\n\t\t<param name=\"autor\"/>\n\t\t<param name=\"sendedatum\"/>\n\t\t<param name=\"projektname_lang\"/>\n\t\t<param name=\"lookup_performed\">false</param>\n\t\t<param name=\"priority_import\">false</param>\n\t\t<param name=\"avid_transfer\">false</param>\n\t\t<param name=\"type_of_source\">File</param>\n\t\t<param name=\"portal_user_id\">dmae</param>\n\t\t<param name=\"portal_user_first_name\">Max</param>\n\t\t<param name=\"portal_user_last_name\">Mustermann</param>\n\t\t<param name=\"portal_user_roles\">filter_types_edit filter_date_edit filter_text_edit filter_job_description_search filter_other_edit filter_id_edit filter_state_edit job_start job_cancel job_delete job_restart job_delete and job_restart job_prio job_comment job_error_clear job_action_bar job_step_view job_parameter job_diagram_view job_gantt_view job_gannt_view essence_info fm_state_edit fm_dates_edit fm_jobid_edit fm_filename_edit fm_delete_file fm_change_expiration fm_disable_expirtation upload_portlet upload_arema_monitor upload_file upload_p2 upload_xdcam upload_priority dashboard_import system_values_edit user_management edi_registry agent_management agent_pause agent_resume agent_stop agent_delete agent_action_bar agent_step_list agent_parameter avidsendto_portlet avidsendto_arema_monitor avidsendto_priority rules_builder statistics_restore_tape statistics_step_waiting_time statistics_number_and_duration system_values_view job_link task_list task_view hsb_recordtodolist dynamicform_portlet job_logviewer</param>\n\t\t<param name=\"ftp_upload_host\">159.122.4.146:21</param>\n\t\t<param name=\"ftp_upload_user\">dmae</param>\n\t\t<param name=\"ftp_upload_password\">pw4Ar3.mA</param>\n\t\t<param name=\"ftp_upload_base_directory\">/admira/cache/</param>\n\t\t<param name=\"ftp_upload_session_directory\">2016-04-08_20-50-25_608</param>\n\t\t<param name=\"url_hostname\">159.122.4.146:8089</param>\n\t\t<param name=\"portal_site\">portal_site</param>\n\t</properties>\n\t<container>\n\t\t<clips>\n\t\t\t<clip sequence=\"1\">\n\t\t\t\t<videoUri source=\"C:\\DemoFilme\\EDahlias.mp4\" size= \"18862865\" >ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/2016-04-08_20-50-25_608/EDahlias.mp4</videoUri>\n\t\t\t</clip>\n\t\t</clips>\n\t</container>\n</admira>",
+            "x": 309.7857971191406,
+            "y": 196.28570079803467,
+            "wires": [
+                [
+                    "e459939f.878cd"
+                ]
+            ]
+        },
+        {
+            "id": "ed8c825f.6431a",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_mp4_to_cache",
+            "title": "Copy (in tail mode) [$variable.mp4_source_filename] to cache as [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "source_filename": "$variable.mp4_source_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.mp4_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "4096",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "tail_header_size_list",
+                    "v": "8000"
+                },
+                {
+                    "k": "transfer_inactivity_timeout",
+                    "v": "5"
+                },
+                {
+                    "k": "header_total_waiting_timeout",
+                    "v": "5"
+                },
+                {
+                    "k": "tail_full_filename_list",
+                    "v": "$variable.mp4_source_filename"
+                },
+                {
+                    "k": "tail_initial_wait_filename_list",
+                    "v": "$variable.mp4_source_filename"
+                }
+            ],
+            "x": 1008.7857437133789,
+            "y": 179.85715007781982,
+            "wires": [
+                [
+                    "d4e7021a.ef3b3"
+                ]
+            ]
+        },
+        {
+            "id": "833a4250.748008",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_source_filename",
+            "func": "//variable declaration\nvar mp4_source_filename =    \n    msg.payload.variables.upload_base_dir + \n    msg.payload.input.ftp_upload_base_directory + \n    \"2016-04-08_20-50-25_608/\" + \n    \"EDahlias.mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_source_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_source_filename = mp4_source_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 661.5000915527344,
+            "y": 466.5714340209961,
+            "wires": [
+                [
+                    "64cbb34d.bb9614"
+                ]
+            ]
+        },
+        {
+            "id": "64cbb34d.bb9614",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_target_filename",
+            "func": "//variable declaration\nvar mp4_target_filename =\n    \"Demo_VideoRecognition/mp4/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".mp4\";\n\n\n// output to debug sidebar\n//node.warn(mp4_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_target_filename = mp4_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 664.0715179443359,
+            "y": 548.4286108016968,
+            "wires": [
+                [
+                    "ed8c825f.6431a"
+                ]
+            ]
+        },
+        {
+            "id": "d4e7021a.ef3b3",
+            "type": "access",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "access_mp4",
+            "title": "Access of [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "filename": "$variable.mp4_target_filename",
+            "filenames": "",
+            "user": "",
+            "subfunction": "",
+            "virtual_cache": "",
+            "cache_timeout": "",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1229.785789489746,
+            "y": 183.57144355773926,
+            "wires": [
+                [
+                    "5e45b4e.36c3fcc"
+                ]
+            ]
+        },
+        {
+            "id": "5e45b4e.36c3fcc",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_approval_task_metadata",
+            "title": "Creation of task metadata for human approval for imported clip [$input.sequence_name] file [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Task_Metadata_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [],
+            "properties": [
+                {
+                    "k": "priority",
+                    "v": "medium"
+                },
+                {
+                    "k": "title",
+                    "v": "Watson demo: Approval of uploaded clip [$input.sequence_name]"
+                },
+                {
+                    "k": "access",
+                    "v": "o=admira"
+                },
+                {
+                    "k": "form_template",
+                    "v": "taskView"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                },
+                {
+                    "k": "clip_name",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "material_type",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "upload_remarks",
+                    "v": "$input.remark"
+                },
+                {
+                    "k": "video_filename",
+                    "v": "$variable.mp4_target_filename"
+                }
+            ],
+            "x": 1088.0714263916016,
+            "y": 291.42858695983887,
+            "wires": [
+                [
+                    "410dabb1.291c14"
+                ]
+            ]
+        },
+        {
+            "id": "410dabb1.291c14",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_approval_task_list_entry",
+            "title": "Creation of task list entry for human approval for imported clip  [$input.sequence_name] file [$variable.mp4_target_filename]",
+            "expected_case": "",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Task_List_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "priority",
+                    "v": "medium"
+                },
+                {
+                    "k": "title",
+                    "v": "Watson demo: Approval of uploaded clip [$input.sequence_name]"
+                },
+                {
+                    "k": "access",
+                    "v": "o=admira"
+                },
+                {
+                    "k": "form_template",
+                    "v": "taskView"
+                }
+            ],
+            "x": 1402.7857513427734,
+            "y": 301.85716438293457,
+            "wires": [
+                [
+                    "6a98ceb9.131168",
+                    "dde66b00.188ee"
+                ]
+            ]
+        },
+        {
+            "id": "dde66b00.188ee",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "wait_for_human_task_result",
+            "title": "Wait for the result of the human task action and evaluate the result (setting the runtime case accordingly)",
+            "expected_case": "",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Human_Task_Wait_Decision.xsl"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1318.9284439086914,
+            "y": 597.8571100234985,
+            "wires": [
+                [
+                    "7b59c692.25f9e",
+                    "9a0905b.bbbd278",
+                    "b35358d8.c2d3c8",
+                    "45d123f4.9f3094",
+                    "cd0793ae.6d1b48",
+                    "4fb8ec8d.e8f0c4"
+                ]
+            ]
+        },
+        {
+            "id": "86dc8279.519fa8",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Job Titel dynamisch machen",
+            "info": "",
+            "x": 446.35717010498047,
+            "y": 282.1428737640381,
+            "wires": []
+        },
+        {
+            "id": "5b6783e8.29c274",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Filename umparsten in name/value Syntax",
+            "info": "",
+            "x": 186.21434020996094,
+            "y": 344.28571128845215,
+            "wires": []
+        },
+        {
+            "id": "f48df398.644ac",
+            "type": "comment",
+            "z": "b1f71e8d.e62778",
+            "name": "Speichern des Jobs, des XMLs und des Flows",
+            "info": "",
+            "x": 2893.642578125,
+            "y": 498.857141494751,
+            "wires": []
+        },
+        {
+            "id": "7b59c692.25f9e",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_cleversafe",
+            "title": "Decide if to switch to the workflow branch into store in Cleversafe object storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeCleversafe"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1696.785743713379,
+            "y": 728.8571500778198,
+            "wires": [
+                [
+                    "2d4dfe67.7d452a"
+                ]
+            ]
+        },
+        {
+            "id": "2d4dfe67.7d452a",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_cleversafe",
+            "title": "NOP Cleversafe",
+            "expected_case": "storeCleversafe",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1963.785743713379,
+            "y": 728.8571500778198,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "9a0905b.bbbd278",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_Amazon",
+            "title": "Decide if to switch to the workflow branch to store into Amazon S3 object storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeAmazon"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1683.285743713379,
+            "y": 815.8571500778198,
+            "wires": [
+                [
+                    "c86cf133.f5a99"
+                ]
+            ]
+        },
+        {
+            "id": "c86cf133.f5a99",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_amazon",
+            "title": "NOP Amazon",
+            "expected_case": "storeAmazon",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1946.285743713379,
+            "y": 818.8571500778198,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "b35358d8.c2d3c8",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_store_box",
+            "title": "Decide if to switch to the workflow branch to store into Box.com storage",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "storeBox"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1680.285743713379,
+            "y": 882.8571500778198,
+            "wires": [
+                [
+                    "8e6768a2.8c258"
+                ]
+            ]
+        },
+        {
+            "id": "45d123f4.9f3094",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_perform_visualrecognition",
+            "title": "Decide if to switch to the workflow branch to perform Watson Visual Recogition",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "checkVisualRecognition"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 334.7857437133789,
+            "y": 1364.8572721481323,
+            "wires": [
+                [
+                    "e32e00ea.7535b8"
+                ]
+            ]
+        },
+        {
+            "id": "cd0793ae.6d1b48",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "switch_perform_fraunhofer_de",
+            "title": "Decide if to switch to the workflow branch to perm Speech2Test using Fraunhofer Audio Mining (German)",
+            "expected_case": "approved",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_Action_Decision.xsl"
+                },
+                {
+                    "k": "action",
+                    "v": "checkFraunhoferDE"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1725.285743713379,
+            "y": 950.8571500778198,
+            "wires": [
+                [
+                    "d588f2a1.e2f118"
+                ]
+            ]
+        },
+        {
+            "id": "8e6768a2.8c258",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_box",
+            "title": "NOP Box.com",
+            "expected_case": "storeBox",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1939.285743713379,
+            "y": 888.8571500778198,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "d588f2a1.e2f118",
+            "type": "nop",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "nop_fraunhofer_de",
+            "title": "NOP Fraunhofer Speech2Test German",
+            "expected_case": "checkFraunhoferDE",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1992.285743713379,
+            "y": 948.8571500778198,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "98c06d71.935898",
+            "type": "ecsi_client",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "send_visualrecog_subjob",
+            "title": "Send subjob to Import into Media AREMA Portal on [arema.media.ibmcloud.com] with parameters from [$variable.visualrecog_subjob_params_filename]",
+            "expected_case": "checkVisualRecognition",
+            "subfunction": "startTemplateJob",
+            "primary_ecsi_url": "http://arema.media.ibmcloud.com:9090/ecsi/services/admirafunctions",
+            "secondary_ecsi_url": "http://arema.media.ibmcloud.com:9090/ecsi/services/admirafunctions",
+            "remote_userid": "dmae",
+            "remote_password": "b027ef6677441cd784e7b6c9f8ebae788d22",
+            "remote_database": "admira",
+            "template_filename": "/home/dmae/admira/etc/templates-ev/Demo_Flow_VisualRecognition_Import_MediaPortal.xsl",
+            "template_variables_filename": "/home/dmae/admira/cache/$variable.visualrecog_subjob_params_filename",
+            "filename": "",
+            "mode_synchronous": "yes",
+            "fail_on_error": "yes",
+            "timeout": "",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 3714.785820007324,
+            "y": 1367.3570718765259,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "3c35dabf.e37956",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "create_parameters_for_visualregoc_subjob",
+            "title": "Create parameters for Visual Recognition subjob into file [$variable.visualrecog_subjob_params_filename]",
+            "expected_case": "checkVisualRecognition",
+            "dest_filename": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Notify_VisualRecog_Subjob_Destination.xml",
+            "content_filename": "",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "target_filename",
+                    "v": "$variable.visualrecog_subjob_params_filename"
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xml_filename",
+                    "v": "$variable.visualrecog_subjob_params_filename"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                },
+                {
+                    "k": "clip_name",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "material_type",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "upload_remarks",
+                    "v": "$input.remark"
+                },
+                {
+                    "k": "video_filename",
+                    "v": "$variable.mp4_target_filename"
+                },
+                {
+                    "k": "kfi_filename",
+                    "v": "$variable.kfi_target_filename"
+                },
+                {
+                    "k": "kfd_filename",
+                    "v": "$variable.kfd_target_filename"
+                },
+                {
+                    "k": "solr_filename",
+                    "v": "$variable.solr_target_filename"
+                }
+            ],
+            "x": 3387.785820007324,
+            "y": 1368.3570718765259,
+            "wires": [
+                [
+                    "98c06d71.935898"
+                ]
+            ]
+        },
+        {
+            "id": "13fa600a.6c8e5",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "visualrecog_subjob_params_filename",
+            "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 3006.285820007324,
+            "y": 1368.3570718765259,
+            "wires": [
+                [
+                    "3c35dabf.e37956"
+                ]
+            ]
+        },
+        {
+            "id": "f60aaf86.eeef08",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_mp4",
+            "title": "Transfer MP4 file [$variable.mp4_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "media_portal",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.mp4_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.mp4_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "passive",
+            "enable_noncritical_errors": "",
+            "chmod_file": "no",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "0",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2733.785820007324,
+            "y": 1275.3570718765259,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "f932d504.1273f",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_kfi",
+            "title": "Transfer MP4 file [$variable.kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.kfi_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.kfi_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2734.285820007324,
+            "y": 1354.3570718765259,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "18a867d1.328d18",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_kfd",
+            "title": "Transfer MP4 file [$variable.kfd_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.kfd_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.kfd_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2732.285820007324,
+            "y": 1417.3570718765259,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "c1835156.0de8a",
+            "type": "edi_generic_ftp",
+            "z": "b1f71e8d.e62778",
+            "nop": true,
+            "tag": "",
+            "name": "transfer_solr",
+            "title": "Transfer MP4 file [$variable.solr_target_filename] to media Portal on [arema.media.ibmcloud.com]",
+            "expected_case": "checkVisualRecognition",
+            "direction": "",
+            "device_name": "arema.media.ibmcloud.com",
+            "input_pipe": "",
+            "output_pipe": "",
+            "usecase": "PUT_FILE",
+            "source_filename": "$variable.solr_target_filename",
+            "target_filename": "/home/dmae/admira/cache/$variable.solr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "login_tries": "",
+            "device_retry_order": "",
+            "overwrite": "yes",
+            "force_unsecure_overwrite": "",
+            "ftp_connect_mode": "",
+            "enable_noncritical_errors": "",
+            "chmod_file": "",
+            "new_remote_directory": "",
+            "remove_remote_directory": "",
+            "max_transfer_speed": "",
+            "start_frame": "",
+            "transfer_size": "",
+            "transfer_mode": "",
+            "mobid": "",
+            "source_mobid": "",
+            "format_definition": "",
+            "storage_location": "",
+            "storage_location_longgop": "",
+            "interplay_ws_timeout": "",
+            "interplay_tm_device": "",
+            "interplay_tm_max_retry": "",
+            "media_services_output_filepath": "",
+            "avid_priority": "",
+            "audio_bit_depth": "",
+            "audio_sample_rate": "",
+            "transfer_buffer_size": "",
+            "network_buffer_size": "",
+            "encoding": "",
+            "keep_alive_sleep_time": "",
+            "device_max_retry": "",
+            "source_filename_remote": "",
+            "target_filename_remote": "",
+            "checksum_algorithm": "",
+            "checksum_metadata_field": "",
+            "checksum_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2729.285820007324,
+            "y": 1488.3570718765259,
+            "wires": [
+                [
+                    "13fa600a.6c8e5"
+                ]
+            ]
+        },
+        {
+            "id": "6554f737.c90fe8",
+            "type": "external_command",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "generate_keyframes",
+            "title": "Generate keyframes of [$variable.mp4_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "exec_name": "/home/dmae/admira/bin/create_keyframe.pl",
+            "source_filenames": "$variable.mp4_target_filename",
+            "target_filenames": "$variable.kfd_temp_filename",
+            "additional_parameters": "",
+            "org_unit": "$variable.orgunit",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 918.0714416503906,
+            "y": 1348.7143115997314,
+            "wires": [
+                [
+                    "2d8b7620.816bca"
+                ]
+            ]
+        },
+        {
+            "id": "da4746c2.f6fe8",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_data_to_cache",
+            "title": "Copy [$variable.kfd_temp_filename] to cache as [$variable.kfd_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfd_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfd_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1470.535743713379,
+            "y": 1290.6071500778198,
+            "wires": [
+                [
+                    "484fe2d1.b3b26c"
+                ]
+            ]
+        },
+        {
+            "id": "d5128db1.69f33",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_index_to_cache",
+            "title": "Copy [$variable.kfi_temp_filename] to cache as [$variable.kfi_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfi_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfi_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1472.785743713379,
+            "y": 1365.3571500778198,
+            "wires": [
+                [
+                    "484fe2d1.b3b26c"
+                ]
+            ]
+        },
+        {
+            "id": "7b170c9c.07d2cc",
+            "type": "copy_to_cache",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "copy_kf_zip_to_cache",
+            "title": "Copy [$variable.kfzip_temp_filename] to cache as [$variable.kfzip_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "source_filename": "$variable.kfzip_temp_filename",
+            "contained_file_list": "",
+            "target_filename": "$variable.kfzip_target_filename",
+            "file_list": "",
+            "org_unit": "$variable.orgunit",
+            "block_size": "",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 1473.535743713379,
+            "y": 1431.8572721481323,
+            "wires": [
+                [
+                    "484fe2d1.b3b26c"
+                ]
+            ]
+        },
+        {
+            "id": "d15df4b3.59bf3",
+            "type": "plugin_alias",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "visual_recognition",
+            "title": "Visual recognition of [$variable.kfzip_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "plugin_alias": "bluemix_demo",
+            "source_filename": "$variable.kfzip_target_filename",
+            "target_filename": "$variable.vr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "bluemix_user",
+                    "v": "f39e34a3-1a22-49ac-b744-e945bd4de49d"
+                },
+                {
+                    "k": "bluemix_password",
+                    "v": "uBZtU4hKigZj"
+                },
+                {
+                    "k": "bluemix_image_analysis_url",
+                    "v": "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
+                }
+            ],
+            "x": 1960.785743713379,
+            "y": 1365.3571500778198,
+            "wires": [
+                [
+                    "dfce588d.91ff6"
+                ]
+            ]
+        },
+        {
+            "id": "544b8532.8bbd8c",
+            "type": "notify",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "transform_vr_result_for_solr",
+            "title": "Generation of [$variable.solr_target_filename] for Solr from Visual Recognition result [$variable.vr_target_filename]",
+            "expected_case": "checkVisualRecognition",
+            "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Solr_Destination.xml",
+            "content_filename": "$variable.vr_target_filename",
+            "org_unit": "$variable.orgunit",
+            "metadata_essence_": "$variable.mp4_target_filename",
+            "fail_on_predecessor_error": "yes",
+            "stop_deliver_on_failure": "yes",
+            "fail_on_error": "yes",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "target_filename",
+                    "v": "$variable.solr_target_filename"
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xml_filename",
+                    "v": "$variable.solr_target_filename"
+                },
+                {
+                    "k": "mainsrcFilename",
+                    "v": "$variable.mp4_target_filename"
+                },
+                {
+                    "k": "mainkfifile",
+                    "v": "$variable.kfi_target_filename"
+                },
+                {
+                    "k": "filenamewithoutext",
+                    "v": "$variable.mp4_label"
+                },
+                {
+                    "k": "completetimestamp",
+                    "v": "$variable.timestamp"
+                },
+                {
+                    "k": "essence_description",
+                    "v": "$input.sequence_name"
+                },
+                {
+                    "k": "materialtypfromuploadportal",
+                    "v": "$input.material_type"
+                },
+                {
+                    "k": "remarksfromuploadportal",
+                    "v": "$input.remark"
+                }
+            ],
+            "x": 2462.2142181396484,
+            "y": 1365.9285535812378,
+            "wires": [
+                [
+                    "f60aaf86.eeef08",
+                    "f932d504.1273f",
+                    "18a867d1.328d18",
+                    "c1835156.0de8a"
+                ]
+            ]
+        },
+        {
+            "id": "bb3e2588.6a351",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "mp4_label",
+            "func": "//variable declaration\nvar mp4_label =\n    \"EDahlias\";\n\n\n// output to debug sidebar\n//node.warn(mp4_label);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_label = mp4_label;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 670.4286270141602,
+            "y": 335.28573417663574,
+            "wires": [
+                [
+                    "c63d97b2.3ed218"
+                ]
+            ]
+        },
+        {
+            "id": "c63d97b2.3ed218",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "timestamp",
+            "func": "//variable declaration\nvar timestamp =\n    Date.now();\n\n\n// output to debug sidebar\n//node.warn(timestamp);\n\n// add to msg to be passed on\nmsg.payload.variables.timestamp = timestamp;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 666.0001258850098,
+            "y": 397.7142791748047,
+            "wires": [
+                [
+                    "833a4250.748008"
+                ]
+            ]
+        },
+        {
+            "id": "4fb8ec8d.e8f0c4",
+            "type": "switch",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "change_stepstate_rejected",
+            "title": "Set the step state to warning as the import has not been approved",
+            "expected_case": "rejected",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_VideoRecognition_Switch_Job_State_Rejected.xsl"
+                },
+                {
+                    "k": "step_name_task_list_entry",
+                    "v": "create_approval_task_list_entry"
+                }
+            ],
+            "x": 1767.410743713379,
+            "y": 591.6071500778198,
+            "wires": [
+                [
+                    "2b4a3d4d.9c16d2"
+                ]
+            ]
+        },
+        {
+            "id": "e32e00ea.7535b8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfd_temp_filename",
+            "func": "//variable declaration\nvar kfd_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_temp_filename = kfd_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 648.9286270141602,
+            "y": 1283.5715160369873,
+            "wires": [
+                [
+                    "a9ca9880.879ff"
+                ]
+            ]
+        },
+        {
+            "id": "dfce588d.91ff6",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "solr_target_filename",
+            "func": "//variable declaration\nvar solr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_report_for_solr.xml\";\n\n\n// output to debug sidebar\n//node.warn(solr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.solr_target_filename = solr_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 2190.357147216797,
+            "y": 1367.3212633132935,
+            "wires": [
+                [
+                    "544b8532.8bbd8c"
+                ]
+            ]
+        },
+        {
+            "id": "a9ca9880.879ff",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfi_temp_filename",
+            "func": "//variable declaration\nvar kfi_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_temp_filename = kfi_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 651.4286270141602,
+            "y": 1353.5715160369873,
+            "wires": [
+                [
+                    "e0c98d8e.badf58"
+                ]
+            ]
+        },
+        {
+            "id": "e0c98d8e.badf58",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfzip_temp_filename",
+            "func": "//variable declaration\nvar kfzip_temp_filename =\n    \"/home/dmae/admira/keyframe_tmp/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"/\" + \n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_temp_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_temp_filename = kfzip_temp_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 650.1786270141602,
+            "y": 1426.0715160369873,
+            "wires": [
+                [
+                    "6554f737.c90fe8"
+                ]
+            ]
+        },
+        {
+            "id": "484fe2d1.b3b26c",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "vr_target_filename",
+            "func": "//variable declaration\nvar vr_target_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_VR_report.xml\";\n\n\n// output to debug sidebar\n//node.warn(vr_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.vr_target_filename = vr_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1739.285743713379,
+            "y": 1361.6071500778198,
+            "wires": [
+                [
+                    "d15df4b3.59bf3"
+                ]
+            ]
+        },
+        {
+            "id": "2d8b7620.816bca",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfd_target_filename",
+            "func": "//variable declaration\nvar kfd_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".data\";\n\n\n// output to debug sidebar\n//node.warn(kfd_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfd_target_filename = kfd_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1197.678581237793,
+            "y": 1207.3214721679688,
+            "wires": [
+                [
+                    "9561ec50.7ec868"
+                ]
+            ]
+        },
+        {
+            "id": "9561ec50.7ec868",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfi_target_filename",
+            "func": "//variable declaration\nvar kfi_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".kfi\";\n\n\n// output to debug sidebar\n//node.warn(kfi_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfi_target_filename = kfi_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1181.428581237793,
+            "y": 1293.5714721679688,
+            "wires": [
+                [
+                    "81c8eb57.a1f3e8"
+                ]
+            ]
+        },
+        {
+            "id": "81c8eb57.a1f3e8",
+            "type": "function",
+            "z": "b1f71e8d.e62778",
+            "name": "kfzip_target_filename",
+            "func": "//variable declaration\nvar kfzip_target_filename =\n    \"Demo_VideoRecognition/data/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".zip\";\n\n\n// output to debug sidebar\n//node.warn(kfzip_target_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.kfzip_target_filename = kfzip_target_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 1185.178581237793,
+            "y": 1362.3214721679688,
+            "wires": [
+                [
+                    "7b170c9c.07d2cc",
+                    "d5128db1.69f33",
+                    "da4746c2.f6fe8"
+                ]
+            ]
+        },
+        {
+            "id": "6a98ceb9.131168",
+            "type": "external_command",
+            "z": "b1f71e8d.e62778",
+            "nop": false,
+            "tag": "",
+            "name": "send_push_message",
+            "title": "Send push message to Bluemix for AREMA Event App",
+            "expected_case": "",
+            "exec_name": "/home/dmae/admira/bin/ec_send_push_message",
+            "source_filenames": "",
+            "target_filenames": "",
+            "additional_parameters": "0815[Sep]Please approve [$input.sequence_name] [Sep]The file [$input.sequence_name] has been uploaded by user $input.portal_user_first_name $input.portal_user_last_name and requires your approval.[Sep]workflow",
+            "org_unit": "$variable.orgunit",
+            "chmod_file": "",
+            "hold_in_cache": "",
+            "parameters": [],
+            "properties": [],
+            "x": 1110.7141189575195,
+            "y": 433.71428203582764,
+            "wires": [
+                []
+            ]
+        }
+    ]
+}
