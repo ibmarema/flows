@@ -1,90 +1,655 @@
 {
-    "id": "fff10788.b9d238",
+    "id": "998649bb.f75e5",
     "label": "Ustream",
     "nodes": [
         {
-            "id": "ccddc6c1.cb619",
-            "type": "http request",
-            "z": "fff10788.b9d238",
-            "name": "getChannelDetails",
-            "method": "use",
-            "ret": "obj",
-            "url": "",
-            "x": 683.5,
-            "y": 190,
+            "id": "f4c92ab8.b796f",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads.json?type=videoupload-ftp\";\nmsg.method = \"POST\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 678.5,
+            "y": 163,
             "wires": [
                 [
-                    "93ea65ba.4b442",
-                    "eb0cb55c.0edd"
+                    "69d1038.42fb5fc"
                 ]
             ]
         },
         {
-            "id": "f1fdf3fc.32e358",
-            "type": "inject",
-            "z": "fff10788.b9d238",
+            "id": "69d1038.42fb5fc",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 947.5,
+            "y": 162,
+            "wires": [
+                [
+                    "a746967d.b7b0b8",
+                    "329fc7f0.204168"
+                ]
+            ]
+        },
+        {
+            "id": "a746967d.b7b0b8",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "ustream response",
+            "active": true,
+            "console": "false",
+            "complete": "payload",
+            "x": 1162.5,
+            "y": 276.5,
+            "wires": []
+        },
+        {
+            "id": "bf3bfb83.211e38",
+            "type": "http in",
+            "z": "998649bb.f75e5",
             "name": "",
+            "url": "/ustream",
+            "method": "post",
+            "swaggerDoc": "",
+            "x": 109.5,
+            "y": 154,
+            "wires": [
+                [
+                    "88c0007d.c3d428",
+                    "d6a8dc9.5730a2"
+                ]
+            ]
+        },
+        {
+            "id": "309ca579.2f4512",
+            "type": "http response",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "x": 1625.166790008545,
+            "y": 164.83333015441895,
+            "wires": []
+        },
+        {
+            "id": "88c0007d.c3d428",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "ustream request",
+            "active": true,
+            "console": "false",
+            "complete": "true",
+            "x": 371.5,
+            "y": 289.5,
+            "wires": []
+        },
+        {
+            "id": "d6a8dc9.5730a2",
+            "type": "change",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "rules": [
+                {
+                    "t": "delete",
+                    "p": "headers",
+                    "pt": "msg"
+                }
+            ],
+            "action": "",
+            "property": "",
+            "from": "",
+            "to": "",
+            "reg": false,
+            "x": 392,
+            "y": 159,
+            "wires": [
+                [
+                    "f4c92ab8.b796f"
+                ]
+            ]
+        },
+        {
+            "id": "7042b0f5.6fae4",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85775757.json\";\nmsg.method = \"PUT\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nmsg.payload = {status : \"ready\"};\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 393.75,
+            "y": 542.25,
+            "wires": [
+                [
+                    "906bd0a6.3baf58",
+                    "b86600fc.deec18"
+                ]
+            ]
+        },
+        {
+            "id": "906bd0a6.3baf58",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 662.75,
+            "y": 541.25,
+            "wires": [
+                [
+                    "d072ae97.4043a8"
+                ]
+            ]
+        },
+        {
+            "id": "d072ae97.4043a8",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "ustream response",
+            "active": true,
+            "console": "false",
+            "complete": "true",
+            "x": 877.75,
+            "y": 655.75,
+            "wires": []
+        },
+        {
+            "id": "73f20dff.126984",
+            "type": "inject",
+            "z": "998649bb.f75e5",
+            "name": "set finished message",
             "topic": "",
             "payload": "",
             "payloadType": "date",
             "repeat": "",
             "crontab": "",
             "once": false,
-            "x": 131,
-            "y": 157,
+            "x": 142.5,
+            "y": 509.75,
             "wires": [
                 [
-                    "a3d869cd.83113"
+                    "7042b0f5.6fae4"
                 ]
             ]
         },
         {
-            "id": "a3d869cd.83113",
+            "id": "b86600fc.deec18",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "request",
+            "active": true,
+            "console": "false",
+            "complete": "true",
+            "x": 541.25,
+            "y": 674.75,
+            "wires": []
+        },
+        {
+            "id": "92fff330.01151",
             "type": "function",
-            "z": "fff10788.b9d238",
-            "name": "Set REST parameters",
-            "func": "\nmsg.url = \"https://api.ustream.tv/channels/22195154.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\n\nreturn msg;",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85744183.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 397.5,
-            "y": 192,
+            "x": 420,
+            "y": 857.25,
             "wires": [
                 [
-                    "ccddc6c1.cb619"
+                    "f671dad9.133e6"
                 ]
             ]
         },
         {
-            "id": "93ea65ba.4b442",
+            "id": "f671dad9.133e6",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "txt",
+            "url": "",
+            "x": 689,
+            "y": 856.25,
+            "wires": [
+                [
+                    "f71686b5.0415b"
+                ]
+            ]
+        },
+        {
+            "id": "f71686b5.0415b",
             "type": "debug",
-            "z": "fff10788.b9d238",
-            "name": "",
+            "z": "998649bb.f75e5",
+            "name": "ustream response",
             "active": true,
             "console": "false",
-            "complete": "false",
-            "x": 982.5,
-            "y": 121.5,
+            "complete": "payload",
+            "x": 942.75,
+            "y": 855.75,
             "wires": []
         },
         {
-            "id": "62d294a7.42f714",
+            "id": "6fc4ba3d.d5dacc",
+            "type": "inject",
+            "z": "998649bb.f75e5",
+            "name": "get status",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 128.75,
+            "y": 824.75,
+            "wires": [
+                [
+                    "92fff330.01151"
+                ]
+            ]
+        },
+        {
+            "id": "51165005.e60898",
+            "type": "flow-reader",
+            "z": "998649bb.f75e5",
+            "name": "Save Flow to GitHub",
+            "protocol": "http",
+            "url": "127.0.0.1:1880",
+            "sheet": "Ustream",
+            "auth": false,
+            "once": false,
+            "x": 185,
+            "y": 1526.5,
+            "wires": [
+                [
+                    "41e9ff56.68ef68"
+                ]
+            ]
+        },
+        {
+            "id": "41e9ff56.68ef68",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "Set commit message",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 470,
+            "y": 1525.5,
+            "wires": [
+                [
+                    "1d994667.9ef9a2"
+                ]
+            ]
+        },
+        {
+            "id": "1d994667.9ef9a2",
+            "type": "subflow:d11a6d02.bbfb68",
+            "z": "998649bb.f75e5",
+            "x": 817.5,
+            "y": 1519.875,
+            "wires": [],
+            "subflow": "d11a6d02.bbfb68"
+        },
+        {
+            "id": "329fc7f0.204168",
+            "type": "change",
+            "z": "998649bb.f75e5",
+            "name": "move entries",
+            "rules": [
+                {
+                    "t": "set",
+                    "p": "payload.ustream.protocol",
+                    "pt": "msg",
+                    "to": "payload.protocol",
+                    "tot": "msg"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.host",
+                    "pt": "msg",
+                    "to": "payload.host",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.port",
+                    "pt": "msg",
+                    "to": "payload.port",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.path",
+                    "pt": "msg",
+                    "to": "payload.path",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.user",
+                    "pt": "msg",
+                    "to": "payload.user",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.password",
+                    "pt": "msg",
+                    "to": "payload.password",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.videoId",
+                    "pt": "msg",
+                    "to": "payload.videoId",
+                    "tot": "str"
+                },
+                {
+                    "t": "set",
+                    "p": "payload.ustream.url",
+                    "pt": "msg",
+                    "to": "payload.url",
+                    "tot": "str"
+                }
+            ],
+            "action": "",
+            "property": "",
+            "from": "",
+            "to": "",
+            "reg": false,
+            "x": 1159.1666641235352,
+            "y": 155.00000762939453,
+            "wires": [
+                [
+                    "d15be56c.0ced98"
+                ]
+            ]
+        },
+        {
+            "id": "8b33b0ae.5094e",
             "type": "debug",
-            "z": "fff10788.b9d238",
-            "name": "",
+            "z": "998649bb.f75e5",
+            "name": "ustream response changed",
             "active": true,
             "console": "false",
-            "complete": "false",
-            "x": 1245.5,
-            "y": 664.5,
+            "complete": "payload",
+            "x": 1774.9999618530273,
+            "y": 273.33331298828125,
             "wires": []
         },
         {
-            "id": "1aff4208.06cdc6",
+            "id": "d15be56c.0ced98",
+            "type": "change",
+            "z": "998649bb.f75e5",
+            "name": "delete entries",
+            "rules": [
+                {
+                    "t": "delete",
+                    "p": "payload.protocol",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.host",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.port",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.user",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.password",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.videoId",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.url",
+                    "pt": "msg"
+                },
+                {
+                    "t": "delete",
+                    "p": "payload.path",
+                    "pt": "msg"
+                }
+            ],
+            "action": "",
+            "property": "",
+            "from": "",
+            "to": "",
+            "reg": false,
+            "x": 1409.1665420532227,
+            "y": 155.00000762939453,
+            "wires": [
+                [
+                    "8b33b0ae.5094e",
+                    "309ca579.2f4512"
+                ]
+            ]
+        },
+        {
+            "id": "74e2f917.d695b",
+            "type": "inject",
+            "z": "998649bb.f75e5",
+            "name": "request upload",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 123,
+            "y": 404,
+            "wires": [
+                [
+                    "6d0437c2.8007b"
+                ]
+            ]
+        },
+        {
+            "id": "6d0437c2.8007b",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads.json?type=videoupload-ftp\";\nmsg.method = \"POST\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 478,
+            "y": 411,
+            "wires": [
+                [
+                    "81313cb4.60ec2"
+                ]
+            ]
+        },
+        {
+            "id": "81313cb4.60ec2",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 804,
+            "y": 400,
+            "wires": [
+                [
+                    "a5c4173b.8d0908"
+                ]
+            ]
+        },
+        {
+            "id": "a5c4173b.8d0908",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "ustream response",
+            "active": true,
+            "console": "false",
+            "complete": "payload",
+            "x": 1077,
+            "y": 399,
+            "wires": []
+        },
+        {
+            "id": "d3d038a2.d49858",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/videos.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 343,
+            "y": 964,
+            "wires": [
+                [
+                    "e1a9acc6.80eb28"
+                ]
+            ]
+        },
+        {
+            "id": "e1a9acc6.80eb28",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 583,
+            "y": 978,
+            "wires": [
+                [
+                    "29410288.f3c41e",
+                    "26c2e0b4.3a3cb"
+                ]
+            ]
+        },
+        {
+            "id": "5f406303.51ca5c",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "ustream response",
+            "active": false,
+            "console": "false",
+            "complete": "payload",
+            "x": 1032.75,
+            "y": 1122.5,
+            "wires": []
+        },
+        {
+            "id": "783115eb.b74bec",
+            "type": "inject",
+            "z": "998649bb.f75e5",
+            "name": "get videos",
+            "topic": "",
+            "payload": "",
+            "payloadType": "date",
+            "repeat": "",
+            "crontab": "",
+            "once": false,
+            "x": 94.75,
+            "y": 910.5,
+            "wires": [
+                [
+                    "d3d038a2.d49858"
+                ]
+            ]
+        },
+        {
+            "id": "29410288.f3c41e",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "find latest video id",
+            "func": "var created=[];\n\nfor (var key in msg.payload.videos) {\n  created.push(msg.payload.videos[key].created_at);\n}\n\nvar latest = Math.max.apply(Math, created); \n//node.warn(latest);\n\nvar latest_id = null;\nvar latest_url = \"\";\nvar latest_title = \"\";\nfor (var key in msg.payload.videos) {\n  if (msg.payload.videos[key].created_at == latest) {\n      latest_id = msg.payload.videos[key].id;\n      latest_url = msg.payload.videos[key].media_urls.flv || \"\";\n      latest_title = msg.payload.videos[key].title || \"\";\n  }\n}\n//node.warn(latest_id);\n//node.warn(latest_url);\n\nmsg.payload=latest_id\n//msg.payload = msg.payload.videos[0].created_at;\n\nif (latest_url.length > 20) {\n    return msg;\n}\nelse {\n    node.error(\"clip with id \" + latest_id + \" and title [\" + latest_title + \"] has no .flv URL!\");\n}\n\n",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 801.5,
+            "y": 986,
+            "wires": [
+                [
+                    "b4abb067.1e0fa8",
+                    "1cd39fcb.8aac48"
+                ]
+            ]
+        },
+        {
+            "id": "a787c1ce.ae851",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "URL Parameters",
+            "func": "msg.url = \"https://api.ustream.tv/videos/\" + msg.payload + \".json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 496,
+            "y": 1094,
+            "wires": [
+                [
+                    "312454c1.ad65dc"
+                ]
+            ]
+        },
+        {
+            "id": "ca3249f4.2c5f7",
+            "type": "change",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "rules": [
+                {
+                    "t": "delete",
+                    "p": "headers",
+                    "pt": "msg"
+                }
+            ],
+            "action": "",
+            "property": "",
+            "from": "",
+            "to": "",
+            "reg": false,
+            "x": 202,
+            "y": 1090,
+            "wires": [
+                [
+                    "a787c1ce.ae851"
+                ]
+            ]
+        },
+        {
+            "id": "312454c1.ad65dc",
+            "type": "http request",
+            "z": "998649bb.f75e5",
+            "name": "call ustream",
+            "method": "use",
+            "ret": "obj",
+            "url": "",
+            "x": 765,
+            "y": 1110,
+            "wires": [
+                [
+                    "5f406303.51ca5c",
+                    "cfbc33ea.c6e598"
+                ]
+            ]
+        },
+        {
+            "id": "f941bd25.5eb12",
             "type": "job_start",
-            "z": "fff10788.b9d238",
-            "name": "ustream_live",
-            "title": "Ustream Live Receiver from channel []",
-            "jobtype": "ustream",
+            "z": "998649bb.f75e5",
+            "name": "get_ustream_clip",
+            "title": "NAB Demo",
+            "jobtype": "demo_bluemix",
             "priority": "500",
             "starttime": "",
             "startbatch": "",
@@ -98,183 +663,188 @@
             "searchTagDate1": "",
             "searchTagDate2": "",
             "searchTagDate3": "",
-            "x": 528.5,
-            "y": 544.5,
+            "x": 177,
+            "y": 1296,
             "wires": [
                 [
-                    "a98f8cab.38fb"
+                    "2aaffc3a.dfd20c"
                 ]
             ]
         },
         {
-            "id": "6d22642d.cfcc34",
+            "id": "cfbc33ea.c6e598",
+            "type": "template",
+            "z": "998649bb.f75e5",
+            "name": "XML",
+            "field": "payload",
+            "fieldType": "msg",
+            "format": "handlebars",
+            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n\t<properties id=\"template_variables\">\n\t\t<param name=\"id\">{{payload.video.id}}</param>\n\t\t<param name=\"title\">{{payload.video.title}}</param>\n\t\t<param name=\"url\">{{{payload.video.media_urls.flv}}}</param>\n\t</properties>\n</admira>",
+            "x": 173,
+            "y": 1211,
+            "wires": [
+                [
+                    "2c4cac34.1c03e4",
+                    "f941bd25.5eb12"
+                ]
+            ]
+        },
+        {
+            "id": "2c4cac34.1c03e4",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "job xml",
+            "active": true,
+            "console": "false",
+            "complete": "payload",
+            "x": 553,
+            "y": 1246,
+            "wires": []
+        },
+        {
+            "id": "55d0a5f1.b05e1c",
             "type": "job_end",
-            "z": "fff10788.b9d238",
+            "z": "998649bb.f75e5",
             "includeparameters": true,
             "eojtag": "",
-            "x": 850.5,
-            "y": 662.5,
+            "x": 897.5,
+            "y": 1360,
             "wires": [
                 [
-                    "61060a5c.0dccc4",
-                    "803e8827.470c68"
+                    "1f5779ba.bb681e",
+                    "7000887e.b28df8"
                 ]
             ]
         },
         {
-            "id": "803e8827.470c68",
+            "id": "1f5779ba.bb681e",
             "type": "job_send",
-            "z": "fff10788.b9d238",
+            "z": "998649bb.f75e5",
             "holdjob": false,
-            "url": "http://arema.media.ibmcloud.com:9090",
-            "system": "admir",
+            "url": "http://localhost:9090",
+            "system": "admira",
             "user": "dmae",
-            "password": "pw4Ar3.mA",
-            "encrypted": false,
-            "x": 1054.5,
-            "y": 664.5,
+            "password": "b027ef6677441cd784e7b6c9f8ebae788d22",
+            "encrypted": true,
+            "x": 1046,
+            "y": 1403,
             "wires": [
-                [
-                    "62d294a7.42f714"
-                ]
+                []
             ]
         },
         {
-            "id": "a98f8cab.38fb",
-            "type": "notify",
-            "z": "fff10788.b9d238",
-            "nop": true,
-            "tag": "",
-            "name": "nop",
-            "title": "nop",
-            "expected_case": "",
-            "dest_filename": "",
-            "content_filename": "",
-            "org_unit": "",
-            "metadata_essence_": "",
-            "fail_on_predecessor_error": "",
-            "stop_deliver_on_failure": "",
-            "fail_on_error": "",
-            "hold_in_cache": "",
-            "parameters": [],
-            "properties": [],
-            "x": 697.5,
-            "y": 569.5,
-            "wires": [
-                [
-                    "6d22642d.cfcc34"
-                ]
-            ]
-        },
-        {
-            "id": "61060a5c.0dccc4",
+            "id": "7000887e.b28df8",
             "type": "debug",
-            "z": "fff10788.b9d238",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 1056,
+            "y": 1303,
+            "wires": []
+        },
+        {
+            "id": "a3ad3c03.24ccf8",
+            "type": "download",
+            "z": "998649bb.f75e5",
+            "nop": false,
+            "tag": "",
+            "name": "download_video",
+            "title": "Download of video [$input.title] from [$input.url]",
+            "expected_case": "",
+            "source_filename": "$input.url",
+            "target_filename": "$variable.ustream_filename",
+            "org_unit": "admira",
+            "proxy": "",
+            "proxy_port": "",
+            "chmod_file": "",
+            "hold_in_cache": "yes",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 711.5,
+            "y": 1365,
+            "wires": [
+                [
+                    "55d0a5f1.b05e1c"
+                ]
+            ]
+        },
+        {
+            "id": "2aaffc3a.dfd20c",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "timestamp",
+            "func": "//variable declaration\nvar timestamp =\n    Date.now();\n\n\n// output to debug sidebar\n//node.warn(timestamp);\n\n// add to msg to be passed on\nmsg.payload.variables.timestamp = timestamp;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 376,
+            "y": 1325,
+            "wires": [
+                [
+                    "e48f175.47881e8"
+                ]
+            ]
+        },
+        {
+            "id": "e48f175.47881e8",
+            "type": "function",
+            "z": "998649bb.f75e5",
+            "name": "ustream_filename",
+            "func": "//variable declaration\n\nvar ustream_filename =\n    \"ustream/\" + \n    msg.payload.input.id + \n    \"_\" +\n    msg.payload.variables.timestamp + \n    \".flv\";\n\n// output to debug sidebar\n//node.warn(ustream_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.ustream_filename = ustream_filename;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 401,
+            "y": 1383,
+            "wires": [
+                [
+                    "a3ad3c03.24ccf8"
+                ]
+            ]
+        },
+        {
+            "id": "b4abb067.1e0fa8",
+            "type": "rbe",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "func": "rbe",
+            "gap": "",
+            "start": "",
+            "x": 1133.2142028808594,
+            "y": 1019.5714321136475,
+            "wires": [
+                [
+                    "ca3249f4.2c5f7"
+                ]
+            ]
+        },
+        {
+            "id": "26c2e0b4.3a3cb",
+            "type": "debug",
+            "z": "998649bb.f75e5",
+            "name": "",
+            "active": true,
+            "console": "false",
+            "complete": "false",
+            "x": 756,
+            "y": 932,
+            "wires": []
+        },
+        {
+            "id": "1cd39fcb.8aac48",
+            "type": "debug",
+            "z": "998649bb.f75e5",
             "name": "",
             "active": false,
             "console": "false",
             "complete": "false",
-            "x": 1002.5,
-            "y": 577.5,
+            "x": 1033,
+            "y": 934,
             "wires": []
-        },
-        {
-            "id": "1a11deee.654421",
-            "type": "template",
-            "z": "fff10788.b9d238",
-            "name": "Input XML",
-            "field": "payload",
-            "fieldType": "msg",
-            "format": "handlebars",
-            "template": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<admira version=\"2.2.0\" type=\"variables\">\n    <properties id=\"template_variables\">\n        <param name=\"channel_status\">{{payload.channel.status}}</param>\n        <param name=\"channel_id\">{{payload.channel.id}}</param>\n        <param name=\"channel_title\">{{payload.channel.title}}</param>\n        <!--\n        <param name=\"channel_description\">{{payload.channel.description}}</param>\n        -->\n        <param name=\"channel_url\">{{payload.channel.url}}</param>\n        <param name=\"channel_tinyurl\">{{payload.channel.tinyurl}}</param>\n        <!--\n        <param name=\"channel_stream_hls\">{{payload.channel.stream.hls}}</param>\n        -->\n        <param name=\"channel_owner_username\">{{payload.channel.owner.username}}</param>\n    </properties>\n</admira>",
-            "x": 216,
-            "y": 475,
-            "wires": [
-                [
-                    "bacd3521.8fbcf8",
-                    "1aff4208.06cdc6"
-                ]
-            ]
-        },
-        {
-            "id": "bacd3521.8fbcf8",
-            "type": "debug",
-            "z": "fff10788.b9d238",
-            "name": "",
-            "active": false,
-            "console": "false",
-            "complete": "true",
-            "x": 442.5,
-            "y": 452.5,
-            "wires": []
-        },
-        {
-            "id": "eb0cb55c.0edd",
-            "type": "nr-switch",
-            "z": "fff10788.b9d238",
-            "name": "detect onair status",
-            "property": "payload.channel.status",
-            "propertyType": "msg",
-            "rules": [
-                {
-                    "t": "eq",
-                    "v": "live",
-                    "vt": "str"
-                }
-            ],
-            "checkall": "true",
-            "outputs": 1,
-            "x": 965,
-            "y": 220,
-            "wires": [
-                [
-                    "1a11deee.654421"
-                ]
-            ]
-        },
-        {
-            "id": "2fa1f3eb.8c2e64",
-            "type": "flow-reader",
-            "z": "fff10788.b9d238",
-            "name": "Save Flow to GitHub",
-            "protocol": "http",
-            "url": "127.0.0.1:1880",
-            "sheet": "Ustream",
-            "auth": false,
-            "once": false,
-            "x": 175,
-            "y": 830,
-            "wires": [
-                [
-                    "615d9bd0.4b337c"
-                ]
-            ]
-        },
-        {
-            "id": "615d9bd0.4b337c",
-            "type": "function",
-            "z": "fff10788.b9d238",
-            "name": "Set commit message",
-            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
-            "outputs": 1,
-            "noerr": 0,
-            "x": 460,
-            "y": 829,
-            "wires": [
-                [
-                    "8fa1390c.49a2b8"
-                ]
-            ]
-        },
-        {
-            "id": "8fa1390c.49a2b8",
-            "type": "subflow:3034f64e.09f3d2",
-            "z": "fff10788.b9d238",
-            "name": "",
-            "x": 745,
-            "y": 828,
-            "wires": [],
-            "subflow": "3034f64e.09f3d2"
         }
     ]
 }
