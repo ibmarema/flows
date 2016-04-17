@@ -118,7 +118,7 @@
             "type": "function",
             "z": "ceb4606e.993d7",
             "name": "Set commit message",
-            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message 3\\\"\";\n\nreturn msg;",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"for Jakob\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 560,
