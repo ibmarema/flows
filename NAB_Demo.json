@@ -41,7 +41,7 @@
             "searchTagDate1": "",
             "searchTagDate2": "",
             "searchTagDate3": "",
-            "x": 555.0000190734863,
+            "x": 575.0000190734863,
             "y": 170.00005531311035,
             "wires": [
                 [
@@ -1303,6 +1303,10 @@
                 {
                     "k": "watson_s2t_xml",
                     "v": "$variable.watsons2t_target_filename_xml"
+                },
+                {
+                    "k": "watson_image_recognition_xml",
+                    "v": "$variable.vr_target_filename"
                 },
                 {
                     "k": "task_name",
