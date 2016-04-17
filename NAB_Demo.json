@@ -618,8 +618,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 380,
-            "y": 1680,
+            "x": 620,
+            "y": 1540,
             "wires": [
                 [
                     "c6e3ad4b.5c87f8"
@@ -702,8 +702,8 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 551.750129699707,
-            "y": 1551.5001487731934,
+            "x": 530,
+            "y": 1660,
             "wires": [
                 [
                     "167f0ae1.14a535"
@@ -745,8 +745,8 @@
                     "v": ""
                 }
             ],
-            "x": 3797.857192993164,
-            "y": 1374.2857055664062,
+            "x": 4207.857360839844,
+            "y": 1383.0357360839844,
             "wires": [
                 [
                     "16543b9e.c8b3ac"
@@ -814,8 +814,8 @@
                     "v": "$variable.solr_target_filename"
                 }
             ],
-            "x": 3477.857192993164,
-            "y": 1374.2857055664062,
+            "x": 3887.8573608398438,
+            "y": 1383.0357360839844,
             "wires": [
                 [
                     "aa147ab3.121d7"
@@ -830,8 +830,8 @@
             "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 3117.857192993164,
-            "y": 1374.2857055664062,
+            "x": 3527.8573608398438,
+            "y": 1383.0357360839844,
             "wires": [
                 [
                     "a5c71adc.ca3de8"
@@ -897,8 +897,8 @@
                     "v": ""
                 }
             ],
-            "x": 2807.857192993164,
-            "y": 1294.2857055664062,
+            "x": 2995,
+            "y": 1322.5,
             "wires": [
                 [
                     "8d9f1885.43b12"
@@ -913,7 +913,7 @@
             "tag": "",
             "name": "transfer_kfi",
             "title": "Transfer MP4 file [$variable.kfi_target_filename] to media Portal on [arema.media.ibmcloud.com]",
-            "expected_case": "cognitive",
+            "expected_case": "keyframes",
             "direction": "",
             "device_name": "media_portal",
             "input_pipe": "",
@@ -964,8 +964,8 @@
                     "v": ""
                 }
             ],
-            "x": 2797.857192993164,
-            "y": 1374.2857055664062,
+            "x": 3179.1073608398438,
+            "y": 1481.7857055664062,
             "wires": [
                 [
                     "8d9f1885.43b12"
@@ -980,7 +980,7 @@
             "tag": "",
             "name": "transfer_kfd",
             "title": "Transfer MP4 file [$variable.kfd_target_filename] to media Portal on [arema.media.ibmcloud.com]",
-            "expected_case": "cognitive",
+            "expected_case": "keyframes",
             "direction": "",
             "device_name": "media_portal",
             "input_pipe": "",
@@ -1031,8 +1031,8 @@
                     "v": ""
                 }
             ],
-            "x": 2795.0000190734863,
-            "y": 1450.0000553131104,
+            "x": 3172.5,
+            "y": 1558.75,
             "wires": [
                 [
                     "8d9f1885.43b12"
@@ -1098,8 +1098,8 @@
                     "v": ""
                 }
             ],
-            "x": 2795.0000190734863,
-            "y": 1530.0000553131104,
+            "x": 2985,
+            "y": 1422.5,
             "wires": [
                 [
                     "8d9f1885.43b12"
@@ -1244,7 +1244,7 @@
             "title": "Generation of [$variable.solr_target_filename] for Solr from Visual Recognition result [$variable.vr_target_filename]",
             "expected_case": "cognitive",
             "dest_filename": "/home/dmae/admira/etc/Demo_VideoRecognition_Notify_Solr_Destination.xml",
-            "content_filename": "$variable.vr_target_filename",
+            "content_filename": "",
             "org_unit": "$variable.orgunit",
             "metadata_essence_": "$variable.mp4_target_filename",
             "fail_on_predecessor_error": "yes",
@@ -1307,14 +1307,13 @@
                     "v": "$input.sequence_name"
                 }
             ],
-            "x": 2487.857192993164,
-            "y": 1374.2857055664062,
+            "x": 2600,
+            "y": 1380,
             "wires": [
                 [
+                    "ab9af8f5.8c874",
                     "f38e47df.a9b79",
-                    "cb28b649.a41178",
-                    "a4240079.876898",
-                    "ab9af8f5.8c874"
+                    "4ef1a874.907078"
                 ]
             ]
         },
@@ -1547,11 +1546,12 @@
                     "v": "$variable.cache_dir/$variable.kfzip_target_filename"
                 }
             ],
-            "x": 2074.357307434082,
-            "y": 1369.0001516342163,
+            "x": 2130,
+            "y": 1380,
             "wires": [
                 [
-                    "d9805e5b.1d5b28"
+                    "d9805e5b.1d5b28",
+                    "c6e3ad4b.5c87f8"
                 ]
             ]
         },
@@ -2255,8 +2255,8 @@
                     "v": ""
                 }
             ],
-            "x": 1280,
-            "y": 1560,
+            "x": 1200,
+            "y": 1660,
             "wires": [
                 [
                     "f6989959.9ded68"
@@ -2296,8 +2296,8 @@
                     "v": ""
                 }
             ],
-            "x": 2074.3572158813477,
-            "y": 1563.2858228683472,
+            "x": 1982,
+            "y": 1660,
             "wires": [
                 [
                     "d9805e5b.1d5b28"
@@ -2502,8 +2502,8 @@
                     "v": ""
                 }
             ],
-            "x": 2070,
-            "y": 1680,
+            "x": 2010,
+            "y": 1540,
             "wires": [
                 [
                     "d9805e5b.1d5b28"
@@ -2602,9 +2602,9 @@
             "primary_ecsi_url": "http://159.122.255.227:9090/ecsi/services/admirafunctions",
             "secondary_ecsi_url": "http://159.122.255.227:9090/ecsi/services/admirafunctions",
             "remote_userid": "dmae",
-            "remote_password": "dmae",
+            "remote_password": "c48d7aa54e6e355156",
             "remote_database": "admira",
-            "template_filename": "Job_FaceRecognition.xsl",
+            "template_filename": "/home/dmae/admira/etc/templates-ev/Job_FaceRecognition.xsl",
             "template_variables_filename": "",
             "filename": "",
             "mode_synchronous": "yes",
@@ -2636,8 +2636,8 @@
                     "v": "$variable.fr_target_filename"
                 }
             ],
-            "x": 1270,
-            "y": 1680,
+            "x": 1587.0001220703125,
+            "y": 1540.000005722046,
             "wires": [
                 [
                     "3b1f1fd3.809fb"
@@ -2678,7 +2678,7 @@
                     "v": "create_approval_task_list_entry"
                 }
             ],
-            "x": 270,
+            "x": 305,
             "y": 1800,
             "wires": [
                 [
@@ -2880,6 +2880,45 @@
                     "531f8397.1a5c24",
                     "59320825.a7a248",
                     "323bbf0c.254018"
+                ]
+            ]
+        },
+        {
+            "id": "4ef1a874.907078",
+            "type": "switch",
+            "z": "ceb4606e.993d7",
+            "nop": false,
+            "tag": "",
+            "name": "switch_runtimecase_keyframes",
+            "title": "Decide if to transfer keyframes",
+            "expected_case": "cognitive",
+            "decision_maker": "DecisionTransformation",
+            "fail_on_predecessor_error": "yes",
+            "fail_on_error": "yes",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "xslt_file",
+                    "v": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Switch_RuntimeCase_Decision.xsl"
+                },
+                {
+                    "k": "runtime_case",
+                    "v": "keyframes"
+                }
+            ],
+            "x": 2907.75,
+            "y": 1527.5,
+            "wires": [
+                [
+                    "cb28b649.a41178",
+                    "a4240079.876898"
                 ]
             ]
         }
