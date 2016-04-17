@@ -743,7 +743,7 @@
                     "v": ""
                 }
             ],
-            "x": 4207.857360839844,
+            "x": 4084.8573608398438,
             "y": 1383.0357360839844,
             "wires": [
                 [
@@ -812,7 +812,7 @@
                     "v": "$variable.solr_target_filename"
                 }
             ],
-            "x": 3887.8573608398438,
+            "x": 3764.8573608398438,
             "y": 1383.0357360839844,
             "wires": [
                 [
@@ -828,7 +828,7 @@
             "func": "//variable declaration\nvar visualrecog_subjob_params_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    \"visualrecog_subjob_params\" + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \".xml\";\n\n\n// output to debug sidebar\n//node.warn(visualrecog_subjob_params_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.visualrecog_subjob_params_filename = visualrecog_subjob_params_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 3527.8573608398438,
+            "x": 3404.8573608398438,
             "y": 1383.0357360839844,
             "wires": [
                 [
@@ -895,7 +895,7 @@
                     "v": ""
                 }
             ],
-            "x": 2995,
+            "x": 2872,
             "y": 1322.5,
             "wires": [
                 [
@@ -962,7 +962,7 @@
                     "v": ""
                 }
             ],
-            "x": 3179.1073608398438,
+            "x": 3056.1073608398438,
             "y": 1481.7857055664062,
             "wires": [
                 [
@@ -1029,7 +1029,7 @@
                     "v": ""
                 }
             ],
-            "x": 3172.5,
+            "x": 3049.5,
             "y": 1558.75,
             "wires": [
                 [
@@ -1096,7 +1096,7 @@
                     "v": ""
                 }
             ],
-            "x": 2985,
+            "x": 2862,
             "y": 1422.5,
             "wires": [
                 [
@@ -1309,7 +1309,7 @@
                     "v": "$input.sequence_name"
                 }
             ],
-            "x": 2600,
+            "x": 2477,
             "y": 1380,
             "wires": [
                 [
@@ -2196,7 +2196,7 @@
             "z": "ceb4606e.993d7",
             "name": "Start cleversafe Agent",
             "info": "mit einkommentierter Zeile in bin/tools\nadmira_agent start put_to_s3 tag cleversafe",
-            "x": 2505.357177734375,
+            "x": 2417.357177734375,
             "y": 1213.3926420211792,
             "wires": []
         },
@@ -2907,7 +2907,7 @@
                     "v": "keyframes"
                 }
             ],
-            "x": 2907.75,
+            "x": 2784.75,
             "y": 1527.5,
             "wires": [
                 [
