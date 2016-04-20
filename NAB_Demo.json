@@ -26,7 +26,7 @@
             "type": "job_start",
             "z": "ceb4606e.993d7",
             "name": "nab_demo",
-            "title": "NAB Demo",
+            "title": "NAB Demo: Upload clip, perform human approval, store in cloud, perform cognitive analysis and publish to OTT and social",
             "jobtype": "demo_bluemix",
             "priority": "500",
             "starttime": "",
@@ -118,7 +118,7 @@
             "type": "function",
             "z": "ceb4606e.993d7",
             "name": "Set commit message",
-            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"for Jakob\\\"\";\n\nreturn msg;",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message for hbo\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 560,
@@ -477,16 +477,6 @@
                     "647fc3f5.ef6484"
                 ]
             ]
-        },
-        {
-            "id": "9b3ada1.6a6f828",
-            "type": "comment",
-            "z": "ceb4606e.993d7",
-            "name": "Job Titel dynamisch machen",
-            "info": "",
-            "x": 515.9285507202148,
-            "y": 288.42870235443115,
-            "wires": []
         },
         {
             "id": "3f4b90d5.9ceda",
@@ -1298,11 +1288,11 @@
                 },
                 {
                     "k": "fraunhofer_xml",
-                    "v": "$variable.fraunhofer_result_filename"
+                    "v": "Demo_VideoRecognition/xml/$variable.fraunhofer_result_filename"
                 },
                 {
                     "k": "watson_s2t_xml",
-                    "v": "$variable.watsons2t_target_filename_xml"
+                    "v": "$variable.watsons2t_target_filename_xml_relative"
                 },
                 {
                     "k": "watson_image_recognition_xml",
@@ -1493,7 +1483,7 @@
             "id": "6d3df364.aaa2e4",
             "type": "external_command",
             "z": "ceb4606e.993d7",
-            "nop": false,
+            "nop": true,
             "tag": "",
             "name": "send_push_message",
             "title": "Send push message to Bluemix for AREMA Event App",
@@ -2049,7 +2039,7 @@
             "id": "945ff08f.952898",
             "type": "put_to_s3",
             "z": "ceb4606e.993d7",
-            "nop": false,
+            "nop": true,
             "tag": "cleversafe",
             "name": "put_to_cleversafe",
             "title": "Store file [$variable.mp4_target_filename] via S3 protocol to Cleversafe as file [$variable.cleversafe_object_name]",
@@ -2089,7 +2079,7 @@
             "z": "ceb4606e.993d7",
             "name": "Access to Cleversafe",
             "info": "\n\nVault Name: jm140316\nUsername: jm140316\nPassword: 1C#gibbY\nAccesser IPs: \n    8.40.18.82 (S3)\n    8.40.18.83 (S3)\n    8.40.18.84 (S3)\n    8.40.18.85 (SOH)\n    8.40.18.86 (OS)\nAWS Key ID: Cnv7NdSNlMHOSQ4hadeD\nAWK Secret Key: XuaW40PbIX5JlCK7FiK3BCm8S8CuUCSofq5K8zSc\n\n\nINSERT INTO DMAE.LIBRARY_MANAGERS (MANAGER_ID, LIBRARY_MANAGER_NAME, LIBRARY_MANAGER_TYPE, CONF_FILE_NAME, LIBRARY_MOUNT_POINT, HOST_NAME, USER_NAME, PASSWD, LAST_MODIFIED, CREATION_TIMESTAMP) VALUES (DMAE.LIBRARY_MANAGER_ID.NEXTVAL, 'CLEVERSAFE_S3', 3, 'jm140316', '8.40.18.82', 'localhost', 'Cnv7NdSNlMHOSQ4hadeD', 'XuaW40PbIX5JlCK7FiK3BCm8S8CuUCSofq5K8zSc', CURRENT TIMESTAMP, CURRENT TIMESTAMP)\n\nINSERT INTO DMAE.LIBRARIES (LIBRARY_ID, LIBRARY_NAME, LIBRARY_TYPE, TAPE_COUNT, DRIVE_COUNT, LAST_MODIFIED, CREATION_TIMESTAMP) VALUES (DMAE.LIBRARY_ID.NEXTVAL, 'CLEVERSAFE_S3', 's3', 0, 0, CURRENT TIMESTAMP, CURRENT TIMESTAMP)\n\nINSERT INTO DMAE.POOLS (POOL_ID, LIBRARIES_LIBRARY_ID, POOL_NAME, TAPE_COUNT, POOL_TYPE, RULE_PLACEMENT, RULE_ACCESS, SPREAD_TAPE_FRAME, MAX_FREE_SPACE, MIN_FREE_SPACE, TAPE_TYPE, LAST_MODIFIED, CREATION_TIMESTAMP) VALUES (DMAE.POOL_ID.NEXTVAL, (SELECT LIBRARY_ID FROM DMAE.LIBRARIES WHERE LIBRARY_NAME = 'CLEVERSAFE_S3'), 'POOL_CLEVERSAFE_S3', 0, 's3', 'none', 'none', 0, 0, 0, 8, CURRENT TIMESTAMP, CURRENT TIMESTAMP)\n--> Hier ist ein Fehler drinnen: Die Library manager ID muss nich beim Pool eingetragen werden. LIBRARY_MANAGERS_MANAGER_ID\ndb2 \"update pools set LIBRARY_MANAGERS_MANAGER_ID=2 where pool_id=2\"\n\n",
-            "x": 2560,
+            "x": 2555,
             "y": 1140,
             "wires": []
         },
@@ -2275,7 +2265,7 @@
             "id": "f6989959.9ded68",
             "type": "speech_to_text",
             "z": "ceb4606e.993d7",
-            "nop": false,
+            "nop": true,
             "tag": "",
             "name": "call_speech_to_text_fraunhofer",
             "title": "Request speech2text from Fraunhofer Audioming Service [https://nm-prototype.iais.fraunhofer.de/audiomining]",
@@ -2402,8 +2392,8 @@
                     "v": ""
                 }
             ],
-            "x": 1373.4287643432617,
-            "y": 382.0715389251709,
+            "x": 1380,
+            "y": 380,
             "wires": [
                 [
                     "4df0e8c9.583028"
@@ -2430,8 +2420,8 @@
                     "v": ""
                 }
             ],
-            "x": 1573.4287643432617,
-            "y": 382.0715389251709,
+            "x": 1600,
+            "y": 380,
             "wires": [
                 [
                     "1581da29.07278e"
@@ -2467,8 +2457,8 @@
                     "v": ""
                 }
             ],
-            "x": 1833.4287643432617,
-            "y": 382.0715389251709,
+            "x": 1860,
+            "y": 380,
             "wires": [
                 [
                     "8ea36689.8bb04"
@@ -2483,8 +2473,8 @@
             "func": "//variable declaration\nvar mediainfo_xml_filename =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_mediainfo_metadata.xml\";\n\n\n// output to debug sidebar\n//node.warn(mediainfo_xml_filename);\n\n// add to msg to be passed on\nmsg.payload.variables.mediainfo_xml_filename = mediainfo_xml_filename;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 1163.4287643432617,
-            "y": 382.0715389251709,
+            "x": 1150,
+            "y": 380,
             "wires": [
                 [
                     "c68a10b3.a3961"
@@ -2832,11 +2822,11 @@
             "func": "//variable declaration\nvar watsons2t_target_filename_xml =\n    \"/home/dmae/admira/cache/\" +\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_watsons2t.xml\";\n\n\n// output to debug sidebar\n//node.warn(watsons2t_target_filename_xml);\n\n// add to msg to be passed on\nmsg.payload.variables.watsons2t_target_filename_xml = watsons2t_target_filename_xml;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 550,
-            "y": 1040,
+            "x": 531.4286041259766,
+            "y": 1042.8572115898132,
             "wires": [
                 [
-                    "f2671c78.082fc"
+                    "96e02fad.193f7"
                 ]
             ]
         },
@@ -2870,8 +2860,8 @@
                     "v": "cognitive"
                 }
             ],
-            "x": 271.25,
-            "y": 1413.75,
+            "x": 368.3928527832031,
+            "y": 1419.4643630981445,
             "wires": [
                 [
                     "7ec94944.fcf81",
@@ -2945,6 +2935,22 @@
             "wires": [
                 [
                     "68ab6615.7a5a28"
+                ]
+            ]
+        },
+        {
+            "id": "96e02fad.193f7",
+            "type": "function",
+            "z": "ceb4606e.993d7",
+            "name": "watsons2t_target_filename_xml_relative",
+            "func": "//variable declaration\nvar watsons2t_target_filename_xml_relative =\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_watsons2t.xml\";\n\n\n// output to debug sidebar\n//node.warn(watsons2t_target_filename_xml_relative);\n\n// add to msg to be passed on\nmsg.payload.variables.watsons2t_target_filename_xml_relative = watsons2t_target_filename_xml_relative;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 534.2857513427734,
+            "y": 1095.7142133712769,
+            "wires": [
+                [
+                    "f2671c78.082fc"
                 ]
             ]
         }
