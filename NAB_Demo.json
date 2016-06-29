@@ -60,8 +60,7 @@
             "y": 667.7858772277832,
             "wires": [
                 [
-                    "97c41c76.f11168",
-                    "5108f288.b05724"
+                    "97c41c76.f11168"
                 ]
             ]
         },
@@ -118,7 +117,7 @@
             "type": "function",
             "z": "ceb4606e.993d7",
             "name": "Set commit message",
-            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message for hbo\\\"\";\n\nreturn msg;",
+            "func": "// the commit message has to be enclosed in \" and \\\"\n\nmsg.commit = \"\\\"my commit message for vrt\\\"\";\n\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 560,
@@ -134,7 +133,7 @@
             "type": "debug",
             "z": "ceb4606e.993d7",
             "name": "",
-            "active": true,
+            "active": false,
             "console": "false",
             "complete": "true",
             "x": 755.0000190734863,
@@ -209,14 +208,16 @@
             "x": 375.0000190734863,
             "y": 130.00005531311035,
             "wires": [
-                []
+                [
+                    "edf17bc3.ca2c48"
+                ]
             ]
         },
         {
             "id": "f2671c78.082fc",
             "type": "copy_to_cache",
             "z": "ceb4606e.993d7",
-            "nop": false,
+            "nop": true,
             "tag": "",
             "name": "copy_mp4_to_cache",
             "title": "Copy (in tail mode) [$variable.mp4_source_filename] to cache as [$variable.mp4_target_filename]",
@@ -1321,8 +1322,8 @@
             "func": "//variable declaration\n\n\n// videoUri = ftp://dmae:pw4Ar3.mA@159.122.4.146:21/admira/cache/EDahlias.mp4\n/*\nvar regex = /^ftp:\\/\\/(.*):(.*)@(.*):(.*)\\/(.*)$/;\n\nvar result = msg.payload.input.videoUri.match(regex);\nvar user = result[1];\nvar pass = result[2];\nvar host = result[3];\nvar port = result[4];\nvar path = result[5];\n*/\n// Beim Drag&Drop Upload wird nur der Filename übergeben \n\nvar regex = /^(.*)\\.(.*)$/;\nvar result = msg.payload.input.videoUri.match(regex);\n\n\nvar mp4_label = result[1];\n//    \"EDahlias\";\n\n\n// output to debug sidebar\n//node.warn(mp4_label);\n\n// add to msg to be passed on\nmsg.payload.variables.mp4_label = mp4_label;\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
-            "x": 735.0000190734863,
-            "y": 330.00005531311035,
+            "x": 735.0000610351562,
+            "y": 334.2857971191406,
             "wires": [
                 [
                     "2eb65ca3.e056f4"
@@ -1483,7 +1484,7 @@
             "id": "6d3df364.aaa2e4",
             "type": "external_command",
             "z": "ceb4606e.993d7",
-            "nop": true,
+            "nop": false,
             "tag": "",
             "name": "send_push_message",
             "title": "Send push message to Bluemix for AREMA Event App",
@@ -1725,9 +1726,7 @@
             "x": 330,
             "y": 200,
             "wires": [
-                [
-                    "edf17bc3.ca2c48"
-                ]
+                []
             ]
         },
         {
@@ -2806,11 +2805,12 @@
                     "v": ""
                 }
             ],
-            "x": 2090,
+            "x": 2080,
             "y": 1800,
             "wires": [
                 [
-                    "d9805e5b.1d5b28"
+                    "d9805e5b.1d5b28",
+                    "85bb712d.012f6"
                 ]
             ]
         },
@@ -2860,8 +2860,8 @@
                     "v": "cognitive"
                 }
             ],
-            "x": 368.3928527832031,
-            "y": 1419.4643630981445,
+            "x": 352.6785888671875,
+            "y": 1392.3215026855469,
             "wires": [
                 [
                     "7ec94944.fcf81",
@@ -2951,6 +2951,73 @@
             "wires": [
                 [
                     "f2671c78.082fc"
+                ]
+            ]
+        },
+        {
+            "id": "7f01f43e.0f1e1c",
+            "type": "comment",
+            "z": "ceb4606e.993d7",
+            "name": "Concpts Insight",
+            "info": "{\n    \"credentials\": {\n        \"url\": \"https://gateway.watsonplatform.net/concept-insights/api\",\n        \"password\": \"A6TyW51aUE1C\",\n        \"username\": \"0e2c0256-1689-46f8-9a42-280f536662b0\"\n    }\n\n}\n\n\n\"account_id\":\"ri1ernloty2at2\"",
+            "x": 2215.625,
+            "y": 2077.5,
+            "wires": []
+        },
+        {
+            "id": "8b6d481a.9926a8",
+            "type": "rest_client",
+            "z": "ceb4606e.993d7",
+            "nop": true,
+            "tag": "",
+            "name": "concept_insights",
+            "title": "Call Watson Concept Insights for Speech2Text result from file [$variable.watsons2t_target_filename_xml]",
+            "expected_case": "checkSpeech2Text",
+            "end_point": "https://gateway.watsonplatform.net/concept-insights/api/v2/graphs/ri1ernloty2at2/wikipedia/en-latest/annotate_text",
+            "use_case": "POST",
+            "media_type": "JSON",
+            "form_type": "",
+            "user": "0e2c0256-1689-46f8-9a42-280f536662b0",
+            "password": "A6TyW51aUE1C",
+            "source_filename": "$variable.watsons2t_target_filename_xml",
+            "target_filename": "$variable.watsonci_target_filename_json",
+            "response_handler": "",
+            "step_timeout": "",
+            "fail_on_predecessor_error": "",
+            "fail_on_error": "",
+            "org_unit": "$variable.orgunit",
+            "hold_in_cache": "",
+            "parameters": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "properties": [
+                {
+                    "k": "",
+                    "v": ""
+                }
+            ],
+            "x": 2243.125,
+            "y": 1966.25,
+            "wires": [
+                []
+            ]
+        },
+        {
+            "id": "85bb712d.012f6",
+            "type": "function",
+            "z": "ceb4606e.993d7",
+            "name": "watsonci_target_filename_json",
+            "func": "//variable declaration\nvar watsonci_target_filename_json =\n    \"/home/dmae/admira/cache/\" +\n    \"Demo_VideoRecognition/xml/\" +\n    msg.payload.variables.mp4_label + \n    \"_\" + \n    msg.payload.variables.timestamp + \n    \"_watsonci.json\";\n\n\n\n// output to debug sidebar\n//node.warn(watsonci_target_filename_json);\n\n// add to msg to be passed on\nmsg.payload.variables.watsonci_target_filename_json = watsonci_target_filename_json;\nreturn msg;",
+            "outputs": 1,
+            "noerr": 0,
+            "x": 2171.25,
+            "y": 1888.75,
+            "wires": [
+                [
+                    "8b6d481a.9926a8"
                 ]
             ]
         }
