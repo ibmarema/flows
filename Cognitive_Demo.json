@@ -76,10 +76,6 @@
             "sheet": "Cognitive Demo",
             "auth": false,
             "once": false,
-            "credentials": {
-                "user": "",
-                "password": ""
-            },
             "x": 300,
             "y": 60,
             "wires": [
@@ -1846,7 +1842,7 @@
             "comments": "",
             "nop": false,
             "tag": "",
-            "name": "create_parameters_for_ftp_subjob",
+            "name": "create_parameters_for_ustream_ftp_subjob",
             "title": "Create parameters for FTP subjob into file [$variables.ftp_subjob_params_filename]",
             "expected_case": "distributeUstream",
             "dest_filename": "/home/dmae/admira/etc/Demo_Flow_VideoRecognition_Notify_FTP_Subjob_Destination.xml",
@@ -1877,7 +1873,7 @@
                     "v": "$variables.mp4_target_filename"
                 }
             ],
-            "x": 2499.143138885498,
+            "x": 2529.143138885498,
             "y": 966.3572616577148,
             "wires": [
                 [
@@ -2081,13 +2077,13 @@
             "title": "$input.sequence_name",
             "expected_case": "distributeYoutube",
             "source_filename": "$variables.mp4_target_filename",
-            "client_secrets": "/home/dmae/admira/etc/youtube_client_secrets_NAB.json",
-            "credentials_path": "a",
+            "client_secrets": "/home/dmae/admira/etc/youtube_client_secret.json",
+            "credentials_path": "/home/dmae/admira/etc/youtube_client_credentials.json",
             "youtube_title": "$input.sequence_name",
             "privacy": "private",
             "description": "$input.sequence_name $input.remark",
             "youtube_tags": "",
-            "youtube_ports": "a",
+            "youtube_ports": "9000-9999",
             "metadata_xml_file": "",
             "target_filename": "",
             "step_timeout": "",
@@ -2174,8 +2170,8 @@
             "z": "ceb4606e.993d7",
             "name": "Start cleversafe Agent",
             "info": "mit einkommentierter Zeile in bin/tools\nadmira_agent start put_to_s3 tag cleversafe",
-            "x": 2417.357177734375,
-            "y": 1213.3926420211792,
+            "x": 2325.690544128418,
+            "y": 1253.3926391601562,
             "wires": []
         },
         {
