@@ -7,7 +7,7 @@
             "type": "function",
             "z": "998649bb.f75e5",
             "name": "URL Parameters",
-            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads.json?type=videoupload-ftp\";\nmsg.method = \"POST\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads.json?type=videoupload-ftp\";\nmsg.method = \"POST\";\nmsg.headers = {Authorization : \"Bearer 067d811b153738cc8a3373acda43e33fb4c7d72f\"};\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 678.5,
@@ -115,7 +115,7 @@
             "type": "function",
             "z": "998649bb.f75e5",
             "name": "URL Parameters",
-            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85775757.json\";\nmsg.method = \"PUT\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nmsg.payload = {status : \"ready\"};\nreturn msg;",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85780045.json\";\nmsg.method = \"PUT\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nmsg.payload = {status : \"ready\"};\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 393.75,
@@ -191,7 +191,7 @@
             "type": "function",
             "z": "998649bb.f75e5",
             "name": "URL Parameters",
-            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85744183.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
+            "func": "msg.url = \"https://api.ustream.tv/channels/22195154/uploads/85780045.json\";\nmsg.method = \"GET\";\nmsg.headers = {Authorization : \"Bearer 22e604f3c6c81116ab0c7444e347123069ba992d\"};\nreturn msg;",
             "outputs": 1,
             "noerr": 0,
             "x": 420,
@@ -728,9 +728,7 @@
             "encrypted": true,
             "x": 1046,
             "y": 1403,
-            "wires": [
-                []
-            ]
+            "wires": []
         },
         {
             "id": "7000887e.b28df8",
@@ -754,7 +752,7 @@
             "title": "Download of video [$input.title] from [$input.url]",
             "expected_case": "",
             "source_filename": "$input.url",
-            "target_filename": "$variable.ustream_filename",
+            "target_filename": "$variables.ustream_filename",
             "org_unit": "admira",
             "proxy": "",
             "proxy_port": "",
